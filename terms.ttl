@@ -2169,13 +2169,15 @@ amrita:CSI_N3_P2 rdf:type owl:NamedIndividual ,
 ###  http://amrita.sony.org/terms#Camera_1_Interface_1_P1
 amrita:Camera_1_Interface_1_P1 rdf:type owl:NamedIndividual ,
                                         toco:Interface ;
-                               toco:hasWiredLink amrita:CSI_N1_P1 .
+                               toco:hasWiredLink amrita:CSI_N1_P1 ;
+                               toco:isIn amrita:Camera_1_P1 .
 
 
 ###  http://amrita.sony.org/terms#Camera_1_Interface_1_P2
 amrita:Camera_1_Interface_1_P2 rdf:type owl:NamedIndividual ,
                                         toco:Interface ;
-                               toco:hasWiredLink amrita:CSI_N1_P2 .
+                               toco:hasWiredLink amrita:CSI_N1_P2 ;
+                               toco:isIn amrita:Camera_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#Camera_1_P1
@@ -2195,13 +2197,15 @@ amrita:Camera_1_P2 rdf:type owl:NamedIndividual ,
 ###  http://amrita.sony.org/terms#Camera_2_Interface_1_P1
 amrita:Camera_2_Interface_1_P1 rdf:type owl:NamedIndividual ,
                                         toco:Interface ;
-                               toco:hasWiredLink amrita:CSI_N2_P1 .
+                               toco:hasWiredLink amrita:CSI_N2_P1 ;
+                               toco:isIn amrita:Camera_2_P1 .
 
 
 ###  http://amrita.sony.org/terms#Camera_2_Interface_1_P2
 amrita:Camera_2_Interface_1_P2 rdf:type owl:NamedIndividual ,
                                         toco:Interface ;
-                               toco:hasWiredLink amrita:CSI_N2_P2 .
+                               toco:hasWiredLink amrita:CSI_N2_P2 ;
+                               toco:isIn amrita:Camera_2_P2 .
 
 
 ###  http://amrita.sony.org/terms#Camera_2_P1
@@ -2220,13 +2224,15 @@ amrita:Camera_2_P2 rdf:type owl:NamedIndividual ,
 ###  http://amrita.sony.org/terms#Camera_3_Interface_1_P1
 amrita:Camera_3_Interface_1_P1 rdf:type owl:NamedIndividual ,
                                         toco:Interface ;
-                               toco:hasWiredLink amrita:CSI_N3_P1 .
+                               toco:hasWiredLink amrita:CSI_N3_P1 ;
+                               toco:isIn amrita:Camera_3_P1 .
 
 
 ###  http://amrita.sony.org/terms#Camera_3_Interface_1_P2
 amrita:Camera_3_Interface_1_P2 rdf:type owl:NamedIndividual ,
                                         toco:Interface ;
-                               toco:hasWiredLink amrita:CSI_N3_P2 .
+                               toco:hasWiredLink amrita:CSI_N3_P2 ;
+                               toco:isIn amrita:Camera_3_P2 .
 
 
 ###  http://amrita.sony.org/terms#Camera_3_P1
@@ -2321,37 +2327,43 @@ amrita:Door_P2 rdf:type owl:NamedIndividual ,
 ###  http://amrita.sony.org/terms#ESP32_Interface_N1_P1
 amrita:ESP32_Interface_N1_P1 rdf:type owl:NamedIndividual ,
                                       toco:Interface ;
-                             toco:hasWiredLink amrita:UART2_N1_P1 .
+                             toco:hasWiredLink amrita:UART2_N1_P1 ;
+                             toco:isIn amrita:ESP32_N1_P1 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_Interface_N1_P2
 amrita:ESP32_Interface_N1_P2 rdf:type owl:NamedIndividual ,
                                       toco:Interface ;
-                             toco:hasWiredLink amrita:UART2_N1_P2 .
+                             toco:hasWiredLink amrita:UART2_N1_P2 ;
+                             toco:isIn amrita:ESP32_N1_P2 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_Interface_N2_P1
 amrita:ESP32_Interface_N2_P1 rdf:type owl:NamedIndividual ,
                                       toco:Interface ;
-                             toco:hasWiredLink amrita:SoftSerial_N2_P1 .
+                             toco:hasWiredLink amrita:SoftSerial_N2_P1 ;
+                             toco:isIn amrita:ESP32_N2_P1 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_Interface_N2_P2
 amrita:ESP32_Interface_N2_P2 rdf:type owl:NamedIndividual ,
                                       toco:Interface ;
-                             toco:hasWiredLink amrita:SoftSerial_N2_P2 .
+                             toco:hasWiredLink amrita:SoftSerial_N2_P2 ;
+                             toco:isIn amrita:ESP32_N2_P2 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_Interface_N3_P1
 amrita:ESP32_Interface_N3_P1 rdf:type owl:NamedIndividual ,
                                       toco:Interface ;
-                             toco:hasWiredLink amrita:UART2_N3_P1 .
+                             toco:hasWiredLink amrita:UART2_N3_P1 ;
+                             toco:isIn amrita:ESP32_N3_P1 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_Interface_N3_P2
 amrita:ESP32_Interface_N3_P2 rdf:type owl:NamedIndividual ,
                                       toco:Interface ;
-                             toco:hasWiredLink amrita:UART2_N3_P2 .
+                             toco:hasWiredLink amrita:UART2_N3_P2 ;
+                             toco:isIn amrita:ESP32_N3_P2 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_N1_P1
@@ -2402,6 +2414,7 @@ amrita:ESP32_N3_P2 rdf:type owl:NamedIndividual ,
 amrita:ESP32_WiFiWLAN_N1_N2_P1 rdf:type owl:NamedIndividual ,
                                         toco:WiFiWLAN ;
                                toco:hasWirelessAssociation amrita:Wireless_Association_1_P1 ;
+                               toco:isIn amrita:ESP32_N2_P1 ;
                                rdfs:label "ESP32_WiFiWLAN_N1_N2_P1" .
 
 
@@ -2409,19 +2422,22 @@ amrita:ESP32_WiFiWLAN_N1_N2_P1 rdf:type owl:NamedIndividual ,
 amrita:ESP32_WiFiWLAN_N1_N2_P2 rdf:type owl:NamedIndividual ,
                                         toco:WiFiWLAN ;
                                toco:hasWirelessAssociation amrita:Wireless_Association_1_P2 ;
+                               toco:isIn amrita:ESP32_N2_P2 ;
                                rdfs:label "ESP32_WiFiWLAN_N1_N2_P2" .
 
 
 ###  http://amrita.sony.org/terms#ESP32_WiFiWLAN_N1_P1
 amrita:ESP32_WiFiWLAN_N1_P1 rdf:type owl:NamedIndividual ,
                                      toco:WiFiWLAN ;
-                            toco:hasWirelessAssociation amrita:Wireless_Association_1_P1 .
+                            toco:hasWirelessAssociation amrita:Wireless_Association_1_P1 ;
+                            toco:isIn amrita:ESP32_N1_P1 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_WiFiWLAN_N1_P2
 amrita:ESP32_WiFiWLAN_N1_P2 rdf:type owl:NamedIndividual ,
                                      toco:WiFiWLAN ;
                             toco:hasWirelessAssociation amrita:Wireless_Association_1_P2 ;
+                            toco:isIn amrita:ESP32_N1_P2 ;
                             rdfs:label "ESP32_WiFiWLAN_N1_P2" .
 
 
@@ -2429,6 +2445,7 @@ amrita:ESP32_WiFiWLAN_N1_P2 rdf:type owl:NamedIndividual ,
 amrita:ESP32_WiFiWLAN_N3_N2_P1 rdf:type owl:NamedIndividual ,
                                         toco:WiFiWLAN ;
                                toco:hasWirelessAssociation amrita:Wireless_Association_2_P1 ;
+                               toco:isIn amrita:ESP32_N2_P1 ;
                                rdfs:label "ESP32_WiFiWLAN_N3_N2_P1" .
 
 
@@ -2436,19 +2453,22 @@ amrita:ESP32_WiFiWLAN_N3_N2_P1 rdf:type owl:NamedIndividual ,
 amrita:ESP32_WiFiWLAN_N3_N2_P2 rdf:type owl:NamedIndividual ,
                                         toco:WiFiWLAN ;
                                toco:hasWirelessAssociation amrita:Wireless_Association_2_P2 ;
+                               toco:isIn amrita:ESP32_N2_P2 ;
                                rdfs:label "ESP32_WiFiWLAN_N3_N2_P2" .
 
 
 ###  http://amrita.sony.org/terms#ESP32_WiFiWLAN_N3_P1
 amrita:ESP32_WiFiWLAN_N3_P1 rdf:type owl:NamedIndividual ,
                                      toco:WiFiWLAN ;
-                            toco:hasWirelessAssociation amrita:Wireless_Association_2_P1 .
+                            toco:hasWirelessAssociation amrita:Wireless_Association_2_P1 ;
+                            toco:isIn amrita:ESP32_N3_P1 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_WiFiWLAN_N3_P2
 amrita:ESP32_WiFiWLAN_N3_P2 rdf:type owl:NamedIndividual ,
                                      toco:WiFiWLAN ;
                             toco:hasWirelessAssociation amrita:Wireless_Association_2_P2 ;
+                            toco:isIn amrita:ESP32_N3_P2 ;
                             rdfs:label "ESP32_WiFiWLAN_N3_P2" .
 
 
@@ -2522,37 +2542,43 @@ amrita:ExaustFan_P2 rdf:type owl:NamedIndividual ,
 ###  http://amrita.sony.org/terms#Exhaust_Interface_1_P1
 amrita:Exhaust_Interface_1_P1 rdf:type owl:NamedIndividual ,
                                        toco:Interface ;
-                              toco:hasWiredLink amrita:Wired_Link_1_P1 .
+                              toco:hasWiredLink amrita:Wired_Link_1_P1 ;
+                              toco:isIn amrita:ExaustFan_P1 .
 
 
 ###  http://amrita.sony.org/terms#Exhaust_Interface_1_P2
 amrita:Exhaust_Interface_1_P2 rdf:type owl:NamedIndividual ,
                                        toco:Interface ;
-                              toco:hasWiredLink amrita:Wired_Link_1_P2 .
+                              toco:hasWiredLink amrita:Wired_Link_1_P2 ;
+                              toco:isIn amrita:ExaustFan_P2 .
 
 
 ###  http://amrita.sony.org/terms#Exhaust_Relay_Interface_1_P1
 amrita:Exhaust_Relay_Interface_1_P1 rdf:type owl:NamedIndividual ,
                                              toco:WiFiWLAN ;
-                                    toco:hasWirelessAssociation amrita:Wireless_Association_3_P1 .
+                                    toco:hasWirelessAssociation amrita:Wireless_Association_3_P1 ;
+                                    toco:isIn amrita:Relay_Driver_For_Exhaust_Controller_P1 .
 
 
 ###  http://amrita.sony.org/terms#Exhaust_Relay_Interface_1_P2
 amrita:Exhaust_Relay_Interface_1_P2 rdf:type owl:NamedIndividual ,
                                              toco:WiFiWLAN ;
-                                    toco:hasWirelessAssociation amrita:Wireless_Association_3_P2 .
+                                    toco:hasWirelessAssociation amrita:Wireless_Association_3_P2 ;
+                                    toco:isIn amrita:Relay_Driver_For_Exhaust_Controller_P2 .
 
 
 ###  http://amrita.sony.org/terms#Exhaust_Relay_Interface_2_P1
 amrita:Exhaust_Relay_Interface_2_P1 rdf:type owl:NamedIndividual ,
                                              toco:Interface ;
-                                    toco:hasWiredLink amrita:Wired_Link_1_P1 .
+                                    toco:hasWiredLink amrita:Wired_Link_1_P1 ;
+                                    toco:isIn amrita:Relay_Driver_For_Exhaust_Controller_P1 .
 
 
 ###  http://amrita.sony.org/terms#Exhaust_Relay_Interface_2_P2
 amrita:Exhaust_Relay_Interface_2_P2 rdf:type owl:NamedIndividual ,
                                              toco:Interface ;
-                                    toco:hasWiredLink amrita:Wired_Link_1_P2 .
+                                    toco:hasWiredLink amrita:Wired_Link_1_P2 ;
+                                    toco:isIn amrita:Relay_Driver_For_Exhaust_Controller_P2 .
 
 
 ###  http://amrita.sony.org/terms#Experiment_1
@@ -3070,13 +3096,15 @@ amrita:Run_AutoML_tom_class_001 rdf:type owl:NamedIndividual ,
 ###  http://amrita.sony.org/terms#SHT25_1_Interface_1_P1
 amrita:SHT25_1_Interface_1_P1 rdf:type owl:NamedIndividual ,
                                        toco:Interface ;
-                              toco:hasWiredLink amrita:I2CBus_N1_P1 .
+                              toco:hasWiredLink amrita:I2CBus_N1_P1 ;
+                              toco:isIn amrita:SHT25_1_P1 .
 
 
 ###  http://amrita.sony.org/terms#SHT25_1_Interface_1_P2
 amrita:SHT25_1_Interface_1_P2 rdf:type owl:NamedIndividual ,
                                        toco:Interface ;
-                              toco:hasWiredLink amrita:I2CBus_N1_P2 .
+                              toco:hasWiredLink amrita:I2CBus_N1_P2 ;
+                              toco:isIn amrita:SHT25_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#SHT25_1_P1
@@ -3102,13 +3130,15 @@ amrita:SHT25_1_P2 rdf:type owl:NamedIndividual ,
 ###  http://amrita.sony.org/terms#SHT25_2_Interface_1_P1
 amrita:SHT25_2_Interface_1_P1 rdf:type owl:NamedIndividual ,
                                        toco:Interface ;
-                              toco:hasWiredLink amrita:I2CBus_N2_P1 .
+                              toco:hasWiredLink amrita:I2CBus_N2_P1 ;
+                              toco:isIn amrita:SHT25_2_P1 .
 
 
 ###  http://amrita.sony.org/terms#SHT25_2_Interface_1_P2
 amrita:SHT25_2_Interface_1_P2 rdf:type owl:NamedIndividual ,
                                        toco:Interface ;
-                              toco:hasWiredLink amrita:I2CBus_N2_P2 .
+                              toco:hasWiredLink amrita:I2CBus_N2_P2 ;
+                              toco:isIn amrita:SHT25_2_P2 .
 
 
 ###  http://amrita.sony.org/terms#SHT25_2_P1
@@ -3130,13 +3160,15 @@ amrita:SHT25_2_P2 rdf:type owl:NamedIndividual ,
 ###  http://amrita.sony.org/terms#SHT25_3_Interface_1_P1
 amrita:SHT25_3_Interface_1_P1 rdf:type owl:NamedIndividual ,
                                        toco:Interface ;
-                              toco:hasWiredLink amrita:I2CBus_N3_P1 .
+                              toco:hasWiredLink amrita:I2CBus_N3_P1 ;
+                              toco:isIn amrita:SHT25_3_P1 .
 
 
 ###  http://amrita.sony.org/terms#SHT25_3_Interface_1_P2
 amrita:SHT25_3_Interface_1_P2 rdf:type owl:NamedIndividual ,
                                        toco:Interface ;
-                              toco:hasWiredLink amrita:I2CBus_N3_P2 .
+                              toco:hasWiredLink amrita:I2CBus_N3_P2 ;
+                              toco:isIn amrita:SHT25_3_P2 .
 
 
 ###  http://amrita.sony.org/terms#SHT25_3_P1
@@ -3158,24 +3190,28 @@ amrita:SHT25_3_P2 rdf:type owl:NamedIndividual ,
 ###  http://amrita.sony.org/terms#SIM7600_Interface_1_P1
 amrita:SIM7600_Interface_1_P1 rdf:type owl:NamedIndividual ,
                                        toco:WiFiWLAN ;
-                              toco:hasLTEAssociation amrita:LTE_Association_P1 .
+                              toco:hasLTEAssociation amrita:LTE_Association_P1 ;
+                              toco:isIn amrita:SIM7600_P1 .
 
 
 ###  http://amrita.sony.org/terms#SIM7600_Interface_1_P2
 amrita:SIM7600_Interface_1_P2 rdf:type owl:NamedIndividual ,
-                                       toco:WiFiWLAN .
+                                       toco:WiFiWLAN ;
+                              toco:isIn amrita:SIM7600_P2 .
 
 
 ###  http://amrita.sony.org/terms#SIM7600_Interface_2_P1
 amrita:SIM7600_Interface_2_P1 rdf:type owl:NamedIndividual ,
                                        toco:Interface ;
-                              toco:hasWiredLink amrita:UART2_N2_P1 .
+                              toco:hasWiredLink amrita:UART2_N2_P1 ;
+                              toco:isIn amrita:SIM7600_P1 .
 
 
 ###  http://amrita.sony.org/terms#SIM7600_Interface_2_P2
 amrita:SIM7600_Interface_2_P2 rdf:type owl:NamedIndividual ,
                                        toco:Interface ;
-                              toco:hasWiredLink amrita:UART2_N2_P2 .
+                              toco:hasWiredLink amrita:UART2_N2_P2 ;
+                              toco:isIn amrita:SIM7600_P2 .
 
 
 ###  http://amrita.sony.org/terms#SIM7600_P1
@@ -3304,37 +3340,43 @@ amrita:Space_3_P2 rdf:type owl:NamedIndividual ,
 ###  http://amrita.sony.org/terms#Spresense_1_Interface_1_P1
 amrita:Spresense_1_Interface_1_P1 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:I2CBus_N1_P1 .
+                                  toco:hasWiredLink amrita:I2CBus_N1_P1 ;
+                                  toco:isIn amrita:Spresense_1_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_1_Interface_1_P2
 amrita:Spresense_1_Interface_1_P2 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:I2CBus_N1_P2 .
+                                  toco:hasWiredLink amrita:I2CBus_N1_P2 ;
+                                  toco:isIn amrita:Spresense_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_1_Interface_2_P1
 amrita:Spresense_1_Interface_2_P1 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:CSI_N1_P1 .
+                                  toco:hasWiredLink amrita:CSI_N1_P1 ;
+                                  toco:isIn amrita:Spresense_1_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_1_Interface_2_P2
 amrita:Spresense_1_Interface_2_P2 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:CSI_N1_P2 .
+                                  toco:hasWiredLink amrita:CSI_N1_P2 ;
+                                  toco:isIn amrita:Spresense_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_1_Interface_3_P1
 amrita:Spresense_1_Interface_3_P1 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:UART2_N1_P1 .
+                                  toco:hasWiredLink amrita:UART2_N1_P1 ;
+                                  toco:isIn amrita:Spresense_1_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_1_Interface_3_P2
 amrita:Spresense_1_Interface_3_P2 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:UART2_N1_P2 .
+                                  toco:hasWiredLink amrita:UART2_N1_P2 ;
+                                  toco:isIn amrita:Spresense_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_1_P1
@@ -3364,49 +3406,57 @@ amrita:Spresense_1_P2 rdf:type owl:NamedIndividual ,
 ###  http://amrita.sony.org/terms#Spresense_2_Interface_1_P1
 amrita:Spresense_2_Interface_1_P1 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:I2CBus_N2_P1 .
+                                  toco:hasWiredLink amrita:I2CBus_N2_P1 ;
+                                  toco:isIn amrita:Spresense_2_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_Interface_1_P2
 amrita:Spresense_2_Interface_1_P2 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:I2CBus_N2_P2 .
+                                  toco:hasWiredLink amrita:I2CBus_N2_P2 ;
+                                  toco:isIn amrita:Spresense_2_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_Interface_2_P1
 amrita:Spresense_2_Interface_2_P1 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:CSI_N2_P1 .
+                                  toco:hasWiredLink amrita:CSI_N2_P1 ;
+                                  toco:isIn amrita:Spresense_2_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_Interface_2_P2
 amrita:Spresense_2_Interface_2_P2 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:CSI_N2_P2 .
+                                  toco:hasWiredLink amrita:CSI_N2_P2 ;
+                                  toco:isIn amrita:Spresense_2_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_Interface_3_P1
 amrita:Spresense_2_Interface_3_P1 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:UART2_N2_P1 .
+                                  toco:hasWiredLink amrita:UART2_N2_P1 ;
+                                  toco:isIn amrita:Spresense_2_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_Interface_3_P2
 amrita:Spresense_2_Interface_3_P2 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:UART2_N2_P2 .
+                                  toco:hasWiredLink amrita:UART2_N2_P2 ;
+                                  toco:isIn amrita:Spresense_2_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_Interface_4_P1
 amrita:Spresense_2_Interface_4_P1 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:SoftSerial_N2_P1 .
+                                  toco:hasWiredLink amrita:SoftSerial_N2_P1 ;
+                                  toco:isIn amrita:Spresense_2_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_Interface_4_P2
 amrita:Spresense_2_Interface_4_P2 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:SoftSerial_N2_P2 .
+                                  toco:hasWiredLink amrita:SoftSerial_N2_P2 ;
+                                  toco:isIn amrita:Spresense_2_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_P1
@@ -3440,37 +3490,43 @@ amrita:Spresense_2_P2 rdf:type owl:NamedIndividual ,
 ###  http://amrita.sony.org/terms#Spresense_3_Interface_1_P1
 amrita:Spresense_3_Interface_1_P1 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:I2CBus_N3_P1 .
+                                  toco:hasWiredLink amrita:I2CBus_N3_P1 ;
+                                  toco:isIn amrita:Spresense_3_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_3_Interface_1_P2
 amrita:Spresense_3_Interface_1_P2 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:I2CBus_N3_P2 .
+                                  toco:hasWiredLink amrita:I2CBus_N3_P2 ;
+                                  toco:isIn amrita:Spresense_3_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_3_Interface_2_P1
 amrita:Spresense_3_Interface_2_P1 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:CSI_N3_P1 .
+                                  toco:hasWiredLink amrita:CSI_N3_P1 ;
+                                  toco:isIn amrita:Spresense_3_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_3_Interface_2_P2
 amrita:Spresense_3_Interface_2_P2 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:CSI_N3_P2 .
+                                  toco:hasWiredLink amrita:CSI_N3_P2 ;
+                                  toco:isIn amrita:Spresense_3_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_3_Interface_3_P1
 amrita:Spresense_3_Interface_3_P1 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:UART2_N3_P1 .
+                                  toco:hasWiredLink amrita:UART2_N3_P1 ;
+                                  toco:isIn amrita:Spresense_3_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_3_Interface_3_P2
 amrita:Spresense_3_Interface_3_P2 rdf:type owl:NamedIndividual ,
                                            toco:Interface ;
-                                  toco:hasWiredLink amrita:UART2_N3_P2 .
+                                  toco:hasWiredLink amrita:UART2_N3_P2 ;
+                                  toco:isIn amrita:Spresense_3_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_3_P1

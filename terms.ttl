@@ -799,6 +799,7 @@ amrita:CSI rdf:type owl:Class ;
 ###  http://amrita.sony.org/terms#CentralisedServer
 amrita:CentralisedServer rdf:type owl:Class ;
                          <http://purl.obolibrary.org/obo/IAO_0000115> "An external system that receives data from the edge node for storage, monitoring, or analysis."@en ;
+                         rdfs:comment "An external system that receives data from the edge node for storage, monitoring, or analysis."@en ;
                          rdfs:label "CentralisedServer" .
 
 
@@ -816,19 +817,22 @@ amrita:ESP32 rdf:type owl:Class ;
              rdfs:subClassOf toco:SystemDevice ,
                              ssn:System ,
                              mep:DistributionElement ;
-             <http://purl.obolibrary.org/obo/IAO_0000115> "A microcontroller with Wi-Fi capabilities that enables communication between polyhouse nodes."@en .
+             <http://purl.obolibrary.org/obo/IAO_0000115> "A microcontroller with Wi-Fi capabilities that enables communication between polyhouse nodes."@en ;
+             rdfs:comment "A microcontroller with Wi-Fi capabilities that enables communication between polyhouse nodes."@en .
 
 
 ###  http://amrita.sony.org/terms#EdgeNode
 amrita:EdgeNode rdf:type owl:Class ;
                 rdfs:subClassOf ssn:System ;
-                <http://purl.obolibrary.org/obo/IAO_0000115> "The central node in the polyhouse's distributed system. It aggregates data from end nodes and transmits it to a remote server via a GSM module."@en .
+                <http://purl.obolibrary.org/obo/IAO_0000115> "The central node in the polyhouse's distributed system. It aggregates data from end nodes and transmits it to a remote server via a GSM module."@en ;
+                rdfs:comment "The central node in the polyhouse's distributed system. It aggregates data from end nodes and transmits it to a remote server via a GSM module."@en .
 
 
 ###  http://amrita.sony.org/terms#EndNode
 amrita:EndNode rdf:type owl:Class ;
                rdfs:subClassOf ssn:System ;
-               <http://purl.obolibrary.org/obo/IAO_0000115> "A node in the polyhouse's distributed system responsible for collecting environmental and visual data using onboard devices. It forwards this data to the edge node via Wi-Fi."@en .
+               <http://purl.obolibrary.org/obo/IAO_0000115> "A node in the polyhouse's distributed system responsible for collecting environmental and visual data using onboard devices. It forwards this data to the edge node via Wi-Fi."@en ;
+               rdfs:comment "A node in the polyhouse's distributed system responsible for collecting environmental and visual data using onboard devices. It forwards this data to the edge node via Wi-Fi."@en .
 
 
 ###  http://amrita.sony.org/terms#EndUser
@@ -888,7 +892,8 @@ amrita:SIM7600 rdf:type owl:Class ;
                rdfs:subClassOf toco:SystemDevice ,
                                ssn:System ,
                                mep:DistributionElement ;
-               <http://purl.obolibrary.org/obo/IAO_0000115> "A GSM communication module installed in the edge node for transmitting data to an external server over a cellular network."@en .
+               <http://purl.obolibrary.org/obo/IAO_0000115> "A GSM communication module installed in the edge node for transmitting data to an external server over a cellular network."@en ;
+               rdfs:comment "A GSM communication module installed in the edge node for transmitting data to an external server over a cellular network."@en .
 
 
 ###  http://amrita.sony.org/terms#SoftSerial
@@ -899,7 +904,8 @@ amrita:SoftSerial rdf:type owl:Class ;
 ###  http://amrita.sony.org/terms#Spresense
 amrita:Spresense rdf:type owl:Class ;
                  rdfs:subClassOf ssn:System ;
-                 <http://purl.obolibrary.org/obo/IAO_0000115> "A Sony microcontroller board used in each node for acquiring data from sensors and cameras."@en .
+                 <http://purl.obolibrary.org/obo/IAO_0000115> "A Sony microcontroller board used in each node for acquiring data from sensors and cameras."@en ;
+                 rdfs:comment "A Sony microcontroller board used in each node for acquiring data from sensors and cameras."@en .
 
 
 ###  http://amrita.sony.org/terms#Turbovent
@@ -1995,7 +2001,8 @@ mep:AudioVisualAppliance-CAMERA rdf:type owl:Class ;
                                 rdfs:subClassOf toco:SystemDevice ,
                                                 ssn:System ,
                                                 mep:DistributionElement ;
-                                <http://purl.obolibrary.org/obo/IAO_0000115> "A visual sensing device connected to the Spresense for capturing images inside the polyhouse."@en .
+                                <http://purl.obolibrary.org/obo/IAO_0000115> "A visual sensing device connected to the Spresense for capturing images inside the polyhouse."@en ;
+                                rdfs:comment "A visual sensing device connected to the Spresense for capturing images inside the polyhouse."@en .
 
 
 ###  https://pi.pauwel.be/voc/distributionelement#CommunicationsAppliance

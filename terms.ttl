@@ -613,8 +613,7 @@ pantheon:hasRelationTarget rdf:type owl:ObjectProperty .
 
 ###  https://w3id.org/bot#adjacentElement
 bot:adjacentElement rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf bot:hasElement ;
-                    owl:propertyDisjointWith bot:intersectingElement .
+                    rdfs:subPropertyOf bot:hasElement .
 
 
 ###  https://w3id.org/bot#adjacentZone
@@ -627,9 +626,7 @@ bot:adjacentZone rdf:type owl:ObjectProperty ,
 
 ###  https://w3id.org/bot#containsElement
 bot:containsElement rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf owl:topObjectProperty ;
-                    owl:propertyChainAxiom ( bot:containsZone
-                                           ) .
+                    rdfs:subPropertyOf owl:topObjectProperty .
 
 
 ###  https://w3id.org/bot#containsZone
@@ -645,7 +642,6 @@ bot:has3DModel rdf:type owl:ObjectProperty .
 
 ###  https://w3id.org/bot#hasBuilding
 bot:hasBuilding rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf bot:containsZone ;
                 rdfs:domain bot:Zone ;
                 rdfs:range bot:Building .
 
@@ -653,9 +649,7 @@ bot:hasBuilding rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/bot#hasElement
 bot:hasElement rdf:type owl:ObjectProperty ;
                rdfs:domain bot:Zone ;
-               rdfs:range bot:Element ;
-               owl:propertyChainAxiom ( bot:containsZone
-                                      ) .
+               rdfs:range bot:Element .
 
 
 ###  https://w3id.org/bot#hasSimple3DModel
@@ -664,14 +658,12 @@ bot:hasSimple3DModel rdf:type owl:ObjectProperty .
 
 ###  https://w3id.org/bot#hasSpace
 bot:hasSpace rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf bot:containsZone ;
              rdfs:domain bot:Zone ;
              rdfs:range bot:Space .
 
 
 ###  https://w3id.org/bot#hasStorey
 bot:hasStorey rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf bot:containsZone ;
               rdfs:domain bot:Zone ;
               rdfs:range bot:Storey .
 
@@ -715,8 +707,7 @@ amrita:has_value rdf:type owl:DatatypeProperty ;
 
 ###  http://purl.oclc.org/net/unis/ontology/sensordata.owl/hasValue
 <http://purl.oclc.org/net/unis/ontology/sensordata.owl/hasValue> rdf:type owl:DatatypeProperty ;
-                                                                 rdfs:domain <http://purl.oclc.org/net/unis/ontology/sensordata.owl/ObervationAndMeasurement> ;
-                                                                 rdfs:range xsd:float .
+                                                                 rdfs:domain <http://purl.oclc.org/net/unis/ontology/sensordata.owl/ObervationAndMeasurement> .
 
 
 ###  http://purl.org/cerif/frapo/hasSerialNumber
@@ -2049,8 +2040,7 @@ bot:Building rdf:type owl:Class ;
 
 
 ###  https://w3id.org/bot#Element
-bot:Element rdf:type owl:Class ;
-            owl:disjointWith bot:Zone .
+bot:Element rdf:type owl:Class .
 
 
 ###  https://w3id.org/bot#Site

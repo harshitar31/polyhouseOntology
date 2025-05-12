@@ -18,7 +18,6 @@
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix toco: <http://purl.org/toco/> .
 @prefix frapo: <http://purl.org/cerif/frapo/> .
-@prefix amrita: <http://amrita.sony.org/terms#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix iot-lite: <http://purl.oclc.org/NET/UNIS/fiware/iot-lite#> .
 @prefix pantheon: <https://clouard.users.greyc.fr/Pantheon/resources#> .
@@ -34,15 +33,15 @@
 #################################################################
 
 ###  http://amrita.sony.org/terms#hasActivation
-amrita:hasActivation rdf:type owl:AnnotationProperty .
+:hasActivation rdf:type owl:AnnotationProperty .
 
 
 ###  http://amrita.sony.org/terms#hasName
-amrita:hasName rdf:type owl:AnnotationProperty .
+:hasName rdf:type owl:AnnotationProperty .
 
 
 ###  http://amrita.sony.org/terms#mls:hasValue
-amrita:mls:hasValue rdf:type owl:AnnotationProperty .
+:mls:hasValue rdf:type owl:AnnotationProperty .
 
 
 ###  http://amrita_food.org/terms#ascorbicAcid
@@ -289,41 +288,41 @@ mls:specifiedBy rdf:type owl:AnnotationProperty .
 #################################################################
 
 ###  http://amrita.sony.org/terms#hasFeature
-amrita:hasFeature rdf:type owl:ObjectProperty .
+:hasFeature rdf:type owl:ObjectProperty .
 
 
 ###  http://amrita.sony.org/terms#hasFeatureSet
-amrita:hasFeatureSet rdf:type owl:ObjectProperty .
+:hasFeatureSet rdf:type owl:ObjectProperty .
 
 
 ###  http://amrita.sony.org/terms#hasFeatureValues
-amrita:hasFeatureValues rdf:type owl:ObjectProperty .
+:hasFeatureValues rdf:type owl:ObjectProperty .
 
 
 ###  http://amrita.sony.org/terms#hasPermission
-amrita:hasPermission rdf:type owl:ObjectProperty .
+:hasPermission rdf:type owl:ObjectProperty .
 
 
 ###  http://amrita.sony.org/terms#hasRole
-amrita:hasRole rdf:type owl:ObjectProperty .
+:hasRole rdf:type owl:ObjectProperty .
 
 
 ###  http://amrita.sony.org/terms#hasRun
-amrita:hasRun rdf:type owl:ObjectProperty .
+:hasRun rdf:type owl:ObjectProperty .
 
 
 ###  http://amrita.sony.org/terms#hasType
-amrita:hasType rdf:type owl:ObjectProperty ;
-               rdfs:range mls:Feature .
+:hasType rdf:type owl:ObjectProperty ;
+         rdfs:range mls:Feature .
 
 
 ###  http://amrita.sony.org/terms#onResource
-amrita:onResource rdf:type owl:ObjectProperty .
+:onResource rdf:type owl:ObjectProperty .
 
 
 ###  http://amrita.sony.org/terms#use_by
-amrita:use_by rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf owl:topObjectProperty .
+:use_by rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty .
 
 
 ###  http://amrita_food.org/terms#contains
@@ -700,9 +699,9 @@ bot:intersectsZone rdf:type owl:ObjectProperty ,
 #################################################################
 
 ###  http://amrita.sony.org/terms#has_value
-amrita:has_value rdf:type owl:DatatypeProperty ;
-                 rdfs:domain <http://purl.obolibrary.org/obo/CDNO_0000001> ;
-                 rdfs:range xsd:float .
+:has_value rdf:type owl:DatatypeProperty ;
+           rdfs:domain <http://purl.obolibrary.org/obo/CDNO_0000001> ;
+           rdfs:range xsd:float .
 
 
 ###  http://purl.oclc.org/net/unis/ontology/sensordata.owl/hasValue
@@ -778,165 +777,165 @@ pantheon:hasTitle rdf:type owl:DatatypeProperty ;
 #################################################################
 
 ###  http://amrita.sony.org/terms#Admin_111
-amrita:Admin_111 rdf:type owl:Class ;
-                 rdfs:subClassOf amrita:Role .
+:Admin_111 rdf:type owl:Class ;
+           rdfs:subClassOf :Role .
 
 
 ###  http://amrita.sony.org/terms#CSI
-amrita:CSI rdf:type owl:Class ;
-           rdfs:subClassOf toco:WiredLink .
+:CSI rdf:type owl:Class ;
+     rdfs:subClassOf toco:WiredLink .
 
 
 ###  http://amrita.sony.org/terms#CentralisedServer
-amrita:CentralisedServer rdf:type owl:Class ;
-                         <http://purl.obolibrary.org/obo/IAO_0000115> "An external system that receives data from the edge node for storage, monitoring, or analysis."@en ;
-                         rdfs:comment "An external system that receives data from the edge node for storage, monitoring, or analysis."@en ;
-                         rdfs:label "CentralisedServer" .
+:CentralisedServer rdf:type owl:Class ;
+                   <http://purl.obolibrary.org/obo/IAO_0000115> "An external system that receives data from the edge node for storage, monitoring, or analysis."@en ;
+                   rdfs:comment "An external system that receives data from the edge node for storage, monitoring, or analysis."@en ;
+                   rdfs:label "CentralisedServer" .
 
 
 ###  http://amrita.sony.org/terms#CurrentState
-amrita:CurrentState rdf:type owl:Class ;
-                    rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000003> .
+:CurrentState rdf:type owl:Class ;
+              rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000003> .
 
 
 ###  http://amrita.sony.org/terms#Data
-amrita:Data rdf:type owl:Class .
+:Data rdf:type owl:Class .
 
 
 ###  http://amrita.sony.org/terms#ESP32
-amrita:ESP32 rdf:type owl:Class ;
-             rdfs:subClassOf toco:SystemDevice ,
-                             ssn:System ,
-                             mep:DistributionElement ;
-             <http://purl.obolibrary.org/obo/IAO_0000115> "A microcontroller with Wi-Fi capabilities that enables communication between polyhouse nodes."@en ;
-             rdfs:comment "A microcontroller with Wi-Fi capabilities that enables communication between polyhouse nodes."@en .
+:ESP32 rdf:type owl:Class ;
+       rdfs:subClassOf toco:SystemDevice ,
+                       ssn:System ,
+                       mep:DistributionElement ;
+       <http://purl.obolibrary.org/obo/IAO_0000115> "A microcontroller with Wi-Fi capabilities that enables communication between polyhouse nodes."@en ;
+       rdfs:comment "A microcontroller with Wi-Fi capabilities that enables communication between polyhouse nodes."@en .
 
 
 ###  http://amrita.sony.org/terms#EdgeNode
-amrita:EdgeNode rdf:type owl:Class ;
-                rdfs:subClassOf ssn:System ;
-                <http://purl.obolibrary.org/obo/IAO_0000115> "The central node in the polyhouse's distributed system. It aggregates data from end nodes and transmits it to a remote server via a GSM module."@en ;
-                rdfs:comment "The central node in the polyhouse's distributed system. It aggregates data from end nodes and transmits it to a remote server via a GSM module."@en .
+:EdgeNode rdf:type owl:Class ;
+          rdfs:subClassOf ssn:System ;
+          <http://purl.obolibrary.org/obo/IAO_0000115> "The central node in the polyhouse's distributed system. It aggregates data from end nodes and transmits it to a remote server via a GSM module."@en ;
+          rdfs:comment "The central node in the polyhouse's distributed system. It aggregates data from end nodes and transmits it to a remote server via a GSM module."@en .
 
 
 ###  http://amrita.sony.org/terms#EndNode
-amrita:EndNode rdf:type owl:Class ;
-               rdfs:subClassOf ssn:System ;
-               <http://purl.obolibrary.org/obo/IAO_0000115> "A node in the polyhouse's distributed system responsible for collecting environmental and visual data using onboard devices. It forwards this data to the edge node via Wi-Fi."@en ;
-               rdfs:comment "A node in the polyhouse's distributed system responsible for collecting environmental and visual data using onboard devices. It forwards this data to the edge node via Wi-Fi."@en .
+:EndNode rdf:type owl:Class ;
+         rdfs:subClassOf ssn:System ;
+         <http://purl.obolibrary.org/obo/IAO_0000115> "A node in the polyhouse's distributed system responsible for collecting environmental and visual data using onboard devices. It forwards this data to the edge node via Wi-Fi."@en ;
+         rdfs:comment "A node in the polyhouse's distributed system responsible for collecting environmental and visual data using onboard devices. It forwards this data to the edge node via Wi-Fi."@en .
 
 
 ###  http://amrita.sony.org/terms#EndUser
-amrita:EndUser rdf:type owl:Class ;
-               rdfs:subClassOf amrita:Role .
+:EndUser rdf:type owl:Class ;
+         rdfs:subClassOf :Role .
 
 
 ###  http://amrita.sony.org/terms#Exhaust
-amrita:Exhaust rdf:type owl:Class ;
-               rdfs:subClassOf sosa:Actuator ,
-                               mep:Fan .
+:Exhaust rdf:type owl:Class ;
+         rdfs:subClassOf sosa:Actuator ,
+                         mep:Fan .
 
 
 ###  http://amrita.sony.org/terms#Exhaust_Fan_Controller
-amrita:Exhaust_Fan_Controller rdf:type owl:Class ;
-                              rdfs:subClassOf mep:Controller .
+:Exhaust_Fan_Controller rdf:type owl:Class ;
+                        rdfs:subClassOf mep:Controller .
 
 
 ###  http://amrita.sony.org/terms#FeatureVector
-amrita:FeatureVector rdf:type owl:Class .
+:FeatureVector rdf:type owl:Class .
 
 
 ###  http://amrita.sony.org/terms#Featureset
-amrita:Featureset rdf:type owl:Class .
+:Featureset rdf:type owl:Class .
 
 
 ###  http://amrita.sony.org/terms#I2CBus
-amrita:I2CBus rdf:type owl:Class ;
-              rdfs:subClassOf toco:WiredLink .
+:I2CBus rdf:type owl:Class ;
+        rdfs:subClassOf toco:WiredLink .
 
 
 ###  http://amrita.sony.org/terms#Permission
-amrita:Permission rdf:type owl:Class .
+:Permission rdf:type owl:Class .
 
 
 ###  http://amrita.sony.org/terms#Polyhouse
-amrita:Polyhouse rdf:type owl:Class ;
-                 rdfs:subClassOf bot:Building .
+:Polyhouse rdf:type owl:Class ;
+           rdfs:subClassOf bot:Building .
 
 
 ###  http://amrita.sony.org/terms#Resource
-amrita:Resource rdf:type owl:Class .
+:Resource rdf:type owl:Class .
 
 
 ###  http://amrita.sony.org/terms#Role
-amrita:Role rdf:type owl:Class .
+:Role rdf:type owl:Class .
 
 
 ###  http://amrita.sony.org/terms#SHT25
-amrita:SHT25 rdf:type owl:Class ;
-             rdfs:subClassOf mep:Sensor-HUMIDITYSENSOR ,
-                             mep:Sensor-TEMPERATURESENSOR .
+:SHT25 rdf:type owl:Class ;
+       rdfs:subClassOf mep:Sensor-HUMIDITYSENSOR ,
+                       mep:Sensor-TEMPERATURESENSOR .
 
 
 ###  http://amrita.sony.org/terms#SIM7600
-amrita:SIM7600 rdf:type owl:Class ;
-               rdfs:subClassOf toco:SystemDevice ,
-                               ssn:System ,
-                               mep:DistributionElement ;
-               <http://purl.obolibrary.org/obo/IAO_0000115> "A GSM communication module installed in the edge node for transmitting data to an external server over a cellular network."@en ;
-               rdfs:comment "A GSM communication module installed in the edge node for transmitting data to an external server over a cellular network."@en .
+:SIM7600 rdf:type owl:Class ;
+         rdfs:subClassOf toco:SystemDevice ,
+                         ssn:System ,
+                         mep:DistributionElement ;
+         <http://purl.obolibrary.org/obo/IAO_0000115> "A GSM communication module installed in the edge node for transmitting data to an external server over a cellular network."@en ;
+         rdfs:comment "A GSM communication module installed in the edge node for transmitting data to an external server over a cellular network."@en .
 
 
 ###  http://amrita.sony.org/terms#SoftSerial
-amrita:SoftSerial rdf:type owl:Class ;
-                  rdfs:subClassOf toco:WiredLink .
+:SoftSerial rdf:type owl:Class ;
+            rdfs:subClassOf toco:WiredLink .
 
 
 ###  http://amrita.sony.org/terms#Spresense
-amrita:Spresense rdf:type owl:Class ;
-                 rdfs:subClassOf ssn:System ;
-                 <http://purl.obolibrary.org/obo/IAO_0000115> "A Sony microcontroller board used in each node for acquiring data from sensors and cameras."@en ;
-                 rdfs:comment "A Sony microcontroller board used in each node for acquiring data from sensors and cameras."@en .
+:Spresense rdf:type owl:Class ;
+           rdfs:subClassOf ssn:System ;
+           <http://purl.obolibrary.org/obo/IAO_0000115> "A Sony microcontroller board used in each node for acquiring data from sensors and cameras."@en ;
+           rdfs:comment "A Sony microcontroller board used in each node for acquiring data from sensors and cameras."@en .
 
 
 ###  http://amrita.sony.org/terms#Turbovent
-amrita:Turbovent rdf:type owl:Class ;
-                 rdfs:subClassOf beo:Fan .
+:Turbovent rdf:type owl:Class ;
+           rdfs:subClassOf beo:Fan .
 
 
 ###  http://amrita.sony.org/terms#UART2
-amrita:UART2 rdf:type owl:Class ;
-             rdfs:subClassOf toco:WiredLink .
+:UART2 rdf:type owl:Class ;
+       rdfs:subClassOf toco:WiredLink .
 
 
 ###  http://amrita.sony.org/terms#User
-amrita:User rdf:type owl:Class ;
-            rdfs:comment "Defined as any entity that interacts with a sysyem, appliances, or resource, typically requires some level of access permissions" .
+:User rdf:type owl:Class ;
+      rdfs:comment "Defined as any entity that interacts with a sysyem, appliances, or resource, typically requires some level of access permissions" .
 
 
 ###  http://amrita.sony.org/terms#dehydrated
-amrita:dehydrated rdf:type owl:Class ;
-                  rdfs:subClassOf amrita:moistureLevel .
+:dehydrated rdf:type owl:Class ;
+            rdfs:subClassOf :moistureLevel .
 
 
 ###  http://amrita.sony.org/terms#fullyHydrated
-amrita:fullyHydrated rdf:type owl:Class ;
-                     rdfs:subClassOf amrita:moistureLevel .
+:fullyHydrated rdf:type owl:Class ;
+               rdfs:subClassOf :moistureLevel .
 
 
 ###  http://amrita.sony.org/terms#moistureLevel
-amrita:moistureLevel rdf:type owl:Class ;
-                     rdfs:subClassOf <http://purl.obolibrary.org/obo/FOODON_03430113> .
+:moistureLevel rdf:type owl:Class ;
+               rdfs:subClassOf <http://purl.obolibrary.org/obo/FOODON_03430113> .
 
 
 ###  http://amrita.sony.org/terms#partiallyHydrated
-amrita:partiallyHydrated rdf:type owl:Class ;
-                         rdfs:subClassOf amrita:moistureLevel .
+:partiallyHydrated rdf:type owl:Class ;
+                   rdfs:subClassOf :moistureLevel .
 
 
 ###  http://amrita.sony.org/terms#semi-dry
-amrita:semi-dry rdf:type owl:Class ;
-                rdfs:subClassOf amrita:CurrentState .
+:semi-dry rdf:type owl:Class ;
+          rdfs:subClassOf :CurrentState .
 
 
 ###  http://amrita.sony.org/terms#Copra(Tunnel-dried)
@@ -1459,7 +1458,7 @@ amritafood:solar_tunnel_drying rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/FOODON_00004348
 <http://purl.obolibrary.org/obo/FOODON_00004348> rdf:type owl:Class ;
-                                                 rdfs:subClassOf amrita:CurrentState ;
+                                                 rdfs:subClassOf :CurrentState ;
                                                  rdfs:label "raw" .
 
 
@@ -1471,7 +1470,7 @@ amritafood:solar_tunnel_drying rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/FOODON_00004723
 <http://purl.obolibrary.org/obo/FOODON_00004723> rdf:type owl:Class ;
-                                                 rdfs:subClassOf amrita:CurrentState ;
+                                                 rdfs:subClassOf :CurrentState ;
                                                  rdfs:label "dried" .
 
 
@@ -2067,2157 +2066,2157 @@ bot:Zone rdf:type owl:Class .
 #################################################################
 
 ###  http://amrita.sony.org/terms#Activity_1_P1
-amrita:Activity_1_P1 rdf:type owl:NamedIndividual ,
-                              prov:Activity ;
-                     prov:startedAtTime "2024-01-15T02:20:53"^^xsd:dateTime ;
-                     rdfs:comment "Registration of a new SHT25" .
+:Activity_1_P1 rdf:type owl:NamedIndividual ,
+                        prov:Activity ;
+               prov:startedAtTime "2024-01-15T02:20:53"^^xsd:dateTime ;
+               rdfs:comment "Registration of a new SHT25" .
 
 
 ###  http://amrita.sony.org/terms#Activity_2_P2
-amrita:Activity_2_P2 rdf:type owl:NamedIndividual ,
-                              prov:Activity ;
-                     prov:startedAtTime "2024-03-17T12:20:53"^^xsd:dateTime ;
-                     rdfs:comment "Registration of new SHT25" .
+:Activity_2_P2 rdf:type owl:NamedIndividual ,
+                        prov:Activity ;
+               prov:startedAtTime "2024-03-17T12:20:53"^^xsd:dateTime ;
+               rdfs:comment "Registration of new SHT25" .
 
 
 ###  http://amrita.sony.org/terms#Actuation_1_P1
-amrita:Actuation_1_P1 rdf:type owl:NamedIndividual ,
-                               sosa:Actuation ;
-                      sosa:actsOnProperty amrita:Humidity ,
-                                          amrita:Temperature1 ;
-                      sosa:hasFeatureOfInterest amrita:Polyhouse_P1 ;
-                      sosa:madeByActuator amrita:ExaustFan_P1 ;
-                      rdfs:comment "Expel stale air, therefore controls Humidity and Temperature"@en .
+:Actuation_1_P1 rdf:type owl:NamedIndividual ,
+                         sosa:Actuation ;
+                sosa:actsOnProperty :Humidity ,
+                                    :Temperature1 ;
+                sosa:hasFeatureOfInterest :Polyhouse_P1 ;
+                sosa:madeByActuator :ExaustFan_P1 ;
+                rdfs:comment "Expel stale air, therefore controls Humidity and Temperature"@en .
 
 
 ###  http://amrita.sony.org/terms#Actuation_1_P2
-amrita:Actuation_1_P2 rdf:type owl:NamedIndividual ,
-                               sosa:Actuation ;
-                      sosa:actsOnProperty amrita:Humidity ,
-                                          amrita:Temperature1 ;
-                      sosa:hasFeatureOfInterest amrita:Polyhouse_P2 ;
-                      sosa:madeByActuator amrita:ExaustFan_P2 ;
-                      rdfs:comment "Expel stale air, therefore controls Humidity and Temperature"@en .
+:Actuation_1_P2 rdf:type owl:NamedIndividual ,
+                         sosa:Actuation ;
+                sosa:actsOnProperty :Humidity ,
+                                    :Temperature1 ;
+                sosa:hasFeatureOfInterest :Polyhouse_P2 ;
+                sosa:madeByActuator :ExaustFan_P2 ;
+                rdfs:comment "Expel stale air, therefore controls Humidity and Temperature"@en .
 
 
 ###  http://amrita.sony.org/terms#Admin_1
-amrita:Admin_1 rdf:type owl:NamedIndividual ,
-                        amrita:Admin_111 ;
-               amrita:hasPermission amrita:Polyhouse_Administration .
+:Admin_1 rdf:type owl:NamedIndividual ,
+                  :Admin_111 ;
+         :hasPermission :Polyhouse_Administration .
 
 
 ###  http://amrita.sony.org/terms#Almonard
-amrita:Almonard rdf:type owl:NamedIndividual ,
-                         frapo:Manufacturer ;
-                rdfs:isDefinedBy "https://almonard.co.in" .
+:Almonard rdf:type owl:NamedIndividual ,
+                   frapo:Manufacturer ;
+          rdfs:isDefinedBy "https://almonard.co.in" .
 
 
 ###  http://amrita.sony.org/terms#Bandwidth_Observation_1_P1
-amrita:Bandwidth_Observation_1_P1 rdf:type owl:NamedIndividual ,
-                                           <http://purl.oclc.org/net/unis/ontology/sensordata.owl/ObervationAndMeasurement> .
+:Bandwidth_Observation_1_P1 rdf:type owl:NamedIndividual ,
+                                     <http://purl.oclc.org/net/unis/ontology/sensordata.owl/ObervationAndMeasurement> .
 
 
 ###  http://amrita.sony.org/terms#Bandwidth_Observation_1_P2
-amrita:Bandwidth_Observation_1_P2 rdf:type owl:NamedIndividual ,
-                                           <http://purl.oclc.org/net/unis/ontology/sensordata.owl/ObervationAndMeasurement> .
+:Bandwidth_Observation_1_P2 rdf:type owl:NamedIndividual ,
+                                     <http://purl.oclc.org/net/unis/ontology/sensordata.owl/ObervationAndMeasurement> .
 
 
 ###  http://amrita.sony.org/terms#Bandwidth_Observation_2_P1
-amrita:Bandwidth_Observation_2_P1 rdf:type owl:NamedIndividual ,
-                                           <http://purl.oclc.org/net/unis/ontology/sensordata.owl/ObervationAndMeasurement> .
+:Bandwidth_Observation_2_P1 rdf:type owl:NamedIndividual ,
+                                     <http://purl.oclc.org/net/unis/ontology/sensordata.owl/ObervationAndMeasurement> .
 
 
 ###  http://amrita.sony.org/terms#Bandwidth_Observation_2_P2
-amrita:Bandwidth_Observation_2_P2 rdf:type owl:NamedIndividual ,
-                                           <http://purl.oclc.org/net/unis/ontology/sensordata.owl/ObervationAndMeasurement> .
+:Bandwidth_Observation_2_P2 rdf:type owl:NamedIndividual ,
+                                     <http://purl.oclc.org/net/unis/ontology/sensordata.owl/ObervationAndMeasurement> .
 
 
 ###  http://amrita.sony.org/terms#CSI_N1_P1
-amrita:CSI_N1_P1 rdf:type owl:NamedIndividual ,
-                          amrita:CSI .
+:CSI_N1_P1 rdf:type owl:NamedIndividual ,
+                    :CSI .
 
 
 ###  http://amrita.sony.org/terms#CSI_N1_P2
-amrita:CSI_N1_P2 rdf:type owl:NamedIndividual ,
-                          amrita:CSI .
+:CSI_N1_P2 rdf:type owl:NamedIndividual ,
+                    :CSI .
 
 
 ###  http://amrita.sony.org/terms#CSI_N2_P1
-amrita:CSI_N2_P1 rdf:type owl:NamedIndividual ,
-                          amrita:CSI .
+:CSI_N2_P1 rdf:type owl:NamedIndividual ,
+                    :CSI .
 
 
 ###  http://amrita.sony.org/terms#CSI_N2_P2
-amrita:CSI_N2_P2 rdf:type owl:NamedIndividual ,
-                          amrita:CSI ;
-                 toco:hasWiredLink amrita:CSI_N2_P2 .
+:CSI_N2_P2 rdf:type owl:NamedIndividual ,
+                    :CSI ;
+           toco:hasWiredLink :CSI_N2_P2 .
 
 
 ###  http://amrita.sony.org/terms#CSI_N3_P1
-amrita:CSI_N3_P1 rdf:type owl:NamedIndividual ,
-                          amrita:CSI .
+:CSI_N3_P1 rdf:type owl:NamedIndividual ,
+                    :CSI .
 
 
 ###  http://amrita.sony.org/terms#CSI_N3_P2
-amrita:CSI_N3_P2 rdf:type owl:NamedIndividual ,
-                          amrita:CSI .
+:CSI_N3_P2 rdf:type owl:NamedIndividual ,
+                    :CSI .
 
 
 ###  http://amrita.sony.org/terms#Camera_1_Interface_1_P1
-amrita:Camera_1_Interface_1_P1 rdf:type owl:NamedIndividual ,
-                                        toco:Interface ;
-                               toco:hasWiredLink amrita:CSI_N1_P1 ;
-                               toco:isIn amrita:Camera_1_P1 .
+:Camera_1_Interface_1_P1 rdf:type owl:NamedIndividual ,
+                                  toco:Interface ;
+                         toco:hasWiredLink :CSI_N1_P1 ;
+                         toco:isIn :Camera_1_P1 .
 
 
 ###  http://amrita.sony.org/terms#Camera_1_Interface_1_P2
-amrita:Camera_1_Interface_1_P2 rdf:type owl:NamedIndividual ,
-                                        toco:Interface ;
-                               toco:hasWiredLink amrita:CSI_N1_P2 ;
-                               toco:isIn amrita:Camera_1_P2 .
+:Camera_1_Interface_1_P2 rdf:type owl:NamedIndividual ,
+                                  toco:Interface ;
+                         toco:hasWiredLink :CSI_N1_P2 ;
+                         toco:isIn :Camera_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#Camera_1_P1
-amrita:Camera_1_P1 rdf:type owl:NamedIndividual ,
-                            mep:AudioVisualAppliance-CAMERA ;
-                   toco:hasInterface amrita:Camera_1_Interface_1_P1 ;
-                   sosa:madeObservation amrita:Img_Obs_1 ;
-                   rdfs:label amrita:Camera_1_P1 .
+:Camera_1_P1 rdf:type owl:NamedIndividual ,
+                      mep:AudioVisualAppliance-CAMERA ;
+             toco:hasInterface :Camera_1_Interface_1_P1 ;
+             sosa:madeObservation :Img_Obs_1 ;
+             rdfs:label :Camera_1_P1 .
 
 
 ###  http://amrita.sony.org/terms#Camera_1_P2
-amrita:Camera_1_P2 rdf:type owl:NamedIndividual ,
-                            mep:AudioVisualAppliance-CAMERA ;
-                   toco:hasInterface amrita:Camera_1_Interface_1_P2 .
+:Camera_1_P2 rdf:type owl:NamedIndividual ,
+                      mep:AudioVisualAppliance-CAMERA ;
+             toco:hasInterface :Camera_1_Interface_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#Camera_2_Interface_1_P1
-amrita:Camera_2_Interface_1_P1 rdf:type owl:NamedIndividual ,
-                                        toco:Interface ;
-                               toco:hasWiredLink amrita:CSI_N2_P1 ;
-                               toco:isIn amrita:Camera_2_P1 .
+:Camera_2_Interface_1_P1 rdf:type owl:NamedIndividual ,
+                                  toco:Interface ;
+                         toco:hasWiredLink :CSI_N2_P1 ;
+                         toco:isIn :Camera_2_P1 .
 
 
 ###  http://amrita.sony.org/terms#Camera_2_Interface_1_P2
-amrita:Camera_2_Interface_1_P2 rdf:type owl:NamedIndividual ,
-                                        toco:Interface ;
-                               toco:hasWiredLink amrita:CSI_N2_P2 ;
-                               toco:isIn amrita:Camera_2_P2 .
+:Camera_2_Interface_1_P2 rdf:type owl:NamedIndividual ,
+                                  toco:Interface ;
+                         toco:hasWiredLink :CSI_N2_P2 ;
+                         toco:isIn :Camera_2_P2 .
 
 
 ###  http://amrita.sony.org/terms#Camera_2_P1
-amrita:Camera_2_P1 rdf:type owl:NamedIndividual ,
-                            mep:AudioVisualAppliance-CAMERA ;
-                   toco:hasInterface amrita:Camera_2_Interface_1_P1 ;
-                   rdfs:label amrita:Camera_2_P1 .
+:Camera_2_P1 rdf:type owl:NamedIndividual ,
+                      mep:AudioVisualAppliance-CAMERA ;
+             toco:hasInterface :Camera_2_Interface_1_P1 ;
+             rdfs:label :Camera_2_P1 .
 
 
 ###  http://amrita.sony.org/terms#Camera_2_P2
-amrita:Camera_2_P2 rdf:type owl:NamedIndividual ,
-                            mep:AudioVisualAppliance-CAMERA ;
-                   toco:hasInterface amrita:Camera_2_Interface_1_P2 .
+:Camera_2_P2 rdf:type owl:NamedIndividual ,
+                      mep:AudioVisualAppliance-CAMERA ;
+             toco:hasInterface :Camera_2_Interface_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#Camera_3_Interface_1_P1
-amrita:Camera_3_Interface_1_P1 rdf:type owl:NamedIndividual ,
-                                        toco:Interface ;
-                               toco:hasWiredLink amrita:CSI_N3_P1 ;
-                               toco:isIn amrita:Camera_3_P1 .
+:Camera_3_Interface_1_P1 rdf:type owl:NamedIndividual ,
+                                  toco:Interface ;
+                         toco:hasWiredLink :CSI_N3_P1 ;
+                         toco:isIn :Camera_3_P1 .
 
 
 ###  http://amrita.sony.org/terms#Camera_3_Interface_1_P2
-amrita:Camera_3_Interface_1_P2 rdf:type owl:NamedIndividual ,
-                                        toco:Interface ;
-                               toco:hasWiredLink amrita:CSI_N3_P2 ;
-                               toco:isIn amrita:Camera_3_P2 .
+:Camera_3_Interface_1_P2 rdf:type owl:NamedIndividual ,
+                                  toco:Interface ;
+                         toco:hasWiredLink :CSI_N3_P2 ;
+                         toco:isIn :Camera_3_P2 .
 
 
 ###  http://amrita.sony.org/terms#Camera_3_P1
-amrita:Camera_3_P1 rdf:type owl:NamedIndividual ,
-                            mep:AudioVisualAppliance-CAMERA ;
-                   toco:hasInterface amrita:Camera_3_Interface_1_P1 ;
-                   rdfs:label amrita:Camera_3_P1 .
+:Camera_3_P1 rdf:type owl:NamedIndividual ,
+                      mep:AudioVisualAppliance-CAMERA ;
+             toco:hasInterface :Camera_3_Interface_1_P1 ;
+             rdfs:label :Camera_3_P1 .
 
 
 ###  http://amrita.sony.org/terms#Camera_3_P2
-amrita:Camera_3_P2 rdf:type owl:NamedIndividual ,
-                            mep:AudioVisualAppliance-CAMERA ;
-                   toco:hasInterface amrita:Camera_3_Interface_1_P2 .
+:Camera_3_P2 rdf:type owl:NamedIndividual ,
+                      mep:AudioVisualAppliance-CAMERA ;
+             toco:hasInterface :Camera_3_Interface_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#Celsius
-amrita:Celsius rdf:type owl:NamedIndividual ,
-                        <http://www.ontology-of-units-of-measure.org/resource/om-2/degreeCelsius> .
+:Celsius rdf:type owl:NamedIndividual ,
+                  <http://www.ontology-of-units-of-measure.org/resource/om-2/degreeCelsius> .
 
 
 ###  http://amrita.sony.org/terms#Column_P1
-amrita:Column_P1 rdf:type owl:NamedIndividual ,
-                          beo:Column ;
-                 rdfs:label "Column 1"@en .
+:Column_P1 rdf:type owl:NamedIndividual ,
+                    beo:Column ;
+           rdfs:label "Column 1"@en .
 
 
 ###  http://amrita.sony.org/terms#Column_P2
-amrita:Column_P2 rdf:type owl:NamedIndividual ,
-                          beo:Column .
+:Column_P2 rdf:type owl:NamedIndividual ,
+                    beo:Column .
 
 
 ###  http://amrita.sony.org/terms#DNN_ES
-amrita:DNN_ES rdf:type owl:NamedIndividual ,
-                       mls:EvaluationSpecification ;
-              mls:defines amrita:task001 ;
-              mls:hasPart amrita:predictiveAccuracy ,
-                          amrita:train-test-split .
+:DNN_ES rdf:type owl:NamedIndividual ,
+                 mls:EvaluationSpecification ;
+        mls:defines :task001 ;
+        mls:hasPart :predictiveAccuracy ,
+                    :train-test-split .
 
 
 ###  http://amrita.sony.org/terms#DeepNeuralNetwork
-amrita:DeepNeuralNetwork rdf:type owl:NamedIndividual ,
-                                  mls:Model ;
-                         rdfs:label "Deep Neural Network" ;
-                         mls:hasQuality amrita:HiddenLayer ,
-                                        amrita:OutputLayer ,
-                                        amrita:il .
+:DeepNeuralNetwork rdf:type owl:NamedIndividual ,
+                            mls:Model ;
+                   rdfs:label "Deep Neural Network" ;
+                   mls:hasQuality :HiddenLayer ,
+                                  :OutputLayer ,
+                                  :il .
 
 
 ###  http://amrita.sony.org/terms#Deployment_1_P1
-amrita:Deployment_1_P1 rdf:type owl:NamedIndividual ,
-                                ssn:Deployment ;
-                       ssn:deployedSystem amrita:End_Node_1_P1 ;
-                       ssn:forProperty amrita:Temperature1 ;
-                       rdfs:comment "EndNode is mounted on the deployment fixture to observe the temperature and humidity of Grid 1." .
+:Deployment_1_P1 rdf:type owl:NamedIndividual ,
+                          ssn:Deployment ;
+                 ssn:deployedSystem :End_Node_1_P1 ;
+                 ssn:forProperty :Temperature1 ;
+                 rdfs:comment "EndNode is mounted on the deployment fixture to observe the temperature and humidity of Grid 1." .
 
 
 ###  http://amrita.sony.org/terms#Deployment_2_P1
-amrita:Deployment_2_P1 rdf:type owl:NamedIndividual ,
-                                ssn:Deployment ;
-                       ssn:deployedSystem amrita:Edge_Node_1_P1 ;
-                       ssn:forProperty amrita:Temperature1 ;
-                       rdfs:comment "EndNode is mounted on the deployment fixture to observe the temperature and humidity of Grid 2." .
+:Deployment_2_P1 rdf:type owl:NamedIndividual ,
+                          ssn:Deployment ;
+                 ssn:deployedSystem :Edge_Node_1_P1 ;
+                 ssn:forProperty :Temperature1 ;
+                 rdfs:comment "EndNode is mounted on the deployment fixture to observe the temperature and humidity of Grid 2." .
 
 
 ###  http://amrita.sony.org/terms#Deployment_3_P1
-amrita:Deployment_3_P1 rdf:type owl:NamedIndividual ,
-                                ssn:Deployment ;
-                       ssn:deployedSystem amrita:End_Node_2_P1 ;
-                       ssn:forProperty amrita:Temperature1 ;
-                       rdfs:comment "EndNode is mounted on the deployment fixture to observe the temperature and humidity of Grid 3." .
+:Deployment_3_P1 rdf:type owl:NamedIndividual ,
+                          ssn:Deployment ;
+                 ssn:deployedSystem :End_Node_2_P1 ;
+                 ssn:forProperty :Temperature1 ;
+                 rdfs:comment "EndNode is mounted on the deployment fixture to observe the temperature and humidity of Grid 3." .
 
 
 ###  http://amrita.sony.org/terms#Deployment_4_P1
-amrita:Deployment_4_P1 rdf:type owl:NamedIndividual ,
-                                ssn:Deployment ;
-                       amrita:hasRun amrita:Run_AutoML_tom_class_001 ;
-                       ssn:deployedSystem amrita:Spresense_1_P1 .
+:Deployment_4_P1 rdf:type owl:NamedIndividual ,
+                          ssn:Deployment ;
+                 :hasRun :Run_AutoML_tom_class_001 ;
+                 ssn:deployedSystem :Spresense_1_P1 .
 
 
 ###  http://amrita.sony.org/terms#Door_P1
-amrita:Door_P1 rdf:type owl:NamedIndividual ,
-                        beo:Door ;
-               rdfs:label "Door P1"@en .
+:Door_P1 rdf:type owl:NamedIndividual ,
+                  beo:Door ;
+         rdfs:label "Door P1"@en .
 
 
 ###  http://amrita.sony.org/terms#Door_P2
-amrita:Door_P2 rdf:type owl:NamedIndividual ,
-                        beo:Door ;
-               rdfs:label "Door P2" .
+:Door_P2 rdf:type owl:NamedIndividual ,
+                  beo:Door ;
+         rdfs:label "Door P2" .
 
 
 ###  http://amrita.sony.org/terms#ESP32_Interface_N1_P1
-amrita:ESP32_Interface_N1_P1 rdf:type owl:NamedIndividual ,
-                                      toco:Interface ;
-                             toco:hasWiredLink amrita:UART2_N1_P1 ;
-                             toco:isIn amrita:ESP32_N1_P1 .
+:ESP32_Interface_N1_P1 rdf:type owl:NamedIndividual ,
+                                toco:Interface ;
+                       toco:hasWiredLink :UART2_N1_P1 ;
+                       toco:isIn :ESP32_N1_P1 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_Interface_N1_P2
-amrita:ESP32_Interface_N1_P2 rdf:type owl:NamedIndividual ,
-                                      toco:Interface ;
-                             toco:hasWiredLink amrita:UART2_N1_P2 ;
-                             toco:isIn amrita:ESP32_N1_P2 .
+:ESP32_Interface_N1_P2 rdf:type owl:NamedIndividual ,
+                                toco:Interface ;
+                       toco:hasWiredLink :UART2_N1_P2 ;
+                       toco:isIn :ESP32_N1_P2 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_Interface_N2_P1
-amrita:ESP32_Interface_N2_P1 rdf:type owl:NamedIndividual ,
-                                      toco:Interface ;
-                             toco:hasWiredLink amrita:SoftSerial_N2_P1 ;
-                             toco:isIn amrita:ESP32_N2_P1 .
+:ESP32_Interface_N2_P1 rdf:type owl:NamedIndividual ,
+                                toco:Interface ;
+                       toco:hasWiredLink :SoftSerial_N2_P1 ;
+                       toco:isIn :ESP32_N2_P1 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_Interface_N2_P2
-amrita:ESP32_Interface_N2_P2 rdf:type owl:NamedIndividual ,
-                                      toco:Interface ;
-                             toco:hasWiredLink amrita:SoftSerial_N2_P2 ;
-                             toco:isIn amrita:ESP32_N2_P2 .
+:ESP32_Interface_N2_P2 rdf:type owl:NamedIndividual ,
+                                toco:Interface ;
+                       toco:hasWiredLink :SoftSerial_N2_P2 ;
+                       toco:isIn :ESP32_N2_P2 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_Interface_N3_P1
-amrita:ESP32_Interface_N3_P1 rdf:type owl:NamedIndividual ,
-                                      toco:Interface ;
-                             toco:hasWiredLink amrita:UART2_N3_P1 ;
-                             toco:isIn amrita:ESP32_N3_P1 .
+:ESP32_Interface_N3_P1 rdf:type owl:NamedIndividual ,
+                                toco:Interface ;
+                       toco:hasWiredLink :UART2_N3_P1 ;
+                       toco:isIn :ESP32_N3_P1 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_Interface_N3_P2
-amrita:ESP32_Interface_N3_P2 rdf:type owl:NamedIndividual ,
-                                      toco:Interface ;
-                             toco:hasWiredLink amrita:UART2_N3_P2 ;
-                             toco:isIn amrita:ESP32_N3_P2 .
+:ESP32_Interface_N3_P2 rdf:type owl:NamedIndividual ,
+                                toco:Interface ;
+                       toco:hasWiredLink :UART2_N3_P2 ;
+                       toco:isIn :ESP32_N3_P2 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_N1_P1
-amrita:ESP32_N1_P1 rdf:type owl:NamedIndividual ,
-                            amrita:ESP32 ;
-                   toco:hasInterface amrita:ESP32_Interface_N1_P1 ;
-                   toco:hasWiFiWLAN amrita:ESP32_WiFiWLAN_N1_P1 .
+:ESP32_N1_P1 rdf:type owl:NamedIndividual ,
+                      :ESP32 ;
+             toco:hasInterface :ESP32_Interface_N1_P1 ;
+             toco:hasWiFiWLAN :ESP32_WiFiWLAN_N1_P1 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_N1_P2
-amrita:ESP32_N1_P2 rdf:type owl:NamedIndividual ,
-                            amrita:ESP32 ;
-                   toco:hasInterface amrita:ESP32_Interface_N1_P2 ;
-                   toco:hasWiFiWLAN amrita:ESP32_WiFiWLAN_N1_P2 .
+:ESP32_N1_P2 rdf:type owl:NamedIndividual ,
+                      :ESP32 ;
+             toco:hasInterface :ESP32_Interface_N1_P2 ;
+             toco:hasWiFiWLAN :ESP32_WiFiWLAN_N1_P2 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_N2_P1
-amrita:ESP32_N2_P1 rdf:type owl:NamedIndividual ,
-                            amrita:ESP32 ;
-                   toco:hasInterface amrita:ESP32_Interface_N2_P1 ;
-                   toco:hasWiFiWLAN amrita:ESP32_WiFiWLAN_N1_N2_P1 ,
-                                    amrita:ESP32_WiFiWLAN_N3_N2_P1 .
+:ESP32_N2_P1 rdf:type owl:NamedIndividual ,
+                      :ESP32 ;
+             toco:hasInterface :ESP32_Interface_N2_P1 ;
+             toco:hasWiFiWLAN :ESP32_WiFiWLAN_N1_N2_P1 ,
+                              :ESP32_WiFiWLAN_N3_N2_P1 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_N2_P2
-amrita:ESP32_N2_P2 rdf:type owl:NamedIndividual ,
-                            amrita:ESP32 ;
-                   toco:hasInterface amrita:ESP32_Interface_N2_P2 ;
-                   toco:hasWiFiWLAN amrita:ESP32_WiFiWLAN_N1_N2_P2 ,
-                                    amrita:ESP32_WiFiWLAN_N3_N2_P2 .
+:ESP32_N2_P2 rdf:type owl:NamedIndividual ,
+                      :ESP32 ;
+             toco:hasInterface :ESP32_Interface_N2_P2 ;
+             toco:hasWiFiWLAN :ESP32_WiFiWLAN_N1_N2_P2 ,
+                              :ESP32_WiFiWLAN_N3_N2_P2 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_N3_P1
-amrita:ESP32_N3_P1 rdf:type owl:NamedIndividual ,
-                            amrita:ESP32 ;
-                   toco:hasInterface amrita:ESP32_Interface_N3_P1 ;
-                   toco:hasWiFiWLAN amrita:ESP32_WiFiWLAN_N3_P1 .
+:ESP32_N3_P1 rdf:type owl:NamedIndividual ,
+                      :ESP32 ;
+             toco:hasInterface :ESP32_Interface_N3_P1 ;
+             toco:hasWiFiWLAN :ESP32_WiFiWLAN_N3_P1 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_N3_P2
-amrita:ESP32_N3_P2 rdf:type owl:NamedIndividual ,
-                            amrita:ESP32 ;
-                   toco:hasInterface amrita:ESP32_Interface_N3_P2 ;
-                   toco:hasWiFiWLAN amrita:ESP32_WiFiWLAN_N3_P2 .
+:ESP32_N3_P2 rdf:type owl:NamedIndividual ,
+                      :ESP32 ;
+             toco:hasInterface :ESP32_Interface_N3_P2 ;
+             toco:hasWiFiWLAN :ESP32_WiFiWLAN_N3_P2 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_WiFiWLAN_N1_N2_P1
-amrita:ESP32_WiFiWLAN_N1_N2_P1 rdf:type owl:NamedIndividual ,
-                                        toco:WiFiWLAN ;
-                               toco:hasWirelessAssociation amrita:Wireless_Association_1_P1 ;
-                               toco:isIn amrita:ESP32_N2_P1 ;
-                               rdfs:label "ESP32_WiFiWLAN_N1_N2_P1" .
+:ESP32_WiFiWLAN_N1_N2_P1 rdf:type owl:NamedIndividual ,
+                                  toco:WiFiWLAN ;
+                         toco:hasWirelessAssociation :Wireless_Association_1_P1 ;
+                         toco:isIn :ESP32_N2_P1 ;
+                         rdfs:label "ESP32_WiFiWLAN_N1_N2_P1" .
 
 
 ###  http://amrita.sony.org/terms#ESP32_WiFiWLAN_N1_N2_P2
-amrita:ESP32_WiFiWLAN_N1_N2_P2 rdf:type owl:NamedIndividual ,
-                                        toco:WiFiWLAN ;
-                               toco:hasWirelessAssociation amrita:Wireless_Association_1_P2 ;
-                               toco:isIn amrita:ESP32_N2_P2 ;
-                               rdfs:label "ESP32_WiFiWLAN_N1_N2_P2" .
+:ESP32_WiFiWLAN_N1_N2_P2 rdf:type owl:NamedIndividual ,
+                                  toco:WiFiWLAN ;
+                         toco:hasWirelessAssociation :Wireless_Association_1_P2 ;
+                         toco:isIn :ESP32_N2_P2 ;
+                         rdfs:label "ESP32_WiFiWLAN_N1_N2_P2" .
 
 
 ###  http://amrita.sony.org/terms#ESP32_WiFiWLAN_N1_P1
-amrita:ESP32_WiFiWLAN_N1_P1 rdf:type owl:NamedIndividual ,
-                                     toco:WiFiWLAN ;
-                            toco:hasWirelessAssociation amrita:Wireless_Association_1_P1 ;
-                            toco:isIn amrita:ESP32_N1_P1 .
+:ESP32_WiFiWLAN_N1_P1 rdf:type owl:NamedIndividual ,
+                               toco:WiFiWLAN ;
+                      toco:hasWirelessAssociation :Wireless_Association_1_P1 ;
+                      toco:isIn :ESP32_N1_P1 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_WiFiWLAN_N1_P2
-amrita:ESP32_WiFiWLAN_N1_P2 rdf:type owl:NamedIndividual ,
-                                     toco:WiFiWLAN ;
-                            toco:hasWirelessAssociation amrita:Wireless_Association_1_P2 ;
-                            toco:isIn amrita:ESP32_N1_P2 ;
-                            rdfs:label "ESP32_WiFiWLAN_N1_P2" .
+:ESP32_WiFiWLAN_N1_P2 rdf:type owl:NamedIndividual ,
+                               toco:WiFiWLAN ;
+                      toco:hasWirelessAssociation :Wireless_Association_1_P2 ;
+                      toco:isIn :ESP32_N1_P2 ;
+                      rdfs:label "ESP32_WiFiWLAN_N1_P2" .
 
 
 ###  http://amrita.sony.org/terms#ESP32_WiFiWLAN_N3_N2_P1
-amrita:ESP32_WiFiWLAN_N3_N2_P1 rdf:type owl:NamedIndividual ,
-                                        toco:WiFiWLAN ;
-                               toco:hasWirelessAssociation amrita:Wireless_Association_2_P1 ;
-                               toco:isIn amrita:ESP32_N2_P1 ;
-                               rdfs:label "ESP32_WiFiWLAN_N3_N2_P1" .
+:ESP32_WiFiWLAN_N3_N2_P1 rdf:type owl:NamedIndividual ,
+                                  toco:WiFiWLAN ;
+                         toco:hasWirelessAssociation :Wireless_Association_2_P1 ;
+                         toco:isIn :ESP32_N2_P1 ;
+                         rdfs:label "ESP32_WiFiWLAN_N3_N2_P1" .
 
 
 ###  http://amrita.sony.org/terms#ESP32_WiFiWLAN_N3_N2_P2
-amrita:ESP32_WiFiWLAN_N3_N2_P2 rdf:type owl:NamedIndividual ,
-                                        toco:WiFiWLAN ;
-                               toco:hasWirelessAssociation amrita:Wireless_Association_2_P2 ;
-                               toco:isIn amrita:ESP32_N2_P2 ;
-                               rdfs:label "ESP32_WiFiWLAN_N3_N2_P2" .
+:ESP32_WiFiWLAN_N3_N2_P2 rdf:type owl:NamedIndividual ,
+                                  toco:WiFiWLAN ;
+                         toco:hasWirelessAssociation :Wireless_Association_2_P2 ;
+                         toco:isIn :ESP32_N2_P2 ;
+                         rdfs:label "ESP32_WiFiWLAN_N3_N2_P2" .
 
 
 ###  http://amrita.sony.org/terms#ESP32_WiFiWLAN_N3_P1
-amrita:ESP32_WiFiWLAN_N3_P1 rdf:type owl:NamedIndividual ,
-                                     toco:WiFiWLAN ;
-                            toco:hasWirelessAssociation amrita:Wireless_Association_2_P1 ;
-                            toco:isIn amrita:ESP32_N3_P1 .
+:ESP32_WiFiWLAN_N3_P1 rdf:type owl:NamedIndividual ,
+                               toco:WiFiWLAN ;
+                      toco:hasWirelessAssociation :Wireless_Association_2_P1 ;
+                      toco:isIn :ESP32_N3_P1 .
 
 
 ###  http://amrita.sony.org/terms#ESP32_WiFiWLAN_N3_P2
-amrita:ESP32_WiFiWLAN_N3_P2 rdf:type owl:NamedIndividual ,
-                                     toco:WiFiWLAN ;
-                            toco:hasWirelessAssociation amrita:Wireless_Association_2_P2 ;
-                            toco:isIn amrita:ESP32_N3_P2 ;
-                            rdfs:label "ESP32_WiFiWLAN_N3_P2" .
+:ESP32_WiFiWLAN_N3_P2 rdf:type owl:NamedIndividual ,
+                               toco:WiFiWLAN ;
+                      toco:hasWirelessAssociation :Wireless_Association_2_P2 ;
+                      toco:isIn :ESP32_N3_P2 ;
+                      rdfs:label "ESP32_WiFiWLAN_N3_P2" .
 
 
 ###  http://amrita.sony.org/terms#EagerExecution
-amrita:EagerExecution rdf:type owl:NamedIndividual ,
-                               mls:ModelEvaluation ;
-                      mls:hasValue "Eager Execution" ;
-                      mls:specifiedBy amrita:predictiveAccuracy .
+:EagerExecution rdf:type owl:NamedIndividual ,
+                         mls:ModelEvaluation ;
+                mls:hasValue "Eager Execution" ;
+                mls:specifiedBy :predictiveAccuracy .
 
 
 ###  http://amrita.sony.org/terms#Edge_Node_1_P1
-amrita:Edge_Node_1_P1 rdf:type owl:NamedIndividual ,
-                               amrita:EdgeNode ;
-                      ssn:hasSubSystem amrita:Spresense_2_P1 .
+:Edge_Node_1_P1 rdf:type owl:NamedIndividual ,
+                         :EdgeNode ;
+                ssn:hasSubSystem :Spresense_2_P1 .
 
 
 ###  http://amrita.sony.org/terms#Edge_Node_1_P2
-amrita:Edge_Node_1_P2 rdf:type owl:NamedIndividual ,
-                               amrita:EdgeNode ;
-                      ssn:hasSubSystem amrita:Spresense_2_P2 .
+:Edge_Node_1_P2 rdf:type owl:NamedIndividual ,
+                         :EdgeNode ;
+                ssn:hasSubSystem :Spresense_2_P2 .
 
 
 ###  http://amrita.sony.org/terms#End_Node_1_P1
-amrita:End_Node_1_P1 rdf:type owl:NamedIndividual ,
-                              amrita:EndNode ;
-                     ssn:hasSubSystem amrita:Spresense_1_P1 .
+:End_Node_1_P1 rdf:type owl:NamedIndividual ,
+                        :EndNode ;
+               ssn:hasSubSystem :Spresense_1_P1 .
 
 
 ###  http://amrita.sony.org/terms#End_Node_1_P2
-amrita:End_Node_1_P2 rdf:type owl:NamedIndividual ,
-                              amrita:EndNode ;
-                     ssn:hasSubSystem amrita:Spresense_1_P2 .
+:End_Node_1_P2 rdf:type owl:NamedIndividual ,
+                        :EndNode ;
+               ssn:hasSubSystem :Spresense_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#End_Node_2_P1
-amrita:End_Node_2_P1 rdf:type owl:NamedIndividual ,
-                              amrita:EndNode ;
-                     ssn:hasSubSystem amrita:Spresense_3_P1 .
+:End_Node_2_P1 rdf:type owl:NamedIndividual ,
+                        :EndNode ;
+               ssn:hasSubSystem :Spresense_3_P1 .
 
 
 ###  http://amrita.sony.org/terms#End_Node_2_P2
-amrita:End_Node_2_P2 rdf:type owl:NamedIndividual ,
-                              amrita:EndNode ;
-                     ssn:hasSubSystem amrita:Spresense_3_P2 .
+:End_Node_2_P2 rdf:type owl:NamedIndividual ,
+                        :EndNode ;
+               ssn:hasSubSystem :Spresense_3_P2 .
 
 
 ###  http://amrita.sony.org/terms#Evalta
-amrita:Evalta rdf:type owl:NamedIndividual ,
-                       frapo:Manufacturer ;
-              rdfs:isDefinedBy "https://evelta.com" .
+:Evalta rdf:type owl:NamedIndividual ,
+                 frapo:Manufacturer ;
+        rdfs:isDefinedBy "https://evelta.com" .
 
 
 ###  http://amrita.sony.org/terms#ExaustFan_P1
-amrita:ExaustFan_P1 rdf:type owl:NamedIndividual ,
-                             amrita:Exhaust ;
-                    toco:hasInterface amrita:Exhaust_Interface_1_P1 ;
-                    sosa:madeActuation amrita:Actuation_1_P1 ;
-                    ssn:forProperty amrita:Humidity ,
-                                    amrita:Temperature1 .
+:ExaustFan_P1 rdf:type owl:NamedIndividual ,
+                       :Exhaust ;
+              toco:hasInterface :Exhaust_Interface_1_P1 ;
+              sosa:madeActuation :Actuation_1_P1 ;
+              ssn:forProperty :Humidity ,
+                              :Temperature1 .
 
 
 ###  http://amrita.sony.org/terms#ExaustFan_P2
-amrita:ExaustFan_P2 rdf:type owl:NamedIndividual ,
-                             amrita:Exhaust ;
-                    toco:hasInterface amrita:Exhaust_Interface_1_P2 ;
-                    sosa:madeActuation amrita:Actuation_1_P2 ;
-                    ssn:forProperty amrita:Humidity ,
-                                    amrita:Temperature1 .
+:ExaustFan_P2 rdf:type owl:NamedIndividual ,
+                       :Exhaust ;
+              toco:hasInterface :Exhaust_Interface_1_P2 ;
+              sosa:madeActuation :Actuation_1_P2 ;
+              ssn:forProperty :Humidity ,
+                              :Temperature1 .
 
 
 ###  http://amrita.sony.org/terms#Exhaust_Interface_1_P1
-amrita:Exhaust_Interface_1_P1 rdf:type owl:NamedIndividual ,
-                                       toco:Interface ;
-                              toco:hasWiredLink amrita:Wired_Link_1_P1 ;
-                              toco:isIn amrita:ExaustFan_P1 .
+:Exhaust_Interface_1_P1 rdf:type owl:NamedIndividual ,
+                                 toco:Interface ;
+                        toco:hasWiredLink :Wired_Link_1_P1 ;
+                        toco:isIn :ExaustFan_P1 .
 
 
 ###  http://amrita.sony.org/terms#Exhaust_Interface_1_P2
-amrita:Exhaust_Interface_1_P2 rdf:type owl:NamedIndividual ,
-                                       toco:Interface ;
-                              toco:hasWiredLink amrita:Wired_Link_1_P2 ;
-                              toco:isIn amrita:ExaustFan_P2 .
+:Exhaust_Interface_1_P2 rdf:type owl:NamedIndividual ,
+                                 toco:Interface ;
+                        toco:hasWiredLink :Wired_Link_1_P2 ;
+                        toco:isIn :ExaustFan_P2 .
 
 
 ###  http://amrita.sony.org/terms#Exhaust_Relay_Interface_1_P1
-amrita:Exhaust_Relay_Interface_1_P1 rdf:type owl:NamedIndividual ,
-                                             toco:WiFiWLAN ;
-                                    toco:hasWirelessAssociation amrita:Wireless_Association_3_P1 ;
-                                    toco:isIn amrita:Relay_Driver_For_Exhaust_Controller_P1 .
+:Exhaust_Relay_Interface_1_P1 rdf:type owl:NamedIndividual ,
+                                       toco:WiFiWLAN ;
+                              toco:hasWirelessAssociation :Wireless_Association_3_P1 ;
+                              toco:isIn :Relay_Driver_For_Exhaust_Controller_P1 .
 
 
 ###  http://amrita.sony.org/terms#Exhaust_Relay_Interface_1_P2
-amrita:Exhaust_Relay_Interface_1_P2 rdf:type owl:NamedIndividual ,
-                                             toco:WiFiWLAN ;
-                                    toco:hasWirelessAssociation amrita:Wireless_Association_3_P2 ;
-                                    toco:isIn amrita:Relay_Driver_For_Exhaust_Controller_P2 .
+:Exhaust_Relay_Interface_1_P2 rdf:type owl:NamedIndividual ,
+                                       toco:WiFiWLAN ;
+                              toco:hasWirelessAssociation :Wireless_Association_3_P2 ;
+                              toco:isIn :Relay_Driver_For_Exhaust_Controller_P2 .
 
 
 ###  http://amrita.sony.org/terms#Exhaust_Relay_Interface_2_P1
-amrita:Exhaust_Relay_Interface_2_P1 rdf:type owl:NamedIndividual ,
-                                             toco:Interface ;
-                                    toco:hasWiredLink amrita:Wired_Link_1_P1 ;
-                                    toco:isIn amrita:Relay_Driver_For_Exhaust_Controller_P1 .
+:Exhaust_Relay_Interface_2_P1 rdf:type owl:NamedIndividual ,
+                                       toco:Interface ;
+                              toco:hasWiredLink :Wired_Link_1_P1 ;
+                              toco:isIn :Relay_Driver_For_Exhaust_Controller_P1 .
 
 
 ###  http://amrita.sony.org/terms#Exhaust_Relay_Interface_2_P2
-amrita:Exhaust_Relay_Interface_2_P2 rdf:type owl:NamedIndividual ,
-                                             toco:Interface ;
-                                    toco:hasWiredLink amrita:Wired_Link_1_P2 ;
-                                    toco:isIn amrita:Relay_Driver_For_Exhaust_Controller_P2 .
+:Exhaust_Relay_Interface_2_P2 rdf:type owl:NamedIndividual ,
+                                       toco:Interface ;
+                              toco:hasWiredLink :Wired_Link_1_P2 ;
+                              toco:isIn :Relay_Driver_For_Exhaust_Controller_P2 .
 
 
 ###  http://amrita.sony.org/terms#Experiment_1
-amrita:Experiment_1 rdf:type owl:NamedIndividual ,
-                             mls:Experiment ;
-                    mls:hasPart amrita:Run_AutoML_tom_class_001 .
+:Experiment_1 rdf:type owl:NamedIndividual ,
+                       mls:Experiment ;
+              mls:hasPart :Run_AutoML_tom_class_001 .
 
 
 ###  http://amrita.sony.org/terms#FeatureVector_1
-amrita:FeatureVector_1 rdf:type owl:NamedIndividual ,
-                                amrita:FeatureVector ;
-                       amrita:hasFeatureValues amrita:tomato001_data_1_1 ,
-                                               amrita:tomato001_data_1_2 .
+:FeatureVector_1 rdf:type owl:NamedIndividual ,
+                          :FeatureVector ;
+                 :hasFeatureValues :tomato001_data_1_1 ,
+                                   :tomato001_data_1_2 .
 
 
 ###  http://amrita.sony.org/terms#Format_Conversion_1
-amrita:Format_Conversion_1 rdf:type owl:NamedIndividual .
+:Format_Conversion_1 rdf:type owl:NamedIndividual .
 
 
 ###  http://amrita.sony.org/terms#Format_Conversion_2
-amrita:Format_Conversion_2 rdf:type owl:NamedIndividual .
+:Format_Conversion_2 rdf:type owl:NamedIndividual .
 
 
 ###  http://amrita.sony.org/terms#HiddenLayer
-amrita:HiddenLayer rdf:type owl:NamedIndividual ,
-                            mls:ModelCharacteristic ;
-                   mls:hasValue 2 .
+:HiddenLayer rdf:type owl:NamedIndividual ,
+                      mls:ModelCharacteristic ;
+             mls:hasValue 2 .
 
 
 ###  http://amrita.sony.org/terms#Humidity
-amrita:Humidity rdf:type owl:NamedIndividual ,
-                         mls:Feature ,
-                         sosa:ActuatableProperty ,
-                         sosa:ObservableProperty ,
-                         ssn:Property .
+:Humidity rdf:type owl:NamedIndividual ,
+                   mls:Feature ,
+                   sosa:ActuatableProperty ,
+                   sosa:ObservableProperty ,
+                   ssn:Property .
 
 
 ###  http://amrita.sony.org/terms#I2CBus_N1_P1
-amrita:I2CBus_N1_P1 rdf:type owl:NamedIndividual ,
-                             amrita:I2CBus .
+:I2CBus_N1_P1 rdf:type owl:NamedIndividual ,
+                       :I2CBus .
 
 
 ###  http://amrita.sony.org/terms#I2CBus_N1_P2
-amrita:I2CBus_N1_P2 rdf:type owl:NamedIndividual ,
-                             amrita:I2CBus .
+:I2CBus_N1_P2 rdf:type owl:NamedIndividual ,
+                       :I2CBus .
 
 
 ###  http://amrita.sony.org/terms#I2CBus_N2_P1
-amrita:I2CBus_N2_P1 rdf:type owl:NamedIndividual ,
-                             amrita:I2CBus .
+:I2CBus_N2_P1 rdf:type owl:NamedIndividual ,
+                       :I2CBus .
 
 
 ###  http://amrita.sony.org/terms#I2CBus_N2_P2
-amrita:I2CBus_N2_P2 rdf:type owl:NamedIndividual ,
-                             amrita:I2CBus .
+:I2CBus_N2_P2 rdf:type owl:NamedIndividual ,
+                       :I2CBus .
 
 
 ###  http://amrita.sony.org/terms#I2CBus_N3_P1
-amrita:I2CBus_N3_P1 rdf:type owl:NamedIndividual ,
-                             amrita:I2CBus .
+:I2CBus_N3_P1 rdf:type owl:NamedIndividual ,
+                       :I2CBus .
 
 
 ###  http://amrita.sony.org/terms#I2CBus_N3_P2
-amrita:I2CBus_N3_P2 rdf:type owl:NamedIndividual ,
-                             amrita:I2CBus .
+:I2CBus_N3_P2 rdf:type owl:NamedIndividual ,
+                       :I2CBus .
 
 
 ###  http://amrita.sony.org/terms#Img_Obs_1
-amrita:Img_Obs_1 rdf:type owl:NamedIndividual ,
-                          sosa:Observation ,
-                          ssn:Input .
+:Img_Obs_1 rdf:type owl:NamedIndividual ,
+                    sosa:Observation ,
+                    ssn:Input .
 
 
 ###  http://amrita.sony.org/terms#Img_Obs_2
-amrita:Img_Obs_2 rdf:type owl:NamedIndividual ,
-                          sosa:Observation ;
-                 sosa:usedProcedure amrita:Procedure_1 .
+:Img_Obs_2 rdf:type owl:NamedIndividual ,
+                    sosa:Observation ;
+           sosa:usedProcedure :Procedure_1 .
 
 
 ###  http://amrita.sony.org/terms#Img_Obs_3
-amrita:Img_Obs_3 rdf:type owl:NamedIndividual ,
-                          sosa:Observation ;
-                 sosa:usedProcedure amrita:Procedure_2 .
+:Img_Obs_3 rdf:type owl:NamedIndividual ,
+                    sosa:Observation ;
+           sosa:usedProcedure :Procedure_2 .
 
 
 ###  http://amrita.sony.org/terms#Img_Obs_4
-amrita:Img_Obs_4 rdf:type owl:NamedIndividual ,
-                          sosa:Observation ;
-                 sosa:usedProcedure amrita:Procedure_3 .
+:Img_Obs_4 rdf:type owl:NamedIndividual ,
+                    sosa:Observation ;
+           sosa:usedProcedure :Procedure_3 .
 
 
 ###  http://amrita.sony.org/terms#Img_Obs_5
-amrita:Img_Obs_5 rdf:type owl:NamedIndividual ,
-                          sosa:Observation ;
-                 sosa:usedProcedure amrita:Procedure_4 .
+:Img_Obs_5 rdf:type owl:NamedIndividual ,
+                    sosa:Observation ;
+           sosa:usedProcedure :Procedure_4 .
 
 
 ###  http://amrita.sony.org/terms#Img_Obs_6
-amrita:Img_Obs_6 rdf:type owl:NamedIndividual ,
-                          sosa:Observation ;
-                 sosa:usedProcedure amrita:Procedure_5 .
+:Img_Obs_6 rdf:type owl:NamedIndividual ,
+                    sosa:Observation ;
+           sosa:usedProcedure :Procedure_5 .
 
 
 ###  http://amrita.sony.org/terms#InputLayer
-amrita:InputLayer rdf:type owl:NamedIndividual ,
-                           mls:ModelCharacteristic ;
-                  mls:hasValue 1 .
+:InputLayer rdf:type owl:NamedIndividual ,
+                     mls:ModelCharacteristic ;
+            mls:hasValue 1 .
 
 
 ###  http://amrita.sony.org/terms#LF
-amrita:LF rdf:type owl:NamedIndividual ,
-                   mls:ImplementationCharacteristic ;
-          dcterms:description "Loss function= Sparse Categorical Crossentropy" ;
-          mls:hasValue "Sparse Categorical Crossentropy" .
+:LF rdf:type owl:NamedIndividual ,
+             mls:ImplementationCharacteristic ;
+    dcterms:description "Loss function= Sparse Categorical Crossentropy" ;
+    mls:hasValue "Sparse Categorical Crossentropy" .
 
 
 ###  http://amrita.sony.org/terms#LTE_Association_P1
-amrita:LTE_Association_P1 rdf:type owl:NamedIndividual ,
-                                   toco:LTEAssociation ;
-                          toco:from amrita:SIM7600_Interface_1_P1 ;
-                          toco:hasBandwidth amrita:LTE_Bandwidth_Observation_1_P1 ;
-                          toco:to amrita:Server_Interface_1 .
+:LTE_Association_P1 rdf:type owl:NamedIndividual ,
+                             toco:LTEAssociation ;
+                    toco:from :SIM7600_Interface_1_P1 ;
+                    toco:hasBandwidth :LTE_Bandwidth_Observation_1_P1 ;
+                    toco:to :Server_Interface_1 .
 
 
 ###  http://amrita.sony.org/terms#LTE_Association_P2
-amrita:LTE_Association_P2 rdf:type owl:NamedIndividual ,
-                                   toco:LTEAssociation ;
-                          toco:from amrita:SIM7600_Interface_1_P2 ;
-                          toco:hasBandwidth amrita:LTE_Bandwidth_Observation_1_P2 ;
-                          toco:to amrita:Server_Interface_P2 .
+:LTE_Association_P2 rdf:type owl:NamedIndividual ,
+                             toco:LTEAssociation ;
+                    toco:from :SIM7600_Interface_1_P2 ;
+                    toco:hasBandwidth :LTE_Bandwidth_Observation_1_P2 ;
+                    toco:to :Server_Interface_P2 .
 
 
 ###  http://amrita.sony.org/terms#LTE_Bandwidth_Observation_1_P1
-amrita:LTE_Bandwidth_Observation_1_P1 rdf:type owl:NamedIndividual ,
-                                               <http://purl.oclc.org/net/unis/ontology/sensordata.owl/ObervationAndMeasurement> ;
-                                      <http://purl.oclc.org/net/unis/ontology/sensordata.owl/hasValue> "100.0"^^xsd:float .
+:LTE_Bandwidth_Observation_1_P1 rdf:type owl:NamedIndividual ,
+                                         <http://purl.oclc.org/net/unis/ontology/sensordata.owl/ObervationAndMeasurement> ;
+                                <http://purl.oclc.org/net/unis/ontology/sensordata.owl/hasValue> "100.0"^^xsd:float .
 
 
 ###  http://amrita.sony.org/terms#LTE_Bandwidth_Observation_1_P2
-amrita:LTE_Bandwidth_Observation_1_P2 rdf:type owl:NamedIndividual ,
-                                               <http://purl.oclc.org/net/unis/ontology/sensordata.owl/ObervationAndMeasurement> ;
-                                      <http://purl.oclc.org/net/unis/ontology/sensordata.owl/hasValue> "102.2"^^xsd:float .
+:LTE_Bandwidth_Observation_1_P2 rdf:type owl:NamedIndividual ,
+                                         <http://purl.oclc.org/net/unis/ontology/sensordata.owl/ObervationAndMeasurement> ;
+                                <http://purl.oclc.org/net/unis/ontology/sensordata.owl/hasValue> "102.2"^^xsd:float .
 
 
 ###  http://amrita.sony.org/terms#NumericalFeature
-amrita:NumericalFeature rdf:type owl:NamedIndividual .
+:NumericalFeature rdf:type owl:NamedIndividual .
 
 
 ###  http://amrita.sony.org/terms#Observation_1_P1
-amrita:Observation_1_P1 rdf:type owl:NamedIndividual ,
-                                 sosa:Observation ;
-                        sosa:hasFeatureOfInterest amrita:Space_1_P1 ;
-                        sosa:hasResult amrita:Result_1_P1 ;
-                        sosa:madeBySensor amrita:SHT25_1_P1 ;
-                        sosa:observedProperty amrita:Temperature1 .
+:Observation_1_P1 rdf:type owl:NamedIndividual ,
+                           sosa:Observation ;
+                  sosa:hasFeatureOfInterest :Space_1_P1 ;
+                  sosa:hasResult :Result_1_P1 ;
+                  sosa:madeBySensor :SHT25_1_P1 ;
+                  sosa:observedProperty :Temperature1 .
 
 
 ###  http://amrita.sony.org/terms#Observation_1_P2
-amrita:Observation_1_P2 rdf:type owl:NamedIndividual ,
-                                 sosa:Observation ;
-                        sosa:hasFeatureOfInterest amrita:Space_1_P2 ;
-                        sosa:hasResult amrita:Result_1_P2 ;
-                        sosa:madeBySensor amrita:SHT25_1_P2 .
+:Observation_1_P2 rdf:type owl:NamedIndividual ,
+                           sosa:Observation ;
+                  sosa:hasFeatureOfInterest :Space_1_P2 ;
+                  sosa:hasResult :Result_1_P2 ;
+                  sosa:madeBySensor :SHT25_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#Observation_2_P1
-amrita:Observation_2_P1 rdf:type owl:NamedIndividual ,
-                                 sosa:Observation ;
-                        sosa:hasFeatureOfInterest amrita:Space_1_P1 ;
-                        sosa:hasResult amrita:Result_2_P1 ;
-                        sosa:madeBySensor amrita:SHT25_1_P1 ;
-                        sosa:observedProperty amrita:Humidity .
+:Observation_2_P1 rdf:type owl:NamedIndividual ,
+                           sosa:Observation ;
+                  sosa:hasFeatureOfInterest :Space_1_P1 ;
+                  sosa:hasResult :Result_2_P1 ;
+                  sosa:madeBySensor :SHT25_1_P1 ;
+                  sosa:observedProperty :Humidity .
 
 
 ###  http://amrita.sony.org/terms#Observation_2_P2
-amrita:Observation_2_P2 rdf:type owl:NamedIndividual ,
-                                 sosa:Observation ;
-                        sosa:hasFeatureOfInterest amrita:Space_1_P2 ;
-                        sosa:hasResult amrita:Result_2_P2 ;
-                        sosa:madeBySensor amrita:SHT25_1_P2 ;
-                        sosa:observedProperty amrita:Humidity .
+:Observation_2_P2 rdf:type owl:NamedIndividual ,
+                           sosa:Observation ;
+                  sosa:hasFeatureOfInterest :Space_1_P2 ;
+                  sosa:hasResult :Result_2_P2 ;
+                  sosa:madeBySensor :SHT25_1_P2 ;
+                  sosa:observedProperty :Humidity .
 
 
 ###  http://amrita.sony.org/terms#Observation_3_P1
-amrita:Observation_3_P1 rdf:type owl:NamedIndividual ,
-                                 sosa:Observation ;
-                        sosa:hasFeatureOfInterest amrita:Space_2_P1 ;
-                        sosa:hasResult amrita:Result_3_P1 ;
-                        sosa:madeBySensor amrita:SHT25_2_P1 ;
-                        sosa:observedProperty amrita:Temperature1 .
+:Observation_3_P1 rdf:type owl:NamedIndividual ,
+                           sosa:Observation ;
+                  sosa:hasFeatureOfInterest :Space_2_P1 ;
+                  sosa:hasResult :Result_3_P1 ;
+                  sosa:madeBySensor :SHT25_2_P1 ;
+                  sosa:observedProperty :Temperature1 .
 
 
 ###  http://amrita.sony.org/terms#Observation_3_P2
-amrita:Observation_3_P2 rdf:type owl:NamedIndividual ,
-                                 sosa:Observation ;
-                        sosa:hasFeatureOfInterest amrita:Space_2_P2 ;
-                        sosa:hasResult amrita:Result_3_P2 ;
-                        sosa:madeBySensor amrita:SHT25_2_P2 ;
-                        sosa:observedProperty amrita:Temperature1 .
+:Observation_3_P2 rdf:type owl:NamedIndividual ,
+                           sosa:Observation ;
+                  sosa:hasFeatureOfInterest :Space_2_P2 ;
+                  sosa:hasResult :Result_3_P2 ;
+                  sosa:madeBySensor :SHT25_2_P2 ;
+                  sosa:observedProperty :Temperature1 .
 
 
 ###  http://amrita.sony.org/terms#Observation_4_P1
-amrita:Observation_4_P1 rdf:type owl:NamedIndividual ,
-                                 sosa:Observation ;
-                        sosa:hasFeatureOfInterest amrita:Space_2_P1 ;
-                        sosa:hasResult amrita:Result_4_P1 ;
-                        sosa:madeBySensor amrita:SHT25_2_P1 ;
-                        sosa:observedProperty amrita:Humidity .
+:Observation_4_P1 rdf:type owl:NamedIndividual ,
+                           sosa:Observation ;
+                  sosa:hasFeatureOfInterest :Space_2_P1 ;
+                  sosa:hasResult :Result_4_P1 ;
+                  sosa:madeBySensor :SHT25_2_P1 ;
+                  sosa:observedProperty :Humidity .
 
 
 ###  http://amrita.sony.org/terms#Observation_4_P2
-amrita:Observation_4_P2 rdf:type owl:NamedIndividual ,
-                                 sosa:Observation ;
-                        sosa:hasFeatureOfInterest amrita:Space_2_P2 ;
-                        sosa:hasResult amrita:Result_4_P2 ;
-                        sosa:madeBySensor amrita:SHT25_2_P2 ;
-                        sosa:observedProperty amrita:Humidity .
+:Observation_4_P2 rdf:type owl:NamedIndividual ,
+                           sosa:Observation ;
+                  sosa:hasFeatureOfInterest :Space_2_P2 ;
+                  sosa:hasResult :Result_4_P2 ;
+                  sosa:madeBySensor :SHT25_2_P2 ;
+                  sosa:observedProperty :Humidity .
 
 
 ###  http://amrita.sony.org/terms#Observation_5_P1
-amrita:Observation_5_P1 rdf:type owl:NamedIndividual ,
-                                 sosa:Observation ;
-                        sosa:hasFeatureOfInterest amrita:Space_3_P1 ;
-                        sosa:hasResult amrita:Result_5_P1 ;
-                        sosa:madeBySensor amrita:SHT25_3_P1 ;
-                        sosa:observedProperty amrita:Temperature1 .
+:Observation_5_P1 rdf:type owl:NamedIndividual ,
+                           sosa:Observation ;
+                  sosa:hasFeatureOfInterest :Space_3_P1 ;
+                  sosa:hasResult :Result_5_P1 ;
+                  sosa:madeBySensor :SHT25_3_P1 ;
+                  sosa:observedProperty :Temperature1 .
 
 
 ###  http://amrita.sony.org/terms#Observation_5_P2
-amrita:Observation_5_P2 rdf:type owl:NamedIndividual ,
-                                 sosa:Observation ;
-                        sosa:hasFeatureOfInterest amrita:Space_3_P2 ;
-                        sosa:hasResult amrita:Result_5_P2 ;
-                        sosa:madeBySensor amrita:SHT25_3_P2 ;
-                        sosa:observedProperty amrita:Temperature1 .
+:Observation_5_P2 rdf:type owl:NamedIndividual ,
+                           sosa:Observation ;
+                  sosa:hasFeatureOfInterest :Space_3_P2 ;
+                  sosa:hasResult :Result_5_P2 ;
+                  sosa:madeBySensor :SHT25_3_P2 ;
+                  sosa:observedProperty :Temperature1 .
 
 
 ###  http://amrita.sony.org/terms#Observation_6_P1
-amrita:Observation_6_P1 rdf:type owl:NamedIndividual ,
-                                 sosa:Observation ;
-                        sosa:hasFeatureOfInterest amrita:Space_3_P1 ;
-                        sosa:hasResult amrita:Result_6_P1 ;
-                        sosa:madeBySensor amrita:SHT25_3_P1 ;
-                        sosa:observedProperty amrita:Humidity .
+:Observation_6_P1 rdf:type owl:NamedIndividual ,
+                           sosa:Observation ;
+                  sosa:hasFeatureOfInterest :Space_3_P1 ;
+                  sosa:hasResult :Result_6_P1 ;
+                  sosa:madeBySensor :SHT25_3_P1 ;
+                  sosa:observedProperty :Humidity .
 
 
 ###  http://amrita.sony.org/terms#Observation_6_P2
-amrita:Observation_6_P2 rdf:type owl:NamedIndividual ,
-                                 sosa:Observation ;
-                        sosa:hasFeatureOfInterest amrita:Space_3_P2 ;
-                        sosa:hasResult amrita:Result_6_P2 ;
-                        sosa:madeBySensor amrita:SHT25_3_P2 ;
-                        sosa:observedProperty amrita:Humidity .
+:Observation_6_P2 rdf:type owl:NamedIndividual ,
+                           sosa:Observation ;
+                  sosa:hasFeatureOfInterest :Space_3_P2 ;
+                  sosa:hasResult :Result_6_P2 ;
+                  sosa:madeBySensor :SHT25_3_P2 ;
+                  sosa:observedProperty :Humidity .
 
 
 ###  http://amrita.sony.org/terms#OutputLayer
-amrita:OutputLayer rdf:type owl:NamedIndividual ,
-                            mls:ModelCharacteristic ;
-                   rdfs:label "Output Layers" ;
-                   mls:hasValue 1 .
+:OutputLayer rdf:type owl:NamedIndividual ,
+                      mls:ModelCharacteristic ;
+             rdfs:label "Output Layers" ;
+             mls:hasValue 1 .
 
 
 ###  http://amrita.sony.org/terms#Percentage1
-amrita:Percentage1 rdf:type owl:NamedIndividual ,
-                            <http://www.ontology-of-units-of-measure.org/resource/om-2/Percentage> .
+:Percentage1 rdf:type owl:NamedIndividual ,
+                      <http://www.ontology-of-units-of-measure.org/resource/om-2/Percentage> .
 
 
 ###  http://amrita.sony.org/terms#Polyhouse_Administration
-amrita:Polyhouse_Administration rdf:type owl:NamedIndividual ,
-                                         amrita:Permission ;
-                                amrita:onResource amrita:Polyhouse_P1 .
+:Polyhouse_Administration rdf:type owl:NamedIndividual ,
+                                   :Permission ;
+                          :onResource :Polyhouse_P1 .
 
 
 ###  http://amrita.sony.org/terms#Polyhouse_P1
-amrita:Polyhouse_P1 rdf:type owl:NamedIndividual ,
-                             amrita:Polyhouse ,
-                             amrita:Resource ,
-                             bot:Building ;
-                    bot:containsElement amrita:Camera_1_P1 ,
-                                        amrita:Camera_2_P1 ,
-                                        amrita:Camera_3_P1 ,
-                                        amrita:Column_P1 ,
-                                        amrita:Door_P1 ,
-                                        amrita:ESP32_N1_P1 ,
-                                        amrita:ESP32_N2_P1 ,
-                                        amrita:ESP32_N3_P1 ,
-                                        amrita:Edge_Node_1_P1 ,
-                                        amrita:End_Node_1_P1 ,
-                                        amrita:End_Node_2_P1 ,
-                                        amrita:Ramp_P1 ,
-                                        amrita:Roof_P1 ,
-                                        amrita:SHT25_1_P1 ,
-                                        amrita:SHT25_2_P1 ,
-                                        amrita:SHT25_3_P1 ,
-                                        amrita:Spresense_1_P1 ,
-                                        amrita:Spresense_2_P1 ,
-                                        amrita:Spresense_3_P1 ,
-                                        amrita:Turbovent_P1 ,
-                                        amrita:Wall_P1 ;
-                    bot:hasStorey amrita:Storey_P1 ;
-                    rdfs:label "Polyhouse 1"@en ;
-                    geo:lat 10.906087 ;
-                    geo:long 76.89744 .
+:Polyhouse_P1 rdf:type owl:NamedIndividual ,
+                       :Polyhouse ,
+                       :Resource ,
+                       bot:Building ;
+              bot:containsElement :Camera_1_P1 ,
+                                  :Camera_2_P1 ,
+                                  :Camera_3_P1 ,
+                                  :Column_P1 ,
+                                  :Door_P1 ,
+                                  :ESP32_N1_P1 ,
+                                  :ESP32_N2_P1 ,
+                                  :ESP32_N3_P1 ,
+                                  :Edge_Node_1_P1 ,
+                                  :End_Node_1_P1 ,
+                                  :End_Node_2_P1 ,
+                                  :Ramp_P1 ,
+                                  :Roof_P1 ,
+                                  :SHT25_1_P1 ,
+                                  :SHT25_2_P1 ,
+                                  :SHT25_3_P1 ,
+                                  :Spresense_1_P1 ,
+                                  :Spresense_2_P1 ,
+                                  :Spresense_3_P1 ,
+                                  :Turbovent_P1 ,
+                                  :Wall_P1 ;
+              bot:hasStorey :Storey_P1 ;
+              rdfs:label "Polyhouse 1"@en ;
+              geo:lat 10.906087 ;
+              geo:long 76.89744 .
 
 
 ###  http://amrita.sony.org/terms#Polyhouse_P2
-amrita:Polyhouse_P2 rdf:type owl:NamedIndividual ,
-                             amrita:Polyhouse ,
-                             bot:Building ;
-                    bot:containsElement amrita:Camera_1_P2 ,
-                                        amrita:Camera_2_P2 ,
-                                        amrita:Camera_3_P2 ,
-                                        amrita:Column_P2 ,
-                                        amrita:Door_P2 ,
-                                        amrita:ESP32_N1_P2 ,
-                                        amrita:ESP32_N2_P2 ,
-                                        amrita:ESP32_N3_P2 ,
-                                        amrita:Edge_Node_1_P2 ,
-                                        amrita:End_Node_1_P2 ,
-                                        amrita:End_Node_2_P2 ,
-                                        amrita:Ramp_P2 ,
-                                        amrita:Roof_P2 ,
-                                        amrita:SHT25_1_P2 ,
-                                        amrita:SHT25_2_P2 ,
-                                        amrita:SHT25_3_P2 ,
-                                        amrita:SIM7600_P2 ,
-                                        amrita:Spresense_1_P2 ,
-                                        amrita:Spresense_2_P2 ,
-                                        amrita:Spresense_3_P2 ,
-                                        amrita:Wall_P2 ;
-                    bot:hasStorey amrita:Storey_P2 ;
-                    rdfs:label "Polyhouse 2"@en ;
-                    geo:lat 10.571840 ;
-                    geo:long 76.514204 .
+:Polyhouse_P2 rdf:type owl:NamedIndividual ,
+                       :Polyhouse ,
+                       bot:Building ;
+              bot:containsElement :Camera_1_P2 ,
+                                  :Camera_2_P2 ,
+                                  :Camera_3_P2 ,
+                                  :Column_P2 ,
+                                  :Door_P2 ,
+                                  :ESP32_N1_P2 ,
+                                  :ESP32_N2_P2 ,
+                                  :ESP32_N3_P2 ,
+                                  :Edge_Node_1_P2 ,
+                                  :End_Node_1_P2 ,
+                                  :End_Node_2_P2 ,
+                                  :Ramp_P2 ,
+                                  :Roof_P2 ,
+                                  :SHT25_1_P2 ,
+                                  :SHT25_2_P2 ,
+                                  :SHT25_3_P2 ,
+                                  :SIM7600_P2 ,
+                                  :Spresense_1_P2 ,
+                                  :Spresense_2_P2 ,
+                                  :Spresense_3_P2 ,
+                                  :Wall_P2 ;
+              bot:hasStorey :Storey_P2 ;
+              rdfs:label "Polyhouse 2"@en ;
+              geo:lat 10.571840 ;
+              geo:long 76.514204 .
 
 
 ###  http://amrita.sony.org/terms#Procedure_1
-amrita:Procedure_1 rdf:type owl:NamedIndividual ,
-                            sosa:Procedure ;
-                   ssn:hasInput amrita:Img_Obs_1 ;
-                   ssn:hasOutput amrita:Img_Obs_2 .
+:Procedure_1 rdf:type owl:NamedIndividual ,
+                      sosa:Procedure ;
+             ssn:hasInput :Img_Obs_1 ;
+             ssn:hasOutput :Img_Obs_2 .
 
 
 ###  http://amrita.sony.org/terms#Procedure_2
-amrita:Procedure_2 rdf:type owl:NamedIndividual ,
-                            sosa:Procedure ;
-                   ssn:hasInput amrita:Img_Obs_2 ;
-                   ssn:hasOutput amrita:Img_Obs_3 .
+:Procedure_2 rdf:type owl:NamedIndividual ,
+                      sosa:Procedure ;
+             ssn:hasInput :Img_Obs_2 ;
+             ssn:hasOutput :Img_Obs_3 .
 
 
 ###  http://amrita.sony.org/terms#Procedure_3
-amrita:Procedure_3 rdf:type owl:NamedIndividual ,
-                            sosa:Procedure ;
-                   ssn:hasInput amrita:Img_Obs_3 ;
-                   ssn:hasOutput amrita:Img_Obs_4 .
+:Procedure_3 rdf:type owl:NamedIndividual ,
+                      sosa:Procedure ;
+             ssn:hasInput :Img_Obs_3 ;
+             ssn:hasOutput :Img_Obs_4 .
 
 
 ###  http://amrita.sony.org/terms#Procedure_4
-amrita:Procedure_4 rdf:type owl:NamedIndividual ,
-                            sosa:Procedure ;
-                   ssn:hasInput amrita:Img_Obs_4 ;
-                   ssn:hasOutput amrita:Img_Obs_5 .
+:Procedure_4 rdf:type owl:NamedIndividual ,
+                      sosa:Procedure ;
+             ssn:hasInput :Img_Obs_4 ;
+             ssn:hasOutput :Img_Obs_5 .
 
 
 ###  http://amrita.sony.org/terms#Procedure_5
-amrita:Procedure_5 rdf:type owl:NamedIndividual ,
-                            sosa:Procedure ;
-                   ssn:hasInput amrita:Img_Obs_5 ;
-                   ssn:hasOutput amrita:Img_Obs_6 .
+:Procedure_5 rdf:type owl:NamedIndividual ,
+                      sosa:Procedure ;
+             ssn:hasInput :Img_Obs_5 ;
+             ssn:hasOutput :Img_Obs_6 .
 
 
 ###  http://amrita.sony.org/terms#Ramp_P1
-amrita:Ramp_P1 rdf:type owl:NamedIndividual ,
-                        beo:Ramp ;
-               rdfs:label "Ramp P1"@en .
+:Ramp_P1 rdf:type owl:NamedIndividual ,
+                  beo:Ramp ;
+         rdfs:label "Ramp P1"@en .
 
 
 ###  http://amrita.sony.org/terms#Ramp_P2
-amrita:Ramp_P2 rdf:type owl:NamedIndividual ,
-                        beo:Ramp ;
-               rdfs:label "Ramp P2" .
+:Ramp_P2 rdf:type owl:NamedIndividual ,
+                  beo:Ramp ;
+         rdfs:label "Ramp P2" .
 
 
 ###  http://amrita.sony.org/terms#Relay_Driver_For_Exhaust_Controller_P1
-amrita:Relay_Driver_For_Exhaust_Controller_P1 rdf:type owl:NamedIndividual ,
-                                                       amrita:Exhaust_Fan_Controller ;
-                                              toco:hasInterface amrita:Exhaust_Relay_Interface_1_P1 ;
-                                              toco:hasWiFiWLAN amrita:Exhaust_Relay_Interface_2_P1 .
+:Relay_Driver_For_Exhaust_Controller_P1 rdf:type owl:NamedIndividual ,
+                                                 :Exhaust_Fan_Controller ;
+                                        toco:hasInterface :Exhaust_Relay_Interface_1_P1 ;
+                                        toco:hasWiFiWLAN :Exhaust_Relay_Interface_2_P1 .
 
 
 ###  http://amrita.sony.org/terms#Relay_Driver_For_Exhaust_Controller_P2
-amrita:Relay_Driver_For_Exhaust_Controller_P2 rdf:type owl:NamedIndividual ,
-                                                       amrita:Exhaust_Fan_Controller ;
-                                              toco:hasInterface amrita:Exhaust_Relay_Interface_2_P2 ;
-                                              toco:hasWiFiWLAN amrita:Exhaust_Relay_Interface_1_P2 .
+:Relay_Driver_For_Exhaust_Controller_P2 rdf:type owl:NamedIndividual ,
+                                                 :Exhaust_Fan_Controller ;
+                                        toco:hasInterface :Exhaust_Relay_Interface_2_P2 ;
+                                        toco:hasWiFiWLAN :Exhaust_Relay_Interface_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#Result_1_P1
-amrita:Result_1_P1 rdf:type owl:NamedIndividual ,
-                            sosa:Result ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> amrita:Celsius ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 64.220001 ;
-                   sosa:resultTime "2024-01-06T02:16:29"^^xsd:dateTime .
+:Result_1_P1 rdf:type owl:NamedIndividual ,
+                      sosa:Result ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> :Celsius ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 64.220001 ;
+             sosa:resultTime "2024-01-06T02:16:29"^^xsd:dateTime .
 
 
 ###  http://amrita.sony.org/terms#Result_1_P2
-amrita:Result_1_P2 rdf:type owl:NamedIndividual ,
-                            sosa:Result ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> amrita:Celsius ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 65 ;
-                   sosa:resultTime "2024-01-06T02:16:29"^^xsd:dateTime .
+:Result_1_P2 rdf:type owl:NamedIndividual ,
+                      sosa:Result ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> :Celsius ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 65 ;
+             sosa:resultTime "2024-01-06T02:16:29"^^xsd:dateTime .
 
 
 ###  http://amrita.sony.org/terms#Result_2_P1
-amrita:Result_2_P1 rdf:type owl:NamedIndividual ,
-                            sosa:Result ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> amrita:Percentage1 ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 28.06 ;
-                   sosa:resultTime "2024-01-06T02:16:29"^^xsd:dateTime .
+:Result_2_P1 rdf:type owl:NamedIndividual ,
+                      sosa:Result ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> :Percentage1 ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 28.06 ;
+             sosa:resultTime "2024-01-06T02:16:29"^^xsd:dateTime .
 
 
 ###  http://amrita.sony.org/terms#Result_2_P2
-amrita:Result_2_P2 rdf:type owl:NamedIndividual ,
-                            sosa:Result ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> amrita:Percentage1 ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 28.5 ;
-                   sosa:resultTime "2024-01-06T02:16:29"^^xsd:dateTime .
+:Result_2_P2 rdf:type owl:NamedIndividual ,
+                      sosa:Result ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> :Percentage1 ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 28.5 ;
+             sosa:resultTime "2024-01-06T02:16:29"^^xsd:dateTime .
 
 
 ###  http://amrita.sony.org/terms#Result_3_P1
-amrita:Result_3_P1 rdf:type owl:NamedIndividual ,
-                            sosa:Result ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> amrita:Celsius ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 64.51997 ;
-                   sosa:resultTime "2024-01-06T02:20:53"^^xsd:dateTime .
+:Result_3_P1 rdf:type owl:NamedIndividual ,
+                      sosa:Result ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> :Celsius ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 64.51997 ;
+             sosa:resultTime "2024-01-06T02:20:53"^^xsd:dateTime .
 
 
 ###  http://amrita.sony.org/terms#Result_3_P2
-amrita:Result_3_P2 rdf:type owl:NamedIndividual ,
-                            sosa:Result ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> amrita:Celsius ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 64.519997 ;
-                   sosa:resultTime "2024-01-06T02:20:53"^^xsd:dateTime .
+:Result_3_P2 rdf:type owl:NamedIndividual ,
+                      sosa:Result ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> :Celsius ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 64.519997 ;
+             sosa:resultTime "2024-01-06T02:20:53"^^xsd:dateTime .
 
 
 ###  http://amrita.sony.org/terms#Result_4_P1
-amrita:Result_4_P1 rdf:type owl:NamedIndividual ,
-                            sosa:Result ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> amrita:Percentage1 ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 28.30999 ;
-                   sosa:resultTime "2024-01-06T02:20:53"^^xsd:dateTime .
+:Result_4_P1 rdf:type owl:NamedIndividual ,
+                      sosa:Result ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> :Percentage1 ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 28.30999 ;
+             sosa:resultTime "2024-01-06T02:20:53"^^xsd:dateTime .
 
 
 ###  http://amrita.sony.org/terms#Result_4_P2
-amrita:Result_4_P2 rdf:type owl:NamedIndividual ,
-                            sosa:Result ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> amrita:Percentage1 ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 28.991 ;
-                   sosa:resultTime "2024-01-06T02:20:53"^^xsd:dateTime .
+:Result_4_P2 rdf:type owl:NamedIndividual ,
+                      sosa:Result ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> :Percentage1 ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 28.991 ;
+             sosa:resultTime "2024-01-06T02:20:53"^^xsd:dateTime .
 
 
 ###  http://amrita.sony.org/terms#Result_5_P1
-amrita:Result_5_P1 rdf:type owl:NamedIndividual ,
-                            sosa:Result ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> amrita:Celsius ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 65.1988 ;
-                   sosa:resultTime "2024-01-06T02:25:18"^^xsd:dateTime .
+:Result_5_P1 rdf:type owl:NamedIndividual ,
+                      sosa:Result ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> :Celsius ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 65.1988 ;
+             sosa:resultTime "2024-01-06T02:25:18"^^xsd:dateTime .
 
 
 ###  http://amrita.sony.org/terms#Result_5_P2
-amrita:Result_5_P2 rdf:type owl:NamedIndividual ,
-                            sosa:Result ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> amrita:Celsius ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 65.19886 ;
-                   sosa:resultTime "2024-01-06T02:25:18"^^xsd:dateTime .
+:Result_5_P2 rdf:type owl:NamedIndividual ,
+                      sosa:Result ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> :Celsius ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 65.19886 ;
+             sosa:resultTime "2024-01-06T02:25:18"^^xsd:dateTime .
 
 
 ###  http://amrita.sony.org/terms#Result_6_P1
-amrita:Result_6_P1 rdf:type owl:NamedIndividual ,
-                            sosa:Result ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> amrita:Percentage1 ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 28.190001 ;
-                   sosa:resultTime "2024-01-06T02:25:18"^^xsd:dateTime .
+:Result_6_P1 rdf:type owl:NamedIndividual ,
+                      sosa:Result ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> :Percentage1 ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 28.190001 ;
+             sosa:resultTime "2024-01-06T02:25:18"^^xsd:dateTime .
 
 
 ###  http://amrita.sony.org/terms#Result_6_P2
-amrita:Result_6_P2 rdf:type owl:NamedIndividual ,
-                            sosa:Result ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> amrita:Percentage1 ;
-                   <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 28.0001 ;
-                   sosa:resultTime "2024-01-06T02:25:18"^^xsd:dateTime .
+:Result_6_P2 rdf:type owl:NamedIndividual ,
+                      sosa:Result ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit> :Percentage1 ;
+             <http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue> 28.0001 ;
+             sosa:resultTime "2024-01-06T02:25:18"^^xsd:dateTime .
 
 
 ###  http://amrita.sony.org/terms#Roof_P1
-amrita:Roof_P1 rdf:type owl:NamedIndividual ,
-                        beo:Roof ;
-               rdfs:label "Roof_P1"@en .
+:Roof_P1 rdf:type owl:NamedIndividual ,
+                  beo:Roof ;
+         rdfs:label "Roof_P1"@en .
 
 
 ###  http://amrita.sony.org/terms#Roof_P2
-amrita:Roof_P2 rdf:type owl:NamedIndividual ,
-                        beo:Roof .
+:Roof_P2 rdf:type owl:NamedIndividual ,
+                  beo:Roof .
 
 
 ###  http://amrita.sony.org/terms#Run_AutoML_tom_class_001
-amrita:Run_AutoML_tom_class_001 rdf:type owl:NamedIndividual ,
-                                         mls:Run ;
-                                ssn:hasInput amrita:tomato001 ,
-                                             amrita:tomato001_Feature_set_1 ;
-                                ssn:hasOutput amrita:DeepNeuralNetwork ,
-                                              amrita:EagerExecution ;
-                                mls:executes amrita:tf_keras .
+:Run_AutoML_tom_class_001 rdf:type owl:NamedIndividual ,
+                                   mls:Run ;
+                          ssn:hasInput :tomato001 ,
+                                       :tomato001_Feature_set_1 ;
+                          ssn:hasOutput :DeepNeuralNetwork ,
+                                        :EagerExecution ;
+                          mls:executes :tf_keras .
 
 
 ###  http://amrita.sony.org/terms#SHT25_1_Interface_1_P1
-amrita:SHT25_1_Interface_1_P1 rdf:type owl:NamedIndividual ,
-                                       toco:Interface ;
-                              toco:hasWiredLink amrita:I2CBus_N1_P1 ;
-                              toco:isIn amrita:SHT25_1_P1 .
+:SHT25_1_Interface_1_P1 rdf:type owl:NamedIndividual ,
+                                 toco:Interface ;
+                        toco:hasWiredLink :I2CBus_N1_P1 ;
+                        toco:isIn :SHT25_1_P1 .
 
 
 ###  http://amrita.sony.org/terms#SHT25_1_Interface_1_P2
-amrita:SHT25_1_Interface_1_P2 rdf:type owl:NamedIndividual ,
-                                       toco:Interface ;
-                              toco:hasWiredLink amrita:I2CBus_N1_P2 ;
-                              toco:isIn amrita:SHT25_1_P2 .
+:SHT25_1_Interface_1_P2 rdf:type owl:NamedIndividual ,
+                                 toco:Interface ;
+                        toco:hasWiredLink :I2CBus_N1_P2 ;
+                        toco:isIn :SHT25_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#SHT25_1_P1
-amrita:SHT25_1_P1 rdf:type owl:NamedIndividual ,
-                           amrita:SHT25 ,
-                           mep:Sensor-HUMIDITYSENSOR ,
-                           mep:Sensor-TEMPERATURESENSOR ;
-                  toco:hasInterface amrita:SHT25_1_Interface_1_P1 ;
-                  prov:wasGeneratedBy amrita:Activity_1_P1 ;
-                  sosa:madeObservation amrita:Observation_1_P1 ,
-                                       amrita:Observation_2_P1 .
+:SHT25_1_P1 rdf:type owl:NamedIndividual ,
+                     :SHT25 ,
+                     mep:Sensor-HUMIDITYSENSOR ,
+                     mep:Sensor-TEMPERATURESENSOR ;
+            toco:hasInterface :SHT25_1_Interface_1_P1 ;
+            prov:wasGeneratedBy :Activity_1_P1 ;
+            sosa:madeObservation :Observation_1_P1 ,
+                                 :Observation_2_P1 .
 
 
 ###  http://amrita.sony.org/terms#SHT25_1_P2
-amrita:SHT25_1_P2 rdf:type owl:NamedIndividual ,
-                           amrita:SHT25 ;
-                  toco:hasInterface amrita:SHT25_1_Interface_1_P2 ;
-                  prov:wasGeneratedBy amrita:Activity_2_P2 ;
-                  sosa:madeObservation amrita:Observation_1_P2 ,
-                                       amrita:Observation_2_P2 .
+:SHT25_1_P2 rdf:type owl:NamedIndividual ,
+                     :SHT25 ;
+            toco:hasInterface :SHT25_1_Interface_1_P2 ;
+            prov:wasGeneratedBy :Activity_2_P2 ;
+            sosa:madeObservation :Observation_1_P2 ,
+                                 :Observation_2_P2 .
 
 
 ###  http://amrita.sony.org/terms#SHT25_2_Interface_1_P1
-amrita:SHT25_2_Interface_1_P1 rdf:type owl:NamedIndividual ,
-                                       toco:Interface ;
-                              toco:hasWiredLink amrita:I2CBus_N2_P1 ;
-                              toco:isIn amrita:SHT25_2_P1 .
+:SHT25_2_Interface_1_P1 rdf:type owl:NamedIndividual ,
+                                 toco:Interface ;
+                        toco:hasWiredLink :I2CBus_N2_P1 ;
+                        toco:isIn :SHT25_2_P1 .
 
 
 ###  http://amrita.sony.org/terms#SHT25_2_Interface_1_P2
-amrita:SHT25_2_Interface_1_P2 rdf:type owl:NamedIndividual ,
-                                       toco:Interface ;
-                              toco:hasWiredLink amrita:I2CBus_N2_P2 ;
-                              toco:isIn amrita:SHT25_2_P2 .
+:SHT25_2_Interface_1_P2 rdf:type owl:NamedIndividual ,
+                                 toco:Interface ;
+                        toco:hasWiredLink :I2CBus_N2_P2 ;
+                        toco:isIn :SHT25_2_P2 .
 
 
 ###  http://amrita.sony.org/terms#SHT25_2_P1
-amrita:SHT25_2_P1 rdf:type owl:NamedIndividual ,
-                           amrita:SHT25 ;
-                  toco:hasInterface amrita:SHT25_2_Interface_1_P1 ;
-                  sosa:madeObservation amrita:Observation_3_P1 ,
-                                       amrita:Observation_4_P1 .
+:SHT25_2_P1 rdf:type owl:NamedIndividual ,
+                     :SHT25 ;
+            toco:hasInterface :SHT25_2_Interface_1_P1 ;
+            sosa:madeObservation :Observation_3_P1 ,
+                                 :Observation_4_P1 .
 
 
 ###  http://amrita.sony.org/terms#SHT25_2_P2
-amrita:SHT25_2_P2 rdf:type owl:NamedIndividual ,
-                           amrita:SHT25 ;
-                  toco:hasInterface amrita:SHT25_2_Interface_1_P2 ;
-                  sosa:madeObservation amrita:Observation_3_P2 ,
-                                       amrita:Observation_4_P2 .
+:SHT25_2_P2 rdf:type owl:NamedIndividual ,
+                     :SHT25 ;
+            toco:hasInterface :SHT25_2_Interface_1_P2 ;
+            sosa:madeObservation :Observation_3_P2 ,
+                                 :Observation_4_P2 .
 
 
 ###  http://amrita.sony.org/terms#SHT25_3_Interface_1_P1
-amrita:SHT25_3_Interface_1_P1 rdf:type owl:NamedIndividual ,
-                                       toco:Interface ;
-                              toco:hasWiredLink amrita:I2CBus_N3_P1 ;
-                              toco:isIn amrita:SHT25_3_P1 .
+:SHT25_3_Interface_1_P1 rdf:type owl:NamedIndividual ,
+                                 toco:Interface ;
+                        toco:hasWiredLink :I2CBus_N3_P1 ;
+                        toco:isIn :SHT25_3_P1 .
 
 
 ###  http://amrita.sony.org/terms#SHT25_3_Interface_1_P2
-amrita:SHT25_3_Interface_1_P2 rdf:type owl:NamedIndividual ,
-                                       toco:Interface ;
-                              toco:hasWiredLink amrita:I2CBus_N3_P2 ;
-                              toco:isIn amrita:SHT25_3_P2 .
+:SHT25_3_Interface_1_P2 rdf:type owl:NamedIndividual ,
+                                 toco:Interface ;
+                        toco:hasWiredLink :I2CBus_N3_P2 ;
+                        toco:isIn :SHT25_3_P2 .
 
 
 ###  http://amrita.sony.org/terms#SHT25_3_P1
-amrita:SHT25_3_P1 rdf:type owl:NamedIndividual ,
-                           amrita:SHT25 ;
-                  toco:hasInterface amrita:SHT25_3_Interface_1_P1 ;
-                  sosa:madeObservation amrita:Observation_5_P1 ,
-                                       amrita:Observation_6_P1 .
+:SHT25_3_P1 rdf:type owl:NamedIndividual ,
+                     :SHT25 ;
+            toco:hasInterface :SHT25_3_Interface_1_P1 ;
+            sosa:madeObservation :Observation_5_P1 ,
+                                 :Observation_6_P1 .
 
 
 ###  http://amrita.sony.org/terms#SHT25_3_P2
-amrita:SHT25_3_P2 rdf:type owl:NamedIndividual ,
-                           amrita:SHT25 ;
-                  toco:hasInterface amrita:SHT25_3_Interface_1_P2 ;
-                  sosa:madeObservation amrita:Observation_5_P2 ,
-                                       amrita:Observation_6_P2 .
+:SHT25_3_P2 rdf:type owl:NamedIndividual ,
+                     :SHT25 ;
+            toco:hasInterface :SHT25_3_Interface_1_P2 ;
+            sosa:madeObservation :Observation_5_P2 ,
+                                 :Observation_6_P2 .
 
 
 ###  http://amrita.sony.org/terms#SIM7600_Interface_1_P1
-amrita:SIM7600_Interface_1_P1 rdf:type owl:NamedIndividual ,
-                                       toco:WiFiWLAN ;
-                              toco:hasLTEAssociation amrita:LTE_Association_P1 ;
-                              toco:isIn amrita:SIM7600_P1 .
+:SIM7600_Interface_1_P1 rdf:type owl:NamedIndividual ,
+                                 toco:WiFiWLAN ;
+                        toco:hasLTEAssociation :LTE_Association_P1 ;
+                        toco:isIn :SIM7600_P1 .
 
 
 ###  http://amrita.sony.org/terms#SIM7600_Interface_1_P2
-amrita:SIM7600_Interface_1_P2 rdf:type owl:NamedIndividual ,
-                                       toco:WiFiWLAN ;
-                              toco:isIn amrita:SIM7600_P2 .
+:SIM7600_Interface_1_P2 rdf:type owl:NamedIndividual ,
+                                 toco:WiFiWLAN ;
+                        toco:isIn :SIM7600_P2 .
 
 
 ###  http://amrita.sony.org/terms#SIM7600_Interface_2_P1
-amrita:SIM7600_Interface_2_P1 rdf:type owl:NamedIndividual ,
-                                       toco:Interface ;
-                              toco:hasWiredLink amrita:UART2_N2_P1 ;
-                              toco:isIn amrita:SIM7600_P1 .
+:SIM7600_Interface_2_P1 rdf:type owl:NamedIndividual ,
+                                 toco:Interface ;
+                        toco:hasWiredLink :UART2_N2_P1 ;
+                        toco:isIn :SIM7600_P1 .
 
 
 ###  http://amrita.sony.org/terms#SIM7600_Interface_2_P2
-amrita:SIM7600_Interface_2_P2 rdf:type owl:NamedIndividual ,
-                                       toco:Interface ;
-                              toco:hasWiredLink amrita:UART2_N2_P2 ;
-                              toco:isIn amrita:SIM7600_P2 .
+:SIM7600_Interface_2_P2 rdf:type owl:NamedIndividual ,
+                                 toco:Interface ;
+                        toco:hasWiredLink :UART2_N2_P2 ;
+                        toco:isIn :SIM7600_P2 .
 
 
 ###  http://amrita.sony.org/terms#SIM7600_P1
-amrita:SIM7600_P1 rdf:type owl:NamedIndividual ,
-                           amrita:SIM7600 ;
-                  toco:hasInterface amrita:SIM7600_Interface_2_P1 ;
-                  toco:hasWiFiWLAN amrita:SIM7600_Interface_1_P1 ;
-                  rdfs:label "SIM7600 1" .
+:SIM7600_P1 rdf:type owl:NamedIndividual ,
+                     :SIM7600 ;
+            toco:hasInterface :SIM7600_Interface_2_P1 ;
+            toco:hasWiFiWLAN :SIM7600_Interface_1_P1 ;
+            rdfs:label "SIM7600 1" .
 
 
 ###  http://amrita.sony.org/terms#SIM7600_P2
-amrita:SIM7600_P2 rdf:type owl:NamedIndividual ,
-                           amrita:SIM7600 ;
-                  toco:hasInterface amrita:SIM7600_Interface_2_P2 ;
-                  toco:hasWiFiWLAN amrita:SIM7600_Interface_1_P2 .
+:SIM7600_P2 rdf:type owl:NamedIndividual ,
+                     :SIM7600 ;
+            toco:hasInterface :SIM7600_Interface_2_P2 ;
+            toco:hasWiFiWLAN :SIM7600_Interface_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#Server_Interface_1
-amrita:Server_Interface_1 rdf:type owl:NamedIndividual ,
-                                   toco:WiFiWLAN ;
-                          toco:hasLTEAssociation amrita:LTE_Association_P1 .
+:Server_Interface_1 rdf:type owl:NamedIndividual ,
+                             toco:WiFiWLAN ;
+                    toco:hasLTEAssociation :LTE_Association_P1 .
 
 
 ###  http://amrita.sony.org/terms#Server_Interface_P2
-amrita:Server_Interface_P2 rdf:type owl:NamedIndividual ,
-                                    toco:WiFiWLAN ;
-                           toco:hasLTEAssociation amrita:LTE_Association_P2 .
+:Server_Interface_P2 rdf:type owl:NamedIndividual ,
+                              toco:WiFiWLAN ;
+                     toco:hasLTEAssociation :LTE_Association_P2 .
 
 
 ###  http://amrita.sony.org/terms#Site_P1
-amrita:Site_P1 rdf:type owl:NamedIndividual ,
-                        bot:Site ;
-               bot:hasBuilding amrita:Polyhouse_P1 ;
-               rdfs:label "Site"@en .
+:Site_P1 rdf:type owl:NamedIndividual ,
+                  bot:Site ;
+         bot:hasBuilding :Polyhouse_P1 ;
+         rdfs:label "Site"@en .
 
 
 ###  http://amrita.sony.org/terms#Site_P2
-amrita:Site_P2 rdf:type owl:NamedIndividual ;
-               bot:hasBuilding amrita:Polyhouse_P2 .
+:Site_P2 rdf:type owl:NamedIndividual ;
+         bot:hasBuilding :Polyhouse_P2 .
 
 
 ###  http://amrita.sony.org/terms#SoftSerial_N2_P1
-amrita:SoftSerial_N2_P1 rdf:type owl:NamedIndividual ,
-                                 amrita:SoftSerial .
+:SoftSerial_N2_P1 rdf:type owl:NamedIndividual ,
+                           :SoftSerial .
 
 
 ###  http://amrita.sony.org/terms#SoftSerial_N2_P2
-amrita:SoftSerial_N2_P2 rdf:type owl:NamedIndividual ,
-                                 amrita:SoftSerial .
+:SoftSerial_N2_P2 rdf:type owl:NamedIndividual ,
+                           :SoftSerial .
 
 
 ###  http://amrita.sony.org/terms#Space_1_P1
-amrita:Space_1_P1 rdf:type owl:NamedIndividual ,
-                           bot:Space ;
-                  sosa:hosts amrita:Spresense_1_P1 ;
-                  bot:containsElement amrita:Camera_1_P1 ,
-                                      amrita:ESP32_N1_P1 ,
-                                      amrita:End_Node_1_P1 ,
-                                      amrita:SHT25_1_P1 ,
-                                      amrita:Spresense_1_P1 ;
-                  rdfs:label "Grid 1"@en .
+:Space_1_P1 rdf:type owl:NamedIndividual ,
+                     bot:Space ;
+            sosa:hosts :Spresense_1_P1 ;
+            bot:containsElement :Camera_1_P1 ,
+                                :ESP32_N1_P1 ,
+                                :End_Node_1_P1 ,
+                                :SHT25_1_P1 ,
+                                :Spresense_1_P1 ;
+            rdfs:label "Grid 1"@en .
 
 
 ###  http://amrita.sony.org/terms#Space_1_P2
-amrita:Space_1_P2 rdf:type owl:NamedIndividual ,
-                           bot:Space ;
-                  sosa:hosts amrita:Spresense_1_P2 ;
-                  bot:containsElement amrita:Camera_1_P2 ,
-                                      amrita:ESP32_N1_P2 ,
-                                      amrita:End_Node_1_P2 ,
-                                      amrita:SHT25_1_P2 ,
-                                      amrita:Spresense_1_P2 ;
-                  rdfs:label "Grid 1 P2"@en .
+:Space_1_P2 rdf:type owl:NamedIndividual ,
+                     bot:Space ;
+            sosa:hosts :Spresense_1_P2 ;
+            bot:containsElement :Camera_1_P2 ,
+                                :ESP32_N1_P2 ,
+                                :End_Node_1_P2 ,
+                                :SHT25_1_P2 ,
+                                :Spresense_1_P2 ;
+            rdfs:label "Grid 1 P2"@en .
 
 
 ###  http://amrita.sony.org/terms#Space_2_P1
-amrita:Space_2_P1 rdf:type owl:NamedIndividual ,
-                           bot:Space ;
-                  sosa:hosts amrita:Spresense_2_P1 ;
-                  bot:containsElement amrita:Camera_2_P1 ,
-                                      amrita:ESP32_N2_P1 ,
-                                      amrita:Edge_Node_1_P1 ,
-                                      amrita:SHT25_2_P1 ,
-                                      amrita:SIM7600_P1 ,
-                                      amrita:Spresense_2_P1 ;
-                  rdfs:label "Grid 2"@en .
+:Space_2_P1 rdf:type owl:NamedIndividual ,
+                     bot:Space ;
+            sosa:hosts :Spresense_2_P1 ;
+            bot:containsElement :Camera_2_P1 ,
+                                :ESP32_N2_P1 ,
+                                :Edge_Node_1_P1 ,
+                                :SHT25_2_P1 ,
+                                :SIM7600_P1 ,
+                                :Spresense_2_P1 ;
+            rdfs:label "Grid 2"@en .
 
 
 ###  http://amrita.sony.org/terms#Space_2_P2
-amrita:Space_2_P2 rdf:type owl:NamedIndividual ,
-                           bot:Space ;
-                  sosa:hosts amrita:Spresense_2_P2 ;
-                  bot:containsElement amrita:Camera_2_P2 ,
-                                      amrita:ESP32_N2_P2 ,
-                                      amrita:Edge_Node_1_P2 ,
-                                      amrita:SHT25_2_P2 ,
-                                      amrita:SIM7600_P2 ,
-                                      amrita:Spresense_2_P2 ;
-                  rdfs:label "Grid 2 P2"@en .
+:Space_2_P2 rdf:type owl:NamedIndividual ,
+                     bot:Space ;
+            sosa:hosts :Spresense_2_P2 ;
+            bot:containsElement :Camera_2_P2 ,
+                                :ESP32_N2_P2 ,
+                                :Edge_Node_1_P2 ,
+                                :SHT25_2_P2 ,
+                                :SIM7600_P2 ,
+                                :Spresense_2_P2 ;
+            rdfs:label "Grid 2 P2"@en .
 
 
 ###  http://amrita.sony.org/terms#Space_3_P1
-amrita:Space_3_P1 rdf:type owl:NamedIndividual ,
-                           bot:Space ;
-                  sosa:hosts amrita:Spresense_3_P1 ;
-                  bot:containsElement amrita:Camera_3_P1 ,
-                                      amrita:ESP32_N3_P1 ,
-                                      amrita:End_Node_2_P1 ,
-                                      amrita:SHT25_3_P1 ,
-                                      amrita:Spresense_3_P1 ;
-                  rdfs:label "Grid 3"@en .
+:Space_3_P1 rdf:type owl:NamedIndividual ,
+                     bot:Space ;
+            sosa:hosts :Spresense_3_P1 ;
+            bot:containsElement :Camera_3_P1 ,
+                                :ESP32_N3_P1 ,
+                                :End_Node_2_P1 ,
+                                :SHT25_3_P1 ,
+                                :Spresense_3_P1 ;
+            rdfs:label "Grid 3"@en .
 
 
 ###  http://amrita.sony.org/terms#Space_3_P2
-amrita:Space_3_P2 rdf:type owl:NamedIndividual ,
-                           bot:Space ;
-                  sosa:hosts amrita:Spresense_3_P2 ;
-                  bot:containsElement amrita:Camera_3_P2 ,
-                                      amrita:ESP32_N3_P2 ,
-                                      amrita:End_Node_2_P2 ,
-                                      amrita:SHT25_3_P2 ,
-                                      amrita:Spresense_3_P2 ;
-                  rdfs:label "Grid 3 P2"@en .
+:Space_3_P2 rdf:type owl:NamedIndividual ,
+                     bot:Space ;
+            sosa:hosts :Spresense_3_P2 ;
+            bot:containsElement :Camera_3_P2 ,
+                                :ESP32_N3_P2 ,
+                                :End_Node_2_P2 ,
+                                :SHT25_3_P2 ,
+                                :Spresense_3_P2 ;
+            rdfs:label "Grid 3 P2"@en .
 
 
 ###  http://amrita.sony.org/terms#Spresense_1_Interface_1_P1
-amrita:Spresense_1_Interface_1_P1 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:I2CBus_N1_P1 ;
-                                  toco:isIn amrita:Spresense_1_P1 .
+:Spresense_1_Interface_1_P1 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :I2CBus_N1_P1 ;
+                            toco:isIn :Spresense_1_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_1_Interface_1_P2
-amrita:Spresense_1_Interface_1_P2 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:I2CBus_N1_P2 ;
-                                  toco:isIn amrita:Spresense_1_P2 .
+:Spresense_1_Interface_1_P2 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :I2CBus_N1_P2 ;
+                            toco:isIn :Spresense_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_1_Interface_2_P1
-amrita:Spresense_1_Interface_2_P1 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:CSI_N1_P1 ;
-                                  toco:isIn amrita:Spresense_1_P1 .
+:Spresense_1_Interface_2_P1 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :CSI_N1_P1 ;
+                            toco:isIn :Spresense_1_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_1_Interface_2_P2
-amrita:Spresense_1_Interface_2_P2 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:CSI_N1_P2 ;
-                                  toco:isIn amrita:Spresense_1_P2 .
+:Spresense_1_Interface_2_P2 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :CSI_N1_P2 ;
+                            toco:isIn :Spresense_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_1_Interface_3_P1
-amrita:Spresense_1_Interface_3_P1 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:UART2_N1_P1 ;
-                                  toco:isIn amrita:Spresense_1_P1 .
+:Spresense_1_Interface_3_P1 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :UART2_N1_P1 ;
+                            toco:isIn :Spresense_1_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_1_Interface_3_P2
-amrita:Spresense_1_Interface_3_P2 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:UART2_N1_P2 ;
-                                  toco:isIn amrita:Spresense_1_P2 .
+:Spresense_1_Interface_3_P2 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :UART2_N1_P2 ;
+                            toco:isIn :Spresense_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_1_P1
-amrita:Spresense_1_P1 rdf:type owl:NamedIndividual ,
-                               amrita:Spresense ,
-                               mep:Controller ;
-                      toco:hasInterface amrita:Spresense_1_Interface_1_P1 ,
-                                        amrita:Spresense_1_Interface_2_P1 ,
-                                        amrita:Spresense_1_Interface_3_P1 ;
-                      ssn:hasSubSystem amrita:Camera_1_P1 ,
-                                       amrita:ESP32_N1_P1 ,
-                                       amrita:SHT25_1_P1 .
+:Spresense_1_P1 rdf:type owl:NamedIndividual ,
+                         :Spresense ,
+                         mep:Controller ;
+                toco:hasInterface :Spresense_1_Interface_1_P1 ,
+                                  :Spresense_1_Interface_2_P1 ,
+                                  :Spresense_1_Interface_3_P1 ;
+                ssn:hasSubSystem :Camera_1_P1 ,
+                                 :ESP32_N1_P1 ,
+                                 :SHT25_1_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_1_P2
-amrita:Spresense_1_P2 rdf:type owl:NamedIndividual ,
-                               amrita:Spresense ,
-                               mep:Controller ;
-                      toco:hasInterface amrita:Spresense_1_Interface_1_P2 ,
-                                        amrita:Spresense_1_Interface_2_P2 ,
-                                        amrita:Spresense_1_Interface_3_P2 ;
-                      ssn:hasSubSystem amrita:Camera_1_P2 ,
-                                       amrita:ESP32_N1_P2 ,
-                                       amrita:SHT25_1_P2 .
+:Spresense_1_P2 rdf:type owl:NamedIndividual ,
+                         :Spresense ,
+                         mep:Controller ;
+                toco:hasInterface :Spresense_1_Interface_1_P2 ,
+                                  :Spresense_1_Interface_2_P2 ,
+                                  :Spresense_1_Interface_3_P2 ;
+                ssn:hasSubSystem :Camera_1_P2 ,
+                                 :ESP32_N1_P2 ,
+                                 :SHT25_1_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_Interface_1_P1
-amrita:Spresense_2_Interface_1_P1 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:I2CBus_N2_P1 ;
-                                  toco:isIn amrita:Spresense_2_P1 .
+:Spresense_2_Interface_1_P1 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :I2CBus_N2_P1 ;
+                            toco:isIn :Spresense_2_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_Interface_1_P2
-amrita:Spresense_2_Interface_1_P2 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:I2CBus_N2_P2 ;
-                                  toco:isIn amrita:Spresense_2_P2 .
+:Spresense_2_Interface_1_P2 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :I2CBus_N2_P2 ;
+                            toco:isIn :Spresense_2_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_Interface_2_P1
-amrita:Spresense_2_Interface_2_P1 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:CSI_N2_P1 ;
-                                  toco:isIn amrita:Spresense_2_P1 .
+:Spresense_2_Interface_2_P1 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :CSI_N2_P1 ;
+                            toco:isIn :Spresense_2_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_Interface_2_P2
-amrita:Spresense_2_Interface_2_P2 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:CSI_N2_P2 ;
-                                  toco:isIn amrita:Spresense_2_P2 .
+:Spresense_2_Interface_2_P2 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :CSI_N2_P2 ;
+                            toco:isIn :Spresense_2_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_Interface_3_P1
-amrita:Spresense_2_Interface_3_P1 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:UART2_N2_P1 ;
-                                  toco:isIn amrita:Spresense_2_P1 .
+:Spresense_2_Interface_3_P1 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :UART2_N2_P1 ;
+                            toco:isIn :Spresense_2_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_Interface_3_P2
-amrita:Spresense_2_Interface_3_P2 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:UART2_N2_P2 ;
-                                  toco:isIn amrita:Spresense_2_P2 .
+:Spresense_2_Interface_3_P2 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :UART2_N2_P2 ;
+                            toco:isIn :Spresense_2_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_Interface_4_P1
-amrita:Spresense_2_Interface_4_P1 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:SoftSerial_N2_P1 ;
-                                  toco:isIn amrita:Spresense_2_P1 .
+:Spresense_2_Interface_4_P1 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :SoftSerial_N2_P1 ;
+                            toco:isIn :Spresense_2_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_Interface_4_P2
-amrita:Spresense_2_Interface_4_P2 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:SoftSerial_N2_P2 ;
-                                  toco:isIn amrita:Spresense_2_P2 .
+:Spresense_2_Interface_4_P2 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :SoftSerial_N2_P2 ;
+                            toco:isIn :Spresense_2_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_P1
-amrita:Spresense_2_P1 rdf:type owl:NamedIndividual ,
-                               amrita:Spresense ,
-                               mep:Controller ;
-                      toco:hasInterface amrita:Spresense_2_Interface_1_P1 ,
-                                        amrita:Spresense_2_Interface_2_P1 ,
-                                        amrita:Spresense_2_Interface_3_P1 ,
-                                        amrita:Spresense_2_Interface_4_P1 ;
-                      ssn:hasSubSystem amrita:Camera_2_P1 ,
-                                       amrita:ESP32_N2_P1 ,
-                                       amrita:SHT25_2_P1 ,
-                                       amrita:SIM7600_P1 .
+:Spresense_2_P1 rdf:type owl:NamedIndividual ,
+                         :Spresense ,
+                         mep:Controller ;
+                toco:hasInterface :Spresense_2_Interface_1_P1 ,
+                                  :Spresense_2_Interface_2_P1 ,
+                                  :Spresense_2_Interface_3_P1 ,
+                                  :Spresense_2_Interface_4_P1 ;
+                ssn:hasSubSystem :Camera_2_P1 ,
+                                 :ESP32_N2_P1 ,
+                                 :SHT25_2_P1 ,
+                                 :SIM7600_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_2_P2
-amrita:Spresense_2_P2 rdf:type owl:NamedIndividual ,
-                               amrita:Spresense ,
-                               mep:Controller ;
-                      toco:hasInterface amrita:Spresense_2_Interface_1_P2 ,
-                                        amrita:Spresense_2_Interface_2_P2 ,
-                                        amrita:Spresense_2_Interface_3_P2 ,
-                                        amrita:Spresense_2_Interface_4_P2 ;
-                      ssn:hasSubSystem amrita:Camera_2_P2 ,
-                                       amrita:ESP32_N2_P2 ,
-                                       amrita:SHT25_2_P2 ,
-                                       amrita:SIM7600_P2 .
+:Spresense_2_P2 rdf:type owl:NamedIndividual ,
+                         :Spresense ,
+                         mep:Controller ;
+                toco:hasInterface :Spresense_2_Interface_1_P2 ,
+                                  :Spresense_2_Interface_2_P2 ,
+                                  :Spresense_2_Interface_3_P2 ,
+                                  :Spresense_2_Interface_4_P2 ;
+                ssn:hasSubSystem :Camera_2_P2 ,
+                                 :ESP32_N2_P2 ,
+                                 :SHT25_2_P2 ,
+                                 :SIM7600_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_3_Interface_1_P1
-amrita:Spresense_3_Interface_1_P1 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:I2CBus_N3_P1 ;
-                                  toco:isIn amrita:Spresense_3_P1 .
+:Spresense_3_Interface_1_P1 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :I2CBus_N3_P1 ;
+                            toco:isIn :Spresense_3_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_3_Interface_1_P2
-amrita:Spresense_3_Interface_1_P2 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:I2CBus_N3_P2 ;
-                                  toco:isIn amrita:Spresense_3_P2 .
+:Spresense_3_Interface_1_P2 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :I2CBus_N3_P2 ;
+                            toco:isIn :Spresense_3_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_3_Interface_2_P1
-amrita:Spresense_3_Interface_2_P1 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:CSI_N3_P1 ;
-                                  toco:isIn amrita:Spresense_3_P1 .
+:Spresense_3_Interface_2_P1 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :CSI_N3_P1 ;
+                            toco:isIn :Spresense_3_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_3_Interface_2_P2
-amrita:Spresense_3_Interface_2_P2 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:CSI_N3_P2 ;
-                                  toco:isIn amrita:Spresense_3_P2 .
+:Spresense_3_Interface_2_P2 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :CSI_N3_P2 ;
+                            toco:isIn :Spresense_3_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_3_Interface_3_P1
-amrita:Spresense_3_Interface_3_P1 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:UART2_N3_P1 ;
-                                  toco:isIn amrita:Spresense_3_P1 .
+:Spresense_3_Interface_3_P1 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :UART2_N3_P1 ;
+                            toco:isIn :Spresense_3_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_3_Interface_3_P2
-amrita:Spresense_3_Interface_3_P2 rdf:type owl:NamedIndividual ,
-                                           toco:Interface ;
-                                  toco:hasWiredLink amrita:UART2_N3_P2 ;
-                                  toco:isIn amrita:Spresense_3_P2 .
+:Spresense_3_Interface_3_P2 rdf:type owl:NamedIndividual ,
+                                     toco:Interface ;
+                            toco:hasWiredLink :UART2_N3_P2 ;
+                            toco:isIn :Spresense_3_P2 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_3_P1
-amrita:Spresense_3_P1 rdf:type owl:NamedIndividual ,
-                               amrita:Spresense ,
-                               mep:Controller ;
-                      toco:hasInterface amrita:Spresense_3_Interface_1_P1 ,
-                                        amrita:Spresense_3_Interface_2_P1 ,
-                                        amrita:Spresense_3_Interface_3_P1 ;
-                      ssn:hasSubSystem amrita:Camera_3_P1 ,
-                                       amrita:ESP32_N3_P1 ,
-                                       amrita:SHT25_3_P1 .
+:Spresense_3_P1 rdf:type owl:NamedIndividual ,
+                         :Spresense ,
+                         mep:Controller ;
+                toco:hasInterface :Spresense_3_Interface_1_P1 ,
+                                  :Spresense_3_Interface_2_P1 ,
+                                  :Spresense_3_Interface_3_P1 ;
+                ssn:hasSubSystem :Camera_3_P1 ,
+                                 :ESP32_N3_P1 ,
+                                 :SHT25_3_P1 .
 
 
 ###  http://amrita.sony.org/terms#Spresense_3_P2
-amrita:Spresense_3_P2 rdf:type owl:NamedIndividual ,
-                               amrita:Spresense ,
-                               mep:Controller ;
-                      toco:hasInterface amrita:Spresense_3_Interface_1_P2 ,
-                                        amrita:Spresense_3_Interface_2_P2 ,
-                                        amrita:Spresense_3_Interface_3_P2 ;
-                      ssn:hasSubSystem amrita:Camera_3_P2 ,
-                                       amrita:ESP32_N3_P2 ,
-                                       amrita:SHT25_3_P2 .
+:Spresense_3_P2 rdf:type owl:NamedIndividual ,
+                         :Spresense ,
+                         mep:Controller ;
+                toco:hasInterface :Spresense_3_Interface_1_P2 ,
+                                  :Spresense_3_Interface_2_P2 ,
+                                  :Spresense_3_Interface_3_P2 ;
+                ssn:hasSubSystem :Camera_3_P2 ,
+                                 :ESP32_N3_P2 ,
+                                 :SHT25_3_P2 .
 
 
 ###  http://amrita.sony.org/terms#Storey_P1
-amrita:Storey_P1 rdf:type owl:NamedIndividual ,
-                          bot:Storey ;
-                 bot:hasSpace amrita:Space_1_P1 ,
-                              amrita:Space_2_P1 ,
-                              amrita:Space_3_P1 ;
-                 rdfs:label "Storey P1"@en .
+:Storey_P1 rdf:type owl:NamedIndividual ,
+                    bot:Storey ;
+           bot:hasSpace :Space_1_P1 ,
+                        :Space_2_P1 ,
+                        :Space_3_P1 ;
+           rdfs:label "Storey P1"@en .
 
 
 ###  http://amrita.sony.org/terms#Storey_P2
-amrita:Storey_P2 rdf:type owl:NamedIndividual ,
-                          bot:Storey ;
-                 bot:hasSpace amrita:Space_1_P2 ,
-                              amrita:Space_2_P2 ,
-                              amrita:Space_3_P2 ;
-                 rdfs:label "Storey P2"@en .
+:Storey_P2 rdf:type owl:NamedIndividual ,
+                    bot:Storey ;
+           bot:hasSpace :Space_1_P2 ,
+                        :Space_2_P2 ,
+                        :Space_3_P2 ;
+           rdfs:label "Storey P2"@en .
 
 
 ###  http://amrita.sony.org/terms#Temperature1
-amrita:Temperature1 rdf:type owl:NamedIndividual ,
-                             mls:Feature ,
-                             sosa:ActuatableProperty ,
-                             sosa:ObservableProperty ,
-                             ssn:Property ;
-                    amrita:hasType amrita:NumericalFeature .
+:Temperature1 rdf:type owl:NamedIndividual ,
+                       mls:Feature ,
+                       sosa:ActuatableProperty ,
+                       sosa:ObservableProperty ,
+                       ssn:Property ;
+              :hasType :NumericalFeature .
 
 
 ###  http://amrita.sony.org/terms#Turbovent_P1
-amrita:Turbovent_P1 rdf:type owl:NamedIndividual ,
-                             amrita:Turbovent ;
-                    rdfs:label "Turbovent"@en .
+:Turbovent_P1 rdf:type owl:NamedIndividual ,
+                       :Turbovent ;
+              rdfs:label "Turbovent"@en .
 
 
 ###  http://amrita.sony.org/terms#Turbovent_P2
-amrita:Turbovent_P2 rdf:type owl:NamedIndividual ,
-                             amrita:Turbovent .
+:Turbovent_P2 rdf:type owl:NamedIndividual ,
+                       :Turbovent .
 
 
 ###  http://amrita.sony.org/terms#UART2_N1_P1
-amrita:UART2_N1_P1 rdf:type owl:NamedIndividual ,
-                            amrita:UART2 .
+:UART2_N1_P1 rdf:type owl:NamedIndividual ,
+                      :UART2 .
 
 
 ###  http://amrita.sony.org/terms#UART2_N1_P2
-amrita:UART2_N1_P2 rdf:type owl:NamedIndividual ,
-                            amrita:UART2 .
+:UART2_N1_P2 rdf:type owl:NamedIndividual ,
+                      :UART2 .
 
 
 ###  http://amrita.sony.org/terms#UART2_N2_P1
-amrita:UART2_N2_P1 rdf:type owl:NamedIndividual ,
-                            amrita:UART2 .
+:UART2_N2_P1 rdf:type owl:NamedIndividual ,
+                      :UART2 .
 
 
 ###  http://amrita.sony.org/terms#UART2_N2_P2
-amrita:UART2_N2_P2 rdf:type owl:NamedIndividual ,
-                            amrita:UART2 .
+:UART2_N2_P2 rdf:type owl:NamedIndividual ,
+                      :UART2 .
 
 
 ###  http://amrita.sony.org/terms#UART2_N3_P1
-amrita:UART2_N3_P1 rdf:type owl:NamedIndividual ,
-                            amrita:UART2 .
+:UART2_N3_P1 rdf:type owl:NamedIndividual ,
+                      :UART2 .
 
 
 ###  http://amrita.sony.org/terms#UART2_N3_P2
-amrita:UART2_N3_P2 rdf:type owl:NamedIndividual ,
-                            amrita:UART2 .
+:UART2_N3_P2 rdf:type owl:NamedIndividual ,
+                      :UART2 .
 
 
 ###  http://amrita.sony.org/terms#User1
-amrita:User1 rdf:type owl:NamedIndividual ,
-                      amrita:EndUser .
+:User1 rdf:type owl:NamedIndividual ,
+                :EndUser .
 
 
 ###  http://amrita.sony.org/terms#User_1
-amrita:User_1 rdf:type owl:NamedIndividual ,
-                       amrita:User ;
-              amrita:hasRole amrita:Admin_1 .
+:User_1 rdf:type owl:NamedIndividual ,
+                 :User ;
+        :hasRole :Admin_1 .
 
 
 ###  http://amrita.sony.org/terms#VitC
-amrita:VitC rdf:type owl:NamedIndividual ,
-                     <http://purl.obolibrary.org/obo/CHEBI_176783> .
+:VitC rdf:type owl:NamedIndividual ,
+               <http://purl.obolibrary.org/obo/CHEBI_176783> .
 
 
 ###  http://amrita.sony.org/terms#Wall_P1
-amrita:Wall_P1 rdf:type owl:NamedIndividual ,
-                        beo:Wall ;
-               rdfs:label "Wall"@en .
+:Wall_P1 rdf:type owl:NamedIndividual ,
+                  beo:Wall ;
+         rdfs:label "Wall"@en .
 
 
 ###  http://amrita.sony.org/terms#Wall_P2
-amrita:Wall_P2 rdf:type owl:NamedIndividual ,
-                        beo:Wall .
+:Wall_P2 rdf:type owl:NamedIndividual ,
+                  beo:Wall .
 
 
 ###  http://amrita.sony.org/terms#Wired_Link_1_P1
-amrita:Wired_Link_1_P1 rdf:type owl:NamedIndividual ,
-                                toco:WiredLink .
+:Wired_Link_1_P1 rdf:type owl:NamedIndividual ,
+                          toco:WiredLink .
 
 
 ###  http://amrita.sony.org/terms#Wired_Link_1_P2
-amrita:Wired_Link_1_P2 rdf:type owl:NamedIndividual ,
-                                toco:WiredLink .
+:Wired_Link_1_P2 rdf:type owl:NamedIndividual ,
+                          toco:WiredLink .
 
 
 ###  http://amrita.sony.org/terms#Wireless_Association_1_P1
-amrita:Wireless_Association_1_P1 rdf:type owl:NamedIndividual ,
-                                          toco:WiFiAssociation ;
-                                 toco:from amrita:ESP32_WiFiWLAN_N1_P1 ;
-                                 toco:hasBandwidth amrita:Bandwidth_Observation_1_P1 ;
-                                 toco:to amrita:ESP32_WiFiWLAN_N1_N2_P1 .
+:Wireless_Association_1_P1 rdf:type owl:NamedIndividual ,
+                                    toco:WiFiAssociation ;
+                           toco:from :ESP32_WiFiWLAN_N1_P1 ;
+                           toco:hasBandwidth :Bandwidth_Observation_1_P1 ;
+                           toco:to :ESP32_WiFiWLAN_N1_N2_P1 .
 
 
 ###  http://amrita.sony.org/terms#Wireless_Association_1_P2
-amrita:Wireless_Association_1_P2 rdf:type owl:NamedIndividual ,
-                                          toco:WiFiAssociation ;
-                                 toco:from amrita:ESP32_WiFiWLAN_N1_P2 ;
-                                 toco:hasBandwidth amrita:Bandwidth_Observation_1_P2 ;
-                                 toco:to amrita:ESP32_WiFiWLAN_N1_N2_P2 .
+:Wireless_Association_1_P2 rdf:type owl:NamedIndividual ,
+                                    toco:WiFiAssociation ;
+                           toco:from :ESP32_WiFiWLAN_N1_P2 ;
+                           toco:hasBandwidth :Bandwidth_Observation_1_P2 ;
+                           toco:to :ESP32_WiFiWLAN_N1_N2_P2 .
 
 
 ###  http://amrita.sony.org/terms#Wireless_Association_2_P1
-amrita:Wireless_Association_2_P1 rdf:type owl:NamedIndividual ,
-                                          toco:WiFiAssociation ;
-                                 toco:from amrita:ESP32_WiFiWLAN_N3_P1 ;
-                                 toco:hasBandwidth amrita:Bandwidth_Observation_2_P1 ;
-                                 toco:to amrita:ESP32_WiFiWLAN_N3_N2_P1 .
+:Wireless_Association_2_P1 rdf:type owl:NamedIndividual ,
+                                    toco:WiFiAssociation ;
+                           toco:from :ESP32_WiFiWLAN_N3_P1 ;
+                           toco:hasBandwidth :Bandwidth_Observation_2_P1 ;
+                           toco:to :ESP32_WiFiWLAN_N3_N2_P1 .
 
 
 ###  http://amrita.sony.org/terms#Wireless_Association_2_P2
-amrita:Wireless_Association_2_P2 rdf:type owl:NamedIndividual ,
-                                          toco:WiFiAssociation ;
-                                 toco:from amrita:ESP32_WiFiWLAN_N3_P2 ;
-                                 toco:hasBandwidth amrita:Bandwidth_Observation_2_P2 ;
-                                 toco:to amrita:ESP32_WiFiWLAN_N3_N2_P2 .
+:Wireless_Association_2_P2 rdf:type owl:NamedIndividual ,
+                                    toco:WiFiAssociation ;
+                           toco:from :ESP32_WiFiWLAN_N3_P2 ;
+                           toco:hasBandwidth :Bandwidth_Observation_2_P2 ;
+                           toco:to :ESP32_WiFiWLAN_N3_N2_P2 .
 
 
 ###  http://amrita.sony.org/terms#Wireless_Association_3_P1
-amrita:Wireless_Association_3_P1 rdf:type owl:NamedIndividual ,
-                                          toco:WiFiAssociation .
+:Wireless_Association_3_P1 rdf:type owl:NamedIndividual ,
+                                    toco:WiFiAssociation .
 
 
 ###  http://amrita.sony.org/terms#Wireless_Association_3_P2
-amrita:Wireless_Association_3_P2 rdf:type owl:NamedIndividual ,
-                                          toco:WiFiAssociation .
+:Wireless_Association_3_P2 rdf:type owl:NamedIndividual ,
+                                    toco:WiFiAssociation .
 
 
 ###  http://amrita.sony.org/terms#d1L
-amrita:d1L rdf:type owl:NamedIndividual ,
-                    mls:HyperParameter ;
-           amrita:hasActivation "Relu" ;
-           rdfs:label "Dense(1) Layer" ;
-           mls:hasValue 40 .
+:d1L rdf:type owl:NamedIndividual ,
+              mls:HyperParameter ;
+     :hasActivation "Relu" ;
+     rdfs:label "Dense(1) Layer" ;
+     mls:hasValue 40 .
 
 
 ###  http://amrita.sony.org/terms#d2L
-amrita:d2L rdf:type owl:NamedIndividual ,
-                    mls:HyperParameter ;
-           amrita:hasActivation "Relu" ;
-           rdfs:label "Dense(2) Layer" ;
-           mls:hasValue 20 .
+:d2L rdf:type owl:NamedIndividual ,
+              mls:HyperParameter ;
+     :hasActivation "Relu" ;
+     rdfs:label "Dense(2) Layer" ;
+     mls:hasValue 20 .
 
 
 ###  http://amrita.sony.org/terms#dehydrated_1
-amrita:dehydrated_1 rdf:type owl:NamedIndividual ,
-                             amrita:dehydrated .
+:dehydrated_1 rdf:type owl:NamedIndividual ,
+                       :dehydrated .
 
 
 ###  http://amrita.sony.org/terms#dr
-amrita:dr rdf:type owl:NamedIndividual ,
-                   mls:HyperParameter ;
-          rdfs:label "Dropout Layer" ;
-          mls:hasValue 0.25 .
+:dr rdf:type owl:NamedIndividual ,
+             mls:HyperParameter ;
+    rdfs:label "Dropout Layer" ;
+    mls:hasValue 0.25 .
 
 
 ###  http://amrita.sony.org/terms#gd
-amrita:gd rdf:type owl:NamedIndividual ,
-                   mls:Algorithm ;
-          dcterms:description "Gradient Descent" .
+:gd rdf:type owl:NamedIndividual ,
+             mls:Algorithm ;
+    dcterms:description "Gradient Descent" .
 
 
 ###  http://amrita.sony.org/terms#il
-amrita:il rdf:type owl:NamedIndividual ,
-                   mls:HyperParameter ;
-          rdfs:label "Input Layer" ;
-          mls:hasValue 47 .
+:il rdf:type owl:NamedIndividual ,
+             mls:HyperParameter ;
+    rdfs:label "Input Layer" ;
+    mls:hasValue 47 .
 
 
 ###  http://amrita.sony.org/terms#max_a
-amrita:max_a rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Maximum A- Channel value" ;
-             rdfs:comment "This feature is the maximum A-channel value. Create a distribution of all the A-channel values and find the maximum value" .
+:max_a rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Maximum A- Channel value" ;
+       rdfs:comment "This feature is the maximum A-channel value. Create a distribution of all the A-channel values and find the maximum value" .
 
 
 ###  http://amrita.sony.org/terms#max_b
-amrita:max_b rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Maximum blue channel pixel value" ;
-             rdfs:comment "This feature is the maximum intensity blue channel pixel. Make a distrbution of all the blue channel pixel intensities and find the maximum intensity value" .
+:max_b rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Maximum blue channel pixel value" ;
+       rdfs:comment "This feature is the maximum intensity blue channel pixel. Make a distrbution of all the blue channel pixel intensities and find the maximum intensity value" .
 
 
 ###  http://amrita.sony.org/terms#max_b1
-amrita:max_b1 rdf:type owl:NamedIndividual ,
-                       mls:Feature ;
-              amrita:hasType amrita:NumericalFeature ;
-              amrita:hasName "Maximum B- Channel Value" ;
-              rdfs:comment "This feature is the maximum B-channel value. Create a distribution of all the B-channel values and find the maximum value" .
+:max_b1 rdf:type owl:NamedIndividual ,
+                 mls:Feature ;
+        :hasType :NumericalFeature ;
+        :hasName "Maximum B- Channel Value" ;
+        rdfs:comment "This feature is the maximum B-channel value. Create a distribution of all the B-channel values and find the maximum value" .
 
 
 ###  http://amrita.sony.org/terms#max_g
-amrita:max_g rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Maximum Green Channel Pixel Value" ;
-             rdfs:comment "This feature is the maximum intensity green channel pixel. Make a distrbution of all the red green channel pixel intensities and find the maximum intensity value" .
+:max_g rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Maximum Green Channel Pixel Value" ;
+       rdfs:comment "This feature is the maximum intensity green channel pixel. Make a distrbution of all the red green channel pixel intensities and find the maximum intensity value" .
 
 
 ###  http://amrita.sony.org/terms#max_h
-amrita:max_h rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Maximum hue Channel Value" ;
-             rdfs:comment "This feature is the maximum hue channel value. Create a distribution of all the hue channel values and find the maximum value" .
+:max_h rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Maximum hue Channel Value" ;
+       rdfs:comment "This feature is the maximum hue channel value. Create a distribution of all the hue channel values and find the maximum value" .
 
 
 ###  http://amrita.sony.org/terms#max_l
-amrita:max_l rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Maximum lightness channel Value" ;
-             rdfs:comment "This feature is the maximum lightness channel value. Create a distribution of all the lightness channel values and find the maximum value" .
+:max_l rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Maximum lightness channel Value" ;
+       rdfs:comment "This feature is the maximum lightness channel value. Create a distribution of all the lightness channel values and find the maximum value" .
 
 
 ###  http://amrita.sony.org/terms#max_r
-amrita:max_r rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Maximum red Channel Pixel Value" ;
-             rdfs:comment "This feature is the maximum intensity red channel pixel. Make a distrbution of all the red channel pixel intensities and find the maximum intensity value" .
+:max_r rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Maximum red Channel Pixel Value" ;
+       rdfs:comment "This feature is the maximum intensity red channel pixel. Make a distrbution of all the red channel pixel intensities and find the maximum intensity value" .
 
 
 ###  http://amrita.sony.org/terms#max_s
-amrita:max_s rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Maximum saturation channel value" ;
-             rdfs:comment "This feature is the maximum saturation channel value. Create a distribution of all the saturation channel values and find the maximum value" .
+:max_s rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Maximum saturation channel value" ;
+       rdfs:comment "This feature is the maximum saturation channel value. Create a distribution of all the saturation channel values and find the maximum value" .
 
 
 ###  http://amrita.sony.org/terms#max_v
-amrita:max_v rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Maximum value channel value" ;
-             rdfs:comment "This feature is the maximum value channel value. Create a distribution of all the value channel values and find the maximum value" .
+:max_v rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Maximum value channel value" ;
+       rdfs:comment "This feature is the maximum value channel value. Create a distribution of all the value channel values and find the maximum value" .
 
 
 ###  http://amrita.sony.org/terms#mean_a
-amrita:mean_a rdf:type owl:NamedIndividual ,
-                       mls:Feature ;
-              amrita:hasType amrita:NumericalFeature ;
-              amrita:hasName "Mean of A-channel values" ;
-              rdfs:comment "This feature is the mean of all the A-channel values. Extract the A-channel values from the LAB image. Take the sum of these values and divide by the total number of A-channel pixels" .
+:mean_a rdf:type owl:NamedIndividual ,
+                 mls:Feature ;
+        :hasType :NumericalFeature ;
+        :hasName "Mean of A-channel values" ;
+        rdfs:comment "This feature is the mean of all the A-channel values. Extract the A-channel values from the LAB image. Take the sum of these values and divide by the total number of A-channel pixels" .
 
 
 ###  http://amrita.sony.org/terms#mean_b
-amrita:mean_b rdf:type owl:NamedIndividual ,
-                       mls:Feature ;
-              amrita:hasType amrita:NumericalFeature ;
-              amrita:hasName "Mean of blue channel pixels" ;
-              rdfs:comment "This features is the mean of all the blue channel pixels. Extract the blue channel pixels from the RGB image. Take its sum and divide that sum by the total number of blue channel pixels" .
+:mean_b rdf:type owl:NamedIndividual ,
+                 mls:Feature ;
+        :hasType :NumericalFeature ;
+        :hasName "Mean of blue channel pixels" ;
+        rdfs:comment "This features is the mean of all the blue channel pixels. Extract the blue channel pixels from the RGB image. Take its sum and divide that sum by the total number of blue channel pixels" .
 
 
 ###  http://amrita.sony.org/terms#mean_b1
-amrita:mean_b1 rdf:type owl:NamedIndividual ,
-                        mls:Feature ;
-               amrita:hasType amrita:NumericalFeature ;
-               amrita:hasName "Mean of B-channel values" ;
-               rdfs:comment "This feature is the mean of all the B-channel values. Extract the B-channel values from the LAB image. Take the sum of these values and divide by the total number of B-channel pixels" .
+:mean_b1 rdf:type owl:NamedIndividual ,
+                  mls:Feature ;
+         :hasType :NumericalFeature ;
+         :hasName "Mean of B-channel values" ;
+         rdfs:comment "This feature is the mean of all the B-channel values. Extract the B-channel values from the LAB image. Take the sum of these values and divide by the total number of B-channel pixels" .
 
 
 ###  http://amrita.sony.org/terms#mean_g
-amrita:mean_g rdf:type owl:NamedIndividual ,
-                       mls:Feature ;
-              amrita:hasType amrita:NumericalFeature ;
-              amrita:hasName "Mean of green channel pixels" ;
-              rdfs:comment "This features is the mean of all the green channel pixels. Extract the green channel pixels from the RGB image. Take its sum and divide that sum by the total number of green channel pixels" .
+:mean_g rdf:type owl:NamedIndividual ,
+                 mls:Feature ;
+        :hasType :NumericalFeature ;
+        :hasName "Mean of green channel pixels" ;
+        rdfs:comment "This features is the mean of all the green channel pixels. Extract the green channel pixels from the RGB image. Take its sum and divide that sum by the total number of green channel pixels" .
 
 
 ###  http://amrita.sony.org/terms#mean_h
-amrita:mean_h rdf:type owl:NamedIndividual ,
-                       mls:Feature ;
-              amrita:hasType amrita:NumericalFeature ;
-              amrita:hasName "Mean of hue channel values" ;
-              rdfs:comment "This feature is the mean of all the hue channel values. Extract the hue channel values from the HSV image. Take the sum of these values and divide by the total number of hue channel pixels" .
+:mean_h rdf:type owl:NamedIndividual ,
+                 mls:Feature ;
+        :hasType :NumericalFeature ;
+        :hasName "Mean of hue channel values" ;
+        rdfs:comment "This feature is the mean of all the hue channel values. Extract the hue channel values from the HSV image. Take the sum of these values and divide by the total number of hue channel pixels" .
 
 
 ###  http://amrita.sony.org/terms#mean_l
-amrita:mean_l rdf:type owl:NamedIndividual ,
-                       mls:Feature ;
-              amrita:hasType amrita:NumericalFeature ;
-              amrita:hasName "Mean of lightness channel values" ;
-              rdfs:comment "This feature is the mean of all the lightness channel values. Extract the lightness channel values from the LAB image. Take the sum of these values and divide by the total number of lightness channel pixels" .
+:mean_l rdf:type owl:NamedIndividual ,
+                 mls:Feature ;
+        :hasType :NumericalFeature ;
+        :hasName "Mean of lightness channel values" ;
+        rdfs:comment "This feature is the mean of all the lightness channel values. Extract the lightness channel values from the LAB image. Take the sum of these values and divide by the total number of lightness channel pixels" .
 
 
 ###  http://amrita.sony.org/terms#mean_r
-amrita:mean_r rdf:type owl:NamedIndividual ,
-                       mls:Feature ;
-              amrita:hasType amrita:NumericalFeature ;
-              amrita:hasName "Mean of red channel pixels" ;
-              rdfs:comment "This features is the mean of all the red channel pixels, Extract the red channel pixels from the RGB image. Take its sum and divide that sum by the total number of red channel pixels" .
+:mean_r rdf:type owl:NamedIndividual ,
+                 mls:Feature ;
+        :hasType :NumericalFeature ;
+        :hasName "Mean of red channel pixels" ;
+        rdfs:comment "This features is the mean of all the red channel pixels, Extract the red channel pixels from the RGB image. Take its sum and divide that sum by the total number of red channel pixels" .
 
 
 ###  http://amrita.sony.org/terms#mean_s
-amrita:mean_s rdf:type owl:NamedIndividual ,
-                       mls:Feature ;
-              amrita:hasType amrita:NumericalFeature ;
-              amrita:hasName "Mean of saturation channel values" ;
-              rdfs:comment "This feature is the mean of all the saturation channel values. Extract the saturation channel values from the HSV image. Take the sum of these values and divide by the total number of saturation channel pixels" .
+:mean_s rdf:type owl:NamedIndividual ,
+                 mls:Feature ;
+        :hasType :NumericalFeature ;
+        :hasName "Mean of saturation channel values" ;
+        rdfs:comment "This feature is the mean of all the saturation channel values. Extract the saturation channel values from the HSV image. Take the sum of these values and divide by the total number of saturation channel pixels" .
 
 
 ###  http://amrita.sony.org/terms#mean_v
-amrita:mean_v rdf:type owl:NamedIndividual ,
-                       mls:Feature ;
-              amrita:hasType amrita:NumericalFeature ;
-              amrita:hasName "Mean of value channel values" ;
-              rdfs:comment "This feature is the mean of all the value channel values. Extract the value channel values from the HSV image. Take the sum of these values and divide by the total number of value channel pixels" .
+:mean_v rdf:type owl:NamedIndividual ,
+                 mls:Feature ;
+        :hasType :NumericalFeature ;
+        :hasName "Mean of value channel values" ;
+        rdfs:comment "This feature is the mean of all the value channel values. Extract the value channel values from the HSV image. Take the sum of these values and divide by the total number of value channel pixels" .
 
 
 ###  http://amrita.sony.org/terms#min_a
-amrita:min_a rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Minimum A-channel value" ;
-             rdfs:comment "This feature is the minimum A-channel value. Create a distribution of all the A-channel values and find the minimum value" .
+:min_a rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Minimum A-channel value" ;
+       rdfs:comment "This feature is the minimum A-channel value. Create a distribution of all the A-channel values and find the minimum value" .
 
 
 ###  http://amrita.sony.org/terms#min_b
-amrita:min_b rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Minimum blue channel pixel value" ;
-             rdfs:comment "This feature is the minimum intensity blue channel pixel. Make a distribution of all the blue channel pixel intensities and find the minimum intensity value" .
+:min_b rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Minimum blue channel pixel value" ;
+       rdfs:comment "This feature is the minimum intensity blue channel pixel. Make a distribution of all the blue channel pixel intensities and find the minimum intensity value" .
 
 
 ###  http://amrita.sony.org/terms#min_b1
-amrita:min_b1 rdf:type owl:NamedIndividual ,
-                       mls:Feature ;
-              amrita:hasType amrita:NumericalFeature ;
-              amrita:hasName "Minimum B-channel value" ;
-              rdfs:comment "This feature is the minimum B-channel value. Create a distribution of all the B-channel values and find the minimum value" .
+:min_b1 rdf:type owl:NamedIndividual ,
+                 mls:Feature ;
+        :hasType :NumericalFeature ;
+        :hasName "Minimum B-channel value" ;
+        rdfs:comment "This feature is the minimum B-channel value. Create a distribution of all the B-channel values and find the minimum value" .
 
 
 ###  http://amrita.sony.org/terms#min_g
-amrita:min_g rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Minimum green channel pixel value" ;
-             rdfs:comment "This feature is the minimum intensity green channel pixel. Make a distribution of all the green channel pixel intensities and find the minimum intensity value" .
+:min_g rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Minimum green channel pixel value" ;
+       rdfs:comment "This feature is the minimum intensity green channel pixel. Make a distribution of all the green channel pixel intensities and find the minimum intensity value" .
 
 
 ###  http://amrita.sony.org/terms#min_h
-amrita:min_h rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Minimum hue channel value" ;
-             rdfs:comment "This feature is the minimum hue channel value. Create a distribution of all the hue channel values and find the minimum value" .
+:min_h rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Minimum hue channel value" ;
+       rdfs:comment "This feature is the minimum hue channel value. Create a distribution of all the hue channel values and find the minimum value" .
 
 
 ###  http://amrita.sony.org/terms#min_l
-amrita:min_l rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Minimum lightness channel value" ;
-             rdfs:comment "This feature is the minimum lightness channel value. Create a distribution of all the lightness channel values and find the minimum value" .
+:min_l rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Minimum lightness channel value" ;
+       rdfs:comment "This feature is the minimum lightness channel value. Create a distribution of all the lightness channel values and find the minimum value" .
 
 
 ###  http://amrita.sony.org/terms#min_r
-amrita:min_r rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Minimum red channel pixel value" ;
-             rdfs:comment "This feature is the standard deviation of the red channel pixels. Make a distribution consisting of all the red channel pixel intensity values and calculate the standard deviation of that distrbution" .
+:min_r rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Minimum red channel pixel value" ;
+       rdfs:comment "This feature is the standard deviation of the red channel pixels. Make a distribution consisting of all the red channel pixel intensity values and calculate the standard deviation of that distrbution" .
 
 
 ###  http://amrita.sony.org/terms#min_s
-amrita:min_s rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Minimum saturation channel value" ;
-             rdfs:comment "This feature is the minimum saturation channel value. Create a distribution of all the saturation channel values and find the minimum value" .
+:min_s rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Minimum saturation channel value" ;
+       rdfs:comment "This feature is the minimum saturation channel value. Create a distribution of all the saturation channel values and find the minimum value" .
 
 
 ###  http://amrita.sony.org/terms#min_v
-amrita:min_v rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Minimum value channel value" ;
-             rdfs:comment "This feature is the minimum value channel value. Create a distribution of all the value channel values and find the minimum value" .
+:min_v rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Minimum value channel value" ;
+       rdfs:comment "This feature is the minimum value channel value. Create a distribution of all the value channel values and find the minimum value" .
 
 
 ###  http://amrita.sony.org/terms#numberOfFeatures
-amrita:numberOfFeatures rdf:type owl:NamedIndividual ,
-                                 mls:DatasetCharacteristic ;
-                        mls:hasValue 47 .
+:numberOfFeatures rdf:type owl:NamedIndividual ,
+                           mls:DatasetCharacteristic ;
+                  mls:hasValue 47 .
 
 
 ###  http://amrita.sony.org/terms#numberOfInstances
-amrita:numberOfInstances rdf:type owl:NamedIndividual ,
-                                  mls:DatasetCharacteristic ;
-                         mls:hasValue 449 .
+:numberOfInstances rdf:type owl:NamedIndividual ,
+                            mls:DatasetCharacteristic ;
+                   mls:hasValue 449 .
 
 
 ###  http://amrita.sony.org/terms#ol
-amrita:ol rdf:type owl:NamedIndividual ,
-                   mls:HyperParameter ;
-          amrita:hasActivation "Softmax" ;
-          rdfs:label "Output Layer" ;
-          mls:hasValue 3 .
+:ol rdf:type owl:NamedIndividual ,
+             mls:HyperParameter ;
+    :hasActivation "Softmax" ;
+    rdfs:label "Output Layer" ;
+    mls:hasValue 3 .
 
 
 ###  http://amrita.sony.org/terms#optimiser
-amrita:optimiser rdf:type owl:NamedIndividual ,
-                          mls:ImplementationCharacteristic ;
-                 dcterms:description "Optimiser= Adam" ;
-                 mls:hasValue "Adam" .
+:optimiser rdf:type owl:NamedIndividual ,
+                    mls:ImplementationCharacteristic ;
+           dcterms:description "Optimiser= Adam" ;
+           mls:hasValue "Adam" .
 
 
 ###  http://amrita.sony.org/terms#person_1
-amrita:person_1 rdf:type owl:NamedIndividual ,
-                         <http://purl.obolibrary.org/obo/FOODON_03510026> .
+:person_1 rdf:type owl:NamedIndividual ,
+                   <http://purl.obolibrary.org/obo/FOODON_03510026> .
 
 
 ###  http://amrita.sony.org/terms#predictiveAccuracy
-amrita:predictiveAccuracy rdf:type owl:NamedIndividual ,
-                                   mls:EvaluationMeasure ;
-                          <http://purl.oclc.org/net/unis/ontology/sensordata.owl/hasValue> 91.11 ;
-                          mls:hasValue "91.11"^^xsd:float .
+:predictiveAccuracy rdf:type owl:NamedIndividual ,
+                             mls:EvaluationMeasure ;
+                    <http://purl.oclc.org/net/unis/ontology/sensordata.owl/hasValue> 91.11 ;
+                    mls:hasValue "91.11"^^xsd:float .
 
 
 ###  http://amrita.sony.org/terms#qata
-amrita:qata rdf:type owl:NamedIndividual ,
-                     mls:Algorithm ;
-            dcterms:description "Quan tization Aware Training Algorithm" .
+:qata rdf:type owl:NamedIndividual ,
+               mls:Algorithm ;
+      dcterms:description "Quan tization Aware Training Algorithm" .
 
 
 ###  http://amrita.sony.org/terms#std_a
-amrita:std_a rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Standard Deviation of A-channel values" ;
-             rdfs:comment "This feature is the standard deviation of the A-channel values. Create a distribution of all the A-channel values and calculate the standard deviation of that distribution" .
+:std_a rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Standard Deviation of A-channel values" ;
+       rdfs:comment "This feature is the standard deviation of the A-channel values. Create a distribution of all the A-channel values and calculate the standard deviation of that distribution" .
 
 
 ###  http://amrita.sony.org/terms#std_b
-amrita:std_b rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Standard Deviation of blue channel pixels" ;
-             rdfs:comment "This feature is the standard deviation of the blue channel pixels. Make a distribution consisting of all the blue channel pixel intensity values and calculate the standard deviation of that distrbution" .
+:std_b rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Standard Deviation of blue channel pixels" ;
+       rdfs:comment "This feature is the standard deviation of the blue channel pixels. Make a distribution consisting of all the blue channel pixel intensity values and calculate the standard deviation of that distrbution" .
 
 
 ###  http://amrita.sony.org/terms#std_b1
-amrita:std_b1 rdf:type owl:NamedIndividual ,
-                       mls:Feature ;
-              amrita:hasType amrita:NumericalFeature ;
-              amrita:hasName "Standard Deviation of B-channel values" ;
-              rdfs:comment "This feature is the standard deviation of the B-channel values. Create a distribution of all the B-channel values and calculate the standard deviation of that distribution" .
+:std_b1 rdf:type owl:NamedIndividual ,
+                 mls:Feature ;
+        :hasType :NumericalFeature ;
+        :hasName "Standard Deviation of B-channel values" ;
+        rdfs:comment "This feature is the standard deviation of the B-channel values. Create a distribution of all the B-channel values and calculate the standard deviation of that distribution" .
 
 
 ###  http://amrita.sony.org/terms#std_g
-amrita:std_g rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Standard Deviation of green channel pixels" ;
-             rdfs:comment "This feature is the standard deviation of the green channel pixels. Make a distribution consisting of all the green channel pixel intensity values and calculate the standard deviation of that distrbution" .
+:std_g rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Standard Deviation of green channel pixels" ;
+       rdfs:comment "This feature is the standard deviation of the green channel pixels. Make a distribution consisting of all the green channel pixel intensity values and calculate the standard deviation of that distrbution" .
 
 
 ###  http://amrita.sony.org/terms#std_h
-amrita:std_h rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Standard Deviation of hue channel values" ;
-             rdfs:comment "This feature is the standard deviation of the hue channel values. Create a distribution of all the hue channel values and calculate the standard deviation of that distribution" .
+:std_h rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Standard Deviation of hue channel values" ;
+       rdfs:comment "This feature is the standard deviation of the hue channel values. Create a distribution of all the hue channel values and calculate the standard deviation of that distribution" .
 
 
 ###  http://amrita.sony.org/terms#std_l
-amrita:std_l rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Standard Deviation of lightness channel values" ;
-             rdfs:comment "This feature is the standard deviation of the lightness channel values. Create a distribution of all the lightness channel values and calculate the standard deviation of that distribution" .
+:std_l rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Standard Deviation of lightness channel values" ;
+       rdfs:comment "This feature is the standard deviation of the lightness channel values. Create a distribution of all the lightness channel values and calculate the standard deviation of that distribution" .
 
 
 ###  http://amrita.sony.org/terms#std_r
-amrita:std_r rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Standard Deviation of red channel pixels" ;
-             rdfs:comment "This feature is the standard deviation of the red channel pixels. Make a distribution consisting of all the red channel pixel intensity values and calculate the standard deviation of that distrbution" .
+:std_r rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Standard Deviation of red channel pixels" ;
+       rdfs:comment "This feature is the standard deviation of the red channel pixels. Make a distribution consisting of all the red channel pixel intensity values and calculate the standard deviation of that distrbution" .
 
 
 ###  http://amrita.sony.org/terms#std_s
-amrita:std_s rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Standard Deviation of saturation" ;
-             rdfs:comment "This feature is the standard deviation of the saturation channel values. Create a distribution of all the saturation channel values and calculate the standard deviation of that distribution" .
+:std_s rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Standard Deviation of saturation" ;
+       rdfs:comment "This feature is the standard deviation of the saturation channel values. Create a distribution of all the saturation channel values and calculate the standard deviation of that distribution" .
 
 
 ###  http://amrita.sony.org/terms#std_v
-amrita:std_v rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Standard Deviation of value channel" ;
-             rdfs:comment "This feature is the standard deviation of the value channel values. Create a distribution of all the value channel values and calculate the standard deviation of that distribution" .
+:std_v rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Standard Deviation of value channel" ;
+       rdfs:comment "This feature is the standard deviation of the value channel values. Create a distribution of all the value channel values and calculate the standard deviation of that distribution" .
 
 
 ###  http://amrita.sony.org/terms#task001
-amrita:task001 rdf:type owl:NamedIndividual ,
-                        mls:Task ;
-               mls:hasValue "Classification of tomatoes based on their dryness level into 3 classes (fresh, semi-dried, dried)" .
+:task001 rdf:type owl:NamedIndividual ,
+                  mls:Task ;
+         mls:hasValue "Classification of tomatoes based on their dryness level into 3 classes (fresh, semi-dried, dried)" .
 
 
 ###  http://amrita.sony.org/terms#tensorFlow
-amrita:tensorFlow rdf:type owl:NamedIndividual ,
-                           mls:Software ;
-                  amrita:mls:hasValue "Tensorflow 2.x" ;
-                  mls:hasPart amrita:tf_keras .
+:tensorFlow rdf:type owl:NamedIndividual ,
+                     mls:Software ;
+            :mls:hasValue "Tensorflow 2.x" ;
+            mls:hasPart :tf_keras .
 
 
 ###  http://amrita.sony.org/terms#tf_keras
-amrita:tf_keras rdf:type owl:NamedIndividual ,
-                         mls:Implementation ;
-                dcterms:description "tf.keras" ;
-                mls:hasHyperParameter amrita:d1L ,
-                                      amrita:d2L ,
-                                      amrita:dr ,
-                                      amrita:il ,
-                                      amrita:ol ;
-                mls:hasQuality amrita:LF ,
-                               amrita:optimizer ;
-                mls:implements amrita:gd ,
-                               amrita:qata .
+:tf_keras rdf:type owl:NamedIndividual ,
+                   mls:Implementation ;
+          dcterms:description "tf.keras" ;
+          mls:hasHyperParameter :d1L ,
+                                :d2L ,
+                                :dr ,
+                                :il ,
+                                :ol ;
+          mls:hasQuality :LF ,
+                         :optimizer ;
+          mls:implements :gd ,
+                         :qata .
 
 
 ###  http://amrita.sony.org/terms#tomato001
-amrita:tomato001 rdf:type owl:NamedIndividual ,
-                          mls:Dataset ;
-                 amrita:hasFeatureSet amrita:tomato001_Feature_set_1 ;
-                 mls:hasQuality amrita:numberOfFeatures ,
-                                amrita:numberOfInstances .
+:tomato001 rdf:type owl:NamedIndividual ,
+                    mls:Dataset ;
+           :hasFeatureSet :tomato001_Feature_set_1 ;
+           mls:hasQuality :numberOfFeatures ,
+                          :numberOfInstances .
 
 
 ###  http://amrita.sony.org/terms#tomato001_Feature_set_1
-amrita:tomato001_Feature_set_1 rdf:type owl:NamedIndividual ,
-                                        amrita:Featureset ;
-                               amrita:hasFeature amrita:Humidity ,
-                                                 amrita:Temperature1 ,
-                                                 amrita:max_a ,
-                                                 amrita:max_b ,
-                                                 amrita:max_b1 ,
-                                                 amrita:max_g ,
-                                                 amrita:max_h ,
-                                                 amrita:max_l ,
-                                                 amrita:max_r ,
-                                                 amrita:max_s ,
-                                                 amrita:max_v ,
-                                                 amrita:mean_a .
+:tomato001_Feature_set_1 rdf:type owl:NamedIndividual ,
+                                  :Featureset ;
+                         :hasFeature :Humidity ,
+                                     :Temperature1 ,
+                                     :max_a ,
+                                     :max_b ,
+                                     :max_b1 ,
+                                     :max_g ,
+                                     :max_h ,
+                                     :max_l ,
+                                     :max_r ,
+                                     :max_s ,
+                                     :max_v ,
+                                     :mean_a .
 
 
 ###  http://amrita.sony.org/terms#tomato001_data_1_1
-amrita:tomato001_data_1_1 rdf:type owl:NamedIndividual ;
-                          amrita:hasType amrita:mean_r ;
-                          mls:hasValue "0.75"^^xsd:double .
+:tomato001_data_1_1 rdf:type owl:NamedIndividual ;
+                    :hasType :mean_r ;
+                    mls:hasValue "0.75"^^xsd:double .
 
 
 ###  http://amrita.sony.org/terms#tomato001_data_1_2
-amrita:tomato001_data_1_2 rdf:type owl:NamedIndividual ;
-                          amrita:hasType amrita:std_r ;
-                          mls:hasValue "0.95"^^xsd:double .
+:tomato001_data_1_2 rdf:type owl:NamedIndividual ;
+                    :hasType :std_r ;
+                    mls:hasValue "0.95"^^xsd:double .
 
 
 ###  http://amrita.sony.org/terms#tomato1
-amrita:tomato1 rdf:type owl:NamedIndividual ,
-                        <http://amrita_food.org/terms#tomato(tunnel-dried)> ;
-               amritafood:contains amrita:VitC ;
-               <http://purl.obolibrary.org/obo/RO_0000053> amrita:dehydrated_1 ;
-               <http://purl.obolibrary.org/obo/RO_0001025> amrita:Space_1_P1 .
+:tomato1 rdf:type owl:NamedIndividual ,
+                  <http://amrita_food.org/terms#tomato(tunnel-dried)> ;
+         amritafood:contains :VitC ;
+         <http://purl.obolibrary.org/obo/RO_0000053> :dehydrated_1 ;
+         <http://purl.obolibrary.org/obo/RO_0001025> :Space_1_P1 .
 
 
 ###  http://amrita.sony.org/terms#train-test-split
-amrita:train-test-split rdf:type owl:NamedIndividual ,
-                                 mls:EvaluationProcedure ;
-                        rdfs:label "train-test-split" ;
-                        mls:hasValue "80% training, 20% testing" .
+:train-test-split rdf:type owl:NamedIndividual ,
+                           mls:EvaluationProcedure ;
+                  rdfs:label "train-test-split" ;
+                  mls:hasValue "80% training, 20% testing" .
 
 
 ###  http://amrita.sony.org/terms#tunnelDrying
-amrita:tunnelDrying rdf:type owl:NamedIndividual ,
-                             amritafood:solar_tunnel_drying .
+:tunnelDrying rdf:type owl:NamedIndividual ,
+                       amritafood:solar_tunnel_drying .
 
 
 ###  http://amrita.sony.org/terms#var_a
-amrita:var_a rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasType amrita:NumericalFeature ;
-             amrita:hasName "Variance of A-channel values" ;
-             rdfs:comment "This feature is the variance of all the A-channel values. Create a distribution of all the A-channel values and find the variance of the distribution" .
+:var_a rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasType :NumericalFeature ;
+       :hasName "Variance of A-channel values" ;
+       rdfs:comment "This feature is the variance of all the A-channel values. Create a distribution of all the A-channel values and find the variance of the distribution" .
 
 
 ###  http://amrita.sony.org/terms#var_b
-amrita:var_b rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasName "Variance of blue channel pixels" ;
-             rdfs:comment "This feature is the variance of all the blue channel pixles. Make a distrbution of all the blue channel pixel intensities and find the variance of the distrbution" .
+:var_b rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasName "Variance of blue channel pixels" ;
+       rdfs:comment "This feature is the variance of all the blue channel pixles. Make a distrbution of all the blue channel pixel intensities and find the variance of the distrbution" .
 
 
 ###  http://amrita.sony.org/terms#var_b1
-amrita:var_b1 rdf:type owl:NamedIndividual ,
-                       mls:Feature ;
-              amrita:hasName "Variance of B-channel values" ;
-              rdfs:comment "This feature is the variance of all the B-channel values. Create a distribution of all the B-channel values and find the variance of the distribution" .
+:var_b1 rdf:type owl:NamedIndividual ,
+                 mls:Feature ;
+        :hasName "Variance of B-channel values" ;
+        rdfs:comment "This feature is the variance of all the B-channel values. Create a distribution of all the B-channel values and find the variance of the distribution" .
 
 
 ###  http://amrita.sony.org/terms#var_g
-amrita:var_g rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasName "Variance of green channel pixels" ;
-             rdfs:comment "This feature is the variance of all the green channel pixles. Make a distrbution of all the green channel pixel intensities and find the variance of the distrbution" .
+:var_g rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasName "Variance of green channel pixels" ;
+       rdfs:comment "This feature is the variance of all the green channel pixles. Make a distrbution of all the green channel pixel intensities and find the variance of the distrbution" .
 
 
 ###  http://amrita.sony.org/terms#var_h
-amrita:var_h rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasName "Variance of hue channel values" ;
-             rdfs:comment "This feature is the variance of all the hue channel values. Create a distribution of all the hue channel values and find the variance of the distribution" .
+:var_h rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasName "Variance of hue channel values" ;
+       rdfs:comment "This feature is the variance of all the hue channel values. Create a distribution of all the hue channel values and find the variance of the distribution" .
 
 
 ###  http://amrita.sony.org/terms#var_l
-amrita:var_l rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasName "Variance of lightness channel values" ;
-             rdfs:comment "This feature is the variance of all the lightness channel values. Create a distribution of all the lightness channel values and find the variance of the distribution" .
+:var_l rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasName "Variance of lightness channel values" ;
+       rdfs:comment "This feature is the variance of all the lightness channel values. Create a distribution of all the lightness channel values and find the variance of the distribution" .
 
 
 ###  http://amrita.sony.org/terms#var_r
-amrita:var_r rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasName "Variance of red channel pixels" ;
-             rdfs:comment "This feature is the variance of all the red channel pixles. Make a distrbution of all the red channel pixel intensities and find the variance of the distrbution" .
+:var_r rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasName "Variance of red channel pixels" ;
+       rdfs:comment "This feature is the variance of all the red channel pixles. Make a distrbution of all the red channel pixel intensities and find the variance of the distrbution" .
 
 
 ###  http://amrita.sony.org/terms#var_s
-amrita:var_s rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasName "Variance of saturation channel values" ;
-             rdfs:comment "This feature is the variance of all the saturation channel values. Create a distribution of all the saturation channel values and find the variance of the distribution" .
+:var_s rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasName "Variance of saturation channel values" ;
+       rdfs:comment "This feature is the variance of all the saturation channel values. Create a distribution of all the saturation channel values and find the variance of the distribution" .
 
 
 ###  http://amrita.sony.org/terms#var_v
-amrita:var_v rdf:type owl:NamedIndividual ,
-                      mls:Feature ;
-             amrita:hasName "Variance of value channel values" ;
-             rdfs:comment "This feature is the variance of all the value channel values. Create a distribution of all the value channel values and find the variance of the distribution" .
+:var_v rdf:type owl:NamedIndividual ,
+                mls:Feature ;
+       :hasName "Variance of value channel values" ;
+       rdfs:comment "This feature is the variance of all the value channel values. Create a distribution of all the value channel values and find the variance of the distribution" .
 
 
 #################################################################

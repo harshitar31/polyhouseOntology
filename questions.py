@@ -55,10 +55,13 @@ TOCO ONTOLOGY
 # question="Are there any wireless interfaces?"
 # question="What are the interfaces in ESP32?"
 # question="How many esp32 are connected to polyhouse 1?"
-# question="can you tell me how the communication works in polyhouse 1 with the help of the interfaces?"
+question="can you tell me how the communication works in polyhouse 1 with the help of the interfaces?"
 # question="Can you tell me how the data moves from the sensors?"
+# question = "how are the sht25 sensors and central server connected?"
+# question="What is the centralised server?"
+# question="what are the connections to central server?"
 # question="How the sensor data reaches the server?"
-question="can you verify if the sensor data from the end node goes to the edge node and then through the sim7600 goes to the server?"
+# question="can you verify if the sensor data from the end node goes to the edge node and then through the sim7600 goes to the server?"
 
 
 

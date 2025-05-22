@@ -786,11 +786,9 @@ pantheon:hasTitle rdf:type owl:DatatypeProperty ;
      rdfs:subClassOf toco:WiredLink .
 
 
-###  http://amrita.sony.org/terms#CentralisedServer
-:CentralisedServer rdf:type owl:Class ;
-                   <http://purl.obolibrary.org/obo/IAO_0000115> "An external system that receives data from the edge node for storage, monitoring, or analysis."@en ;
-                   rdfs:comment "An external system that receives data from the edge node for storage, monitoring, or analysis."@en ;
-                   rdfs:label "CentralisedServer" .
+###  http://amrita.sony.org/terms#Centralized_Server
+:Centralized_Server rdf:type owl:Class ;
+                    rdfs:subClassOf toco:SystemDevice .
 
 
 ###  http://amrita.sony.org/terms#CurrentState
@@ -2247,6 +2245,13 @@ bot:Zone rdf:type owl:Class .
 ###  http://amrita.sony.org/terms#Celsius
 :Celsius rdf:type owl:NamedIndividual ,
                   <http://www.ontology-of-units-of-measure.org/resource/om-2/degreeCelsius> .
+
+
+###  http://amrita.sony.org/terms#Centralized_Server_P1
+:Centralized_Server_P1 rdf:type owl:NamedIndividual ,
+                                :Centralized_Server ;
+                       toco:hasInterface :Server_Interface_1 ;
+                       rdfs:label "Server  P1"@en .
 
 
 ###  http://amrita.sony.org/terms#Column_P1

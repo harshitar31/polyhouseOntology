@@ -344,7 +344,9 @@ frapo:manufactures rdf:type owl:ObjectProperty .
 
 
 ###  http://purl.org/toco/from
-toco:from rdf:type owl:ObjectProperty .
+toco:from rdf:type owl:ObjectProperty ;
+          rdfs:domain toco:Link ;
+          rdfs:range toco:Interface .
 
 
 ###  http://purl.org/toco/hasBandwidth
@@ -359,7 +361,9 @@ toco:hasDatarate rdf:type owl:ObjectProperty ;
 
 ###  http://purl.org/toco/hasInterface
 toco:hasInterface rdf:type owl:ObjectProperty ;
-                  rdfs:domain toco:Device .
+                  owl:inverseOf toco:isIn ;
+                  rdfs:domain toco:Device ;
+                  rdfs:range toco:Interface .
 
 
 ###  http://purl.org/toco/hasLTEAssociation
@@ -425,12 +429,16 @@ toco:hasWirelessLinkProperty rdf:type owl:ObjectProperty ;
 
 
 ###  http://purl.org/toco/isIn
-toco:isIn rdf:type owl:ObjectProperty .
+toco:isIn rdf:type owl:ObjectProperty ;
+          rdfs:domain toco:Interface ;
+          rdfs:range toco:Device .
 
 
 ###  http://purl.org/toco/to
 toco:to rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf owl:topObjectProperty .
+        rdfs:subPropertyOf owl:topObjectProperty ;
+        rdfs:domain toco:Link ;
+        rdfs:range toco:Interface .
 
 
 ###  http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit

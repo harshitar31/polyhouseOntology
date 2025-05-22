@@ -36,6 +36,7 @@ BOT ONTOLOGY
 # question = "Are there any sensors in polyhouse p2?"
 # question="What is the hierarchical structure of polyhouse?" #change label names
 # question="What is the definition of edge node?"
+question="In which node(edge,end) is SHT25 2 connected?"
 
 """
 SSN ONTOLOGY
@@ -55,7 +56,7 @@ TOCO ONTOLOGY
 # question="Are there any wireless interfaces?"
 # question="What are the interfaces in ESP32?"
 # question="How many esp32 are connected to polyhouse 1?"
-question="can you tell me how the communication works in polyhouse 1 with the help of the interfaces?"
+# question="can you tell me how the communication works in polyhouse 1 with the help of the interfaces?"
 # question="Can you tell me how the data moves from the sensors?"
 # question = "how are the sht25 sensors and central server connected?"
 # question="What is the centralised server?"

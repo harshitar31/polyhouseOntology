@@ -361,9 +361,7 @@ toco:hasDatarate rdf:type owl:ObjectProperty ;
 
 ###  http://purl.org/toco/hasInterface
 toco:hasInterface rdf:type owl:ObjectProperty ;
-                  owl:inverseOf toco:isIn ;
-                  rdfs:domain toco:Device ;
-                  rdfs:range toco:Interface .
+                  rdfs:domain toco:Device .
 
 
 ###  http://purl.org/toco/hasLTEAssociation
@@ -794,9 +792,12 @@ pantheon:hasTitle rdf:type owl:DatatypeProperty ;
      rdfs:subClassOf toco:WiredLink .
 
 
-###  http://amrita.sony.org/terms#Centralized_Server
-:Centralized_Server rdf:type owl:Class ;
-                    rdfs:subClassOf toco:SystemDevice .
+###  http://amrita.sony.org/terms#CentralisedServer
+:CentralisedServer rdf:type owl:Class ;
+                   rdfs:subClassOf toco:SystemDevice ;
+                   <http://purl.obolibrary.org/obo/IAO_0000115> "An external system that receives data from the edge node for storage, monitoring, or analysis."@en ;
+                   rdfs:comment "An external system that receives data from the edge node for storage, monitoring, or analysis."@en ;
+                   rdfs:label "CentralisedServer" .
 
 
 ###  http://amrita.sony.org/terms#CurrentState
@@ -2114,6 +2115,8 @@ bot:Zone rdf:type owl:Class .
 ###  http://amrita.sony.org/terms#Almonard
 :Almonard rdf:type owl:NamedIndividual ,
                    frapo:Manufacturer ;
+          frapo:manufactures :ExaustFan_P1 ,
+                             :ExaustFan_P2 ;
           rdfs:isDefinedBy "https://almonard.co.in" .
 
 
@@ -2253,13 +2256,6 @@ bot:Zone rdf:type owl:Class .
 ###  http://amrita.sony.org/terms#Celsius
 :Celsius rdf:type owl:NamedIndividual ,
                   <http://www.ontology-of-units-of-measure.org/resource/om-2/degreeCelsius> .
-
-
-###  http://amrita.sony.org/terms#Centralized_Server_P1
-:Centralized_Server_P1 rdf:type owl:NamedIndividual ,
-                                :Centralized_Server ;
-                       toco:hasInterface :Server_Interface_1 ;
-                       rdfs:label "Server  P1"@en .
 
 
 ###  http://amrita.sony.org/terms#Column_P1
@@ -2527,6 +2523,12 @@ bot:Zone rdf:type owl:Class .
 ###  http://amrita.sony.org/terms#Evalta
 :Evalta rdf:type owl:NamedIndividual ,
                  frapo:Manufacturer ;
+        frapo:manufactures :SHT25_1_P1 ,
+                           :SHT25_1_P2 ,
+                           :SHT25_2_P1 ,
+                           :SHT25_2_P2 ,
+                           :SHT25_3_P1 ,
+                           :SHT25_3_P2 ;
         rdfs:isDefinedBy "https://evelta.com" .
 
 
@@ -3236,6 +3238,12 @@ bot:Zone rdf:type owl:Class .
                      :SIM7600 ;
             toco:hasInterface :SIM7600_Interface_2_P2 ;
             toco:hasWiFiWLAN :SIM7600_Interface_1_P2 .
+
+
+###  http://amrita.sony.org/terms#Server
+:Server rdf:type owl:NamedIndividual ,
+                 :CentralisedServer ;
+        toco:hasInterface :Server_Interface_1 .
 
 
 ###  http://amrita.sony.org/terms#Server_Interface_1

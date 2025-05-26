@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "What are the polyhouses present?",
+      "sparql": "SELECT ?polyhouse WHERE { ?polyhouse rdf:type :Polyhouse . }",
+      "result": "[(rdflib.term.URIRef('http://amrita.sony.org/terms#Polyhouse_P1'),), (rdflib.term.URIRef('http://amrita.sony.org/terms#Polyhouse_P2'),)]",
+      "answer": "The polyhouses present are Polyhouse P1 and Polyhouse P2."
+    },
+    {
+      "question": "What are the grids present in the Polyhouse?",
+      "sparql": "SELECT ?grid WHERE { ?polyhouse a :Polyhouse . ?polyhouse bot:hasStorey storey .?storey bot:hasSpace ?grid .}",
+      "result": "[(rdflib.term.URIRef('http://amrita.sony.org/terms#Space_1_P1'),), (rdflib.term.URIRef('http://amrita.sony.org/terms#Space_2_P1'),), (rdflib.term.URIRef('http://amrita.sony.org/terms#Space_3_P1'),), (rdflib.term.URIRef('http://amrita.sony.org/terms#Space_1_P2'),), (rdflib.term.URIRef('http://amrita.sony.org/terms#Space_2_P2'),), (rdflib.term.URIRef('http://amrita.sony.org/terms#Space_3_P2'),)]",
+      "answer": "The grids present in the Polyhouse are Space_1_P1, Space_2_P1, Space_3_P1, Space_1_P2, Space_2_P2, and Space_3_P2."
+    },
+    {
+      "question": "What are the grids present in the Polyhouse 1?",
+      "sparql": "SELECT ?grid WHERE { :Polyhouse_P1 bot:hasStorey ?storey . ?storey bot:hasSpace ?grid .}",
+      "result": "[(rdflib.term.URIRef('http://amrita.sony.org/terms#Space_1_P1'),), (rdflib.term.URIRef('http://amrita.sony.org/terms#Space_2_P1'),), (rdflib.term.URIRef('http://amrita.sony.org/terms#Space_3_P1'),)]",
+      "answer": "The grids present in Polyhouse 1 are Space_1_P1, Space_2_P1, and Space_3_P1."
+    },
+    {
+      "question": "How many spaces are there in the polyhouse 2?",
+      "sparql": "SELECT ?grid WHERE { :Polyhouse_P2 bot:hasStorey ?storey . ?storey bot:hasSpace ?grid .}",
+      "result": "[(rdflib.term.URIRef('http://amrita.sony.org/terms#Space_1_P2'),), (rdflib.term.URIRef('http://amrita.sony.org/terms#Space_2_P2'),), (rdflib.term.URIRef('http://amrita.sony.org/terms#Space_3_P2'),)]",
+      "answer": "The grids present in Polyhouse 2 are Space_1_P2, Space_2_P2, and Space_3_P2."
+    }
+
+  ]
+}

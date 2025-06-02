@@ -292,19 +292,125 @@ SELECT ?deployment WHERE { ?deployment a ssn:Deployment }"}
 {"prompt": "What are the polyhouses present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
 
 SELECT ?polyhouse WHERE { ?polyhouse a :Polyhouse . }"}
-{"prompt": "", "completion": ""}
-{"prompt": "", "completion": ""}
-{"prompt": "", "completion": ""}
-{"prompt": "", "completion": ""}
-{"prompt": "", "completion": ""}
-{"prompt": "", "completion": ""}
-{"prompt": "", "completion": ""}
-{"prompt": "", "completion": ""}
-{"prompt": "", "completion": ""}
-{"prompt": "", "completion": ""}
-{"prompt": "", "completion": ""}
-{"prompt": "", "completion": ""}
-{"prompt": "", "completion": ""}
+{"prompt": "How are zone connected to spaces in the polyhouses?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX bot: <https://w3id.org/bot#>
+SELECT ?zone ?space WHERE {
+  ?zone bot:hasSpace ?space .
+  ?zone a bot:Zone .
+  ?space a bot:Space .
+}"}
+{"prompt": "How many polyhouses are there in the dataset?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX bot: <https://w3id.org/bot#>
+SELECT (COUNT(?polyhouse) AS ?count)
+WHERE {
+  ?polyhouse a :Polyhouse .
+}"}
+{"prompt": "What are the algorithms and what do they implement?", "completion": "SELECT ?algorithm ?implementation WHERE {
+  ?algorithm a mls:Algorithm.
+  ?implementation mls:implements ?algorithm .
+}
+"}
+{"prompt": "What are the characteristics of implementations", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+SELECT ?Implementation ?Characteristic ?Description ?Value WHERE {
+  ?Implementation a mls:Implementation .
+  ?Implementation mls:hasQuality ?Characteristic .
+  OPTIONAL { ?Characteristic dcterms:description ?Description } .
+  OPTIONAL { ?Characteristic mls:hasValue ?Value } .
+}
+"}
+{"prompt": "What are the ML tasks present?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+ 
+SELECT ?task WHERE {
+  ?task a mls:Task .
+  amrita:DNN_ES mls:defines ?task .
+}
+"}
+{"prompt": "How accurate is the model?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ns3: <http://purl.oclc.org/net/unis/ontology/sensordata.owl/>
+ 
+SELECT ?accuracy WHERE {
+  amrita:predictiveAccuracy mls:hasValue ?accuracy .
+}
+"}
+{"prompt": "What are the hyperparameters of the model?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+SELECT ?hyperparameter ?value ?activation WHERE {
+  ?hyperparameter a mls:HyperParameter .
+  ?hyperparameter mls:hasValue ?value .
+  OPTIONAL { ?hyperparameter amrita:hasActivation ?activation }
+}
+"}
+{"prompt": "How is sensor connected to Server?", "completion": "How the sensor data reaches the server?
+	PREFIX : <http://amrita.sony.org/terms#>
+PREFIX beo: <https://pi.pauwel.be/voc/buildingelement#>
+PREFIX bot: <https://w3id.org/bot#>
+PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
+PREFIX ns1: <http://purl.org/toco/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?s ?p ?o WHERE {
+  ?s ?p ?o .
+  FILTER(CONTAINS(STR(?s), "SHT25") || CONTAINS(STR(?o), "SIM7600"))
+}	Based on the provided data, the SHT25 sensors (SHT25_1_P1, SHT25_1_P2, SHT25_2_P1, SHT25_2_P2, SHT25_3_P1, SHT25_3_P2) have interfaces (e.g., SHT25_1_Interface_1_P1) that use I2CBus (e.g., I2CBus_N1_P1).  The SIM7600 devices (SIM7600_P1, SIM7600_P2) have interfaces (e.g., SIM7600_Interface_1_P1) with WiFi/WLAN capabilities.  However, the exact path the sensor data takes to reach the server is not specified in this data.
+"}
+{"prompt": "How does data from sensor move", "completion": "Can you tell me how the data moves from the sensors?
+	PREFIX : <http://amrita.sony.org/terms#>
+PREFIX beo: <https://pi.pauwel.be/voc/buildingelement#>
+PREFIX bot: <https://w3id.org/bot#>
+PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
+PREFIX ns1: <http://purl.org/toco/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?sensor ?interface ?link ?system WHERE {
+  ?sensor a mep:Sensor .
+  ?sensor ns1:hasInterface ?interface .
+  ?interface ns1:hasWiredLink ?link .
+  ?sensor ns1:hasInterface ?interface .
+  ?interface ns1:hasWiredLink ?link .
+  ?system ssn:hasSubSystem ?sensor .
+}	Based on the provided data, SHT25 sensors (SHT25_1_P1, SHT25_1_P2, SHT25_2_P1, SHT25_2_P2, SHT25_3_P1, SHT25_3_P2) utilize their respective interfaces (SHT25_1_Interface_1_P1, SHT25_1_Interface_1_P2, etc.) to communicate with I2C buses (I2CBus_N1_P1, I2CBus_N1_P2, I2CBus_N2_P1, I2CBus_N2_P2, I2CBus_N3_P1, I2CBus_N3_P2).  These buses then connect to Spresense devices (Spresense_1_P1, Spresense_1_P2, Spresense_2_P1, Spresense_2_P2, Spresense_3_P1, Spresense_3_P2).
+"}
+{"prompt": "What are the subcomponents of Spresense?", "completion": "SELECT ?component WHERE {
+  ?spresense a amrita:Spresense .
+  ?spresense ssn:hasSubSystem ?component .
+}
+"}
+{"prompt": "What are connections between Spresense, SHT25, ESP32, Camera?", "completion": "SELECT ?interface WHERE {
+  {?device a amrita:Spresense; toco:hasInterface ?interface .}
+  UNION
+  {?device a amrita:SHT25; toco:hasInterface ?interface .}
+  UNION
+  {?device a amrita:ESP32; toco:hasInterface ?interface .}
+  UNION
+  {?device a mep:AudioVisualAppliance-CAMERA; toco:hasInterface ?interface .}
+"}
+{"prompt": "What are the observations made by Camera?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
+PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?observation WHERE { ?camera a mep:AudioVisualAppliance-CAMERA . ?camera sosa:madeObservation ?observation . }
+"}
+{"prompt": "When were each of these observations made?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+SELECT ?sensor ?observation WHERE {
+  ?sensor sosa:madeObservation ?observation .
+}"}
 {"prompt": "", "completion": ""}
 {"prompt": "", "completion": ""}
 {"prompt": "", "completion": ""}

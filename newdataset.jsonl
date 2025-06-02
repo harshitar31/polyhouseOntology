@@ -588,8 +588,77 @@ SELECT ?wifiassociation WHERE { ?wifiassociation a ns1:WiFiAssociation . } "}
 {"prompt": "What are the esp32s present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
 
 SELECT ?esp32 WHERE { ?esp32 a :ESP32 . }"}
->>>>>>> b06a274da7598fcf25ce693e70d76f9ac7c9a224
+{"prompt": "What is the lycopene content of tunnel-dried tomatoes, according to amrita_food.org?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX amritafood: <http://amrita_food.org/terms#>
+PREFIX ns3: <http://dbpedia.org/ontology/>
+
+SELECT ?lycopeneContent WHERE {
+  amritafood:tomato\(tunnel-dried\) ns3:scientificName "solanum lycopersicum" ;
+    amritafood:lycopene ?lycopeneContent .
+}"}
+{"prompt": "What type of communication module is the SIM7600, and what is its purpose?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX ns1: <http://purl.obolibrary.org/obo/>
+PREFIX toco: <http://purl.org/toco/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?type ?purpose WHERE {
+  ?x a :SIM7600 .
+  ?x rdf:type ?type .
+  
+}"}
+{"prompt": "What is the numerical value of Result 4 in Polyhouse P1, and what is its unit?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX ns2: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?numericalValue ?unit WHERE {
+  ?observation sosa:hasResult ?result .
+  ?result ns2:hasNumericalValue ?numericalValue .
+  ?result ns2:hasUnit ?unit .
+  ?observation sosa:hasFeatureOfInterest/:bot:containsElement/:Polyhouse_P1 ?space .    
+  FILTER(CONTAINS(STR(?observation), "Observation_4_P1"))
+}"}
+{"prompt": "What is the result time of Observation 5 in Polyhouse P2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX ns2: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?resultTime WHERE {
+  :Observation_5_P2 sosa:hasResult ?result .
+  ?result sosa:resultTime ?resultTime .
+}"}
+{"prompt": "What is the value of tensorFlow ", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+SELECT ?value WHERE { :tensorFlow mls:hasValue ?value }"}
+{"prompt": "What is the type of the Wireless Association 3 P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX : <http://amrita.sony.org/terms#>
+SELECT ?type WHERE {
+  :Wireless_Association_3_P1 a ?type .
+}"}
+{"prompt": "What is the result time of Result 1 P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX ns1: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?resultTime WHERE {
+  :Result_1_P1 sosa:resultTime ?resultTime .
+}"}
+{"prompt": "What is the observed property of Observation_1_P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX toco: <http://purl.org/toco/>
+
+SELECT ?observedProperty WHERE {
+  :Observation_1_P1 sosa:observedProperty ?observedProperty .
+}"}
+{"prompt": "What is the value of InputLayer?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+SELECT ?value WHERE { :InputLayer mls:hasValue ?value }"}
+
 {"prompt": "", "completion": ""}
+
 {"prompt": "", "completion": ""}
+
 {"prompt": "", "completion": ""}
 {"prompt": "", "completion": ""}

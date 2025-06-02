@@ -1,0 +1,226 @@
+{"prompt": "What are the polyhouses present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?polyhouse WHERE { ?polyhouse rdf:type :Polyhouse . }
+"}
+{"prompt": "What are the grids present in the Polyhouse?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX bot: <https://w3id.org/bot#>
+
+SELECT ?grid WHERE {
+  ?polyhouse a :Polyhouse .
+  ?polyhouse bot:hasStorey ?storey .
+  ?storey bot:hasSpace ?grid .
+}
+"}
+{"prompt": "What are the grids present in the Polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX bot: <https://w3id.org/bot#>
+
+SELECT ?grid WHERE {
+  :Polyhouse_P1 bot:hasStorey ?storey .
+  ?storey bot:hasSpace ?grid .
+}
+"}
+{"prompt": "How many spaces are there in the polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX bot: <https://w3id.org/bot#>
+
+SELECT (COUNT(?space) AS ?count)
+WHERE {
+  :Polyhouse_P2 bot:hasStorey ?storey .
+  ?storey bot:hasSpace ?space .
+}
+"}
+{"prompt": "How many elements are there in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX bot: <https://w3id.org/bot#>
+
+SELECT (COUNT(?element) AS ?count)
+WHERE {
+  :Polyhouse_P1 bot:containsElement ?element .
+}
+"}
+{"prompt": "Are there cameras in the polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX bot: <https://w3id.org/bot#>
+PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?camera WHERE {
+  :Polyhouse_P1 bot:containsElement ?camera .
+  ?camera rdf:type mep:AudioVisualAppliance-CAMERA .
+}
+"}
+{"prompt": "What is the hierarchical structure of polyhouse p2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX bot: <https://w3id.org/bot#>
+
+SELECT ?building ?storey ?space ?element WHERE {
+  :Polyhouse_P2 a bot:Building .
+  :Polyhouse_P2 bot:hasStorey ?storey .
+  ?storey bot:hasSpace ?space .
+  ?space bot:containsElement ?element .
+}
+"}
+{"prompt": "Are there any sensors in the polyhouse?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX bot: <https://w3id.org/bot#>
+PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
+
+SELECT ?sensor WHERE {
+  ?polyhouse a :Polyhouse .
+  ?polyhouse bot:containsElement ?sensor .
+  ?sensor a mep:Sensor .
+}
+"}
+{"prompt": "Did the cameras make any observation?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+SELECT ?camera ?observation WHERE {
+  ?camera a mep:AudioVisualAppliance-CAMERA .
+  ?camera sosa:madeObservation ?observation .
+}
+"}
+{"prompt": "What type of observation does the sht25 sensor make?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+SELECT ?type WHERE {
+  ?sensor a :SHT25 .
+  ?sensor sosa:madeObservation ?observation .
+  ?observation a ?type .
+}
+"}
+{"prompt": "What are all connected to Grid 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX bot: <https://w3id.org/bot#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+SELECT ?connectedTo WHERE {
+  { :Space_1_P1 bot:containsElement ?connectedTo }
+  UNION
+  { ?connectedTo bot:containsElement :Space_1_P1 }
+  UNION
+  { :Space_1_P1 sosa:hosts ?connectedTo }
+  UNION
+  { ?connectedTo sosa:hosts :Space_1_P1 }
+  UNION
+  { :Space_1_P1 bot:adjacentElement ?connectedTo }
+  UNION
+  { ?connectedTo bot:adjacentElement :Space_1_P1 }
+}
+"}
+{"prompt": "What are the times different observations were made?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+SELECT ?time WHERE {
+  ?observation a sosa:Observation .
+  ?observation sosa:hasResult ?result .
+  ?result sosa:resultTime ?time .
+}
+"}
+{"prompt": "What are the observations each sensor made?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+SELECT ?sensor ?observation WHERE {
+  ?sensor sosa:madeObservation ?observation .
+}
+"}
+{"prompt": "Did any camera not make any observation in Polyhouse P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX bot: <https://w3id.org/bot#>
+PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+SELECT ?camera WHERE {
+  ?camera a mep:AudioVisualAppliance-CAMERA .
+  ?polyhouse bot:containsElement ?camera .
+  ?polyhouse a :Polyhouse .
+  FILTER NOT EXISTS { ?camera sosa:madeObservation ?observation . }
+}
+"}
+{"prompt": "What are the implementations and what are its characteristics?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+SELECT ?Implementation ?Characteristic ?Description ?Value WHERE {
+  ?Implementation a mls:Implementation .
+  ?Implementation mls:hasQuality ?Characteristic .
+  OPTIONAL { ?Characteristic dcterms:description ?Description } .
+  OPTIONAL { ?Characteristic mls:hasValue ?Value } .
+}
+"}
+{"prompt": "What ML task was performed?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+ 
+SELECT ?task WHERE {
+  ?task a mls:Task .
+  amrita:DNN_ES mls:defines ?task .
+}
+"}
+{"prompt": "What is the accuracy of the model?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ns3: <http://purl.oclc.org/net/unis/ontology/sensordata.owl/>
+ 
+SELECT ?accuracy WHERE {
+  amrita:predictiveAccuracy mls:hasValue ?accuracy .
+}
+"}
+{"prompt": "What are the hyperparameter configurations ?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+SELECT ?hyperparameter ?value ?activation WHERE {
+  ?hyperparameter a mls:HyperParameter .
+  ?hyperparameter mls:hasValue ?value .
+  OPTIONAL { ?hyperparameter amrita:hasActivation ?activation }
+}
+"}
+{"prompt": "How many polyhouses are there?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX bot: <https://w3id.org/bot#>
+SELECT (COUNT(?polyhouse) AS ?count)
+WHERE { ?polyhouse a :Polyhouse . }"}
+{"prompt": "What are the polyhouse names?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?polyhouseName WHERE {
+?polyhouse a :Polyhouse ;
+rdfs:label ?polyhouseName .
+}
+"}
+{"prompt": "How many sensors are there in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX bot: <https://w3id.org/bot#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+
+SELECT (COUNT(DISTINCT ?sensor) as ?count)
+WHERE {
+  :Polyhouse_P1 bot:containsElement ?x .
+  ?x rdf:type/rdfs:subClassOf* sosa:Sensor .
+  BIND(?x AS ?sensor)
+}
+"}
+{"prompt": "How many sensors are there in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX bot: <https://w3id.org/bot#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+
+SELECT (COUNT(DISTINCT ?sensor) as ?count)
+WHERE {
+  :Polyhouse_P2 bot:containsElement ?x .
+  ?x rdf:type/rdfs:subClassOf* sosa:Sensor .
+  BIND(?x AS ?sensor)
+}
+"}
+{"prompt": "Does polyhouse 1 have temperature sensors?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX bot: <https://w3id.org/bot#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?sensor WHERE {
+  :Polyhouse_P1 bot:containsElement ?sensor .
+  ?sensor rdf:type mep:Sensor-TEMPERATURESENSOR .
+}
+"}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}

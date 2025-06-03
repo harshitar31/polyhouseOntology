@@ -859,4 +859,24 @@ SELECT ?value WHERE {
     mls:hasValue ?value .
   FILTER(?d2L = <http://amrita.sony.org/terms#d2L>)
 }"}
+{"prompt": "What is the name of the feature with the URI `<http://amrita.sony.org/terms#max_r>`?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+
+SELECT ?hasName WHERE {
+  :max_r :hasName ?hasName .
+}"}
+{"prompt": "What is the Evaluation Measure value with the URI `<http://amrita.sony.org/terms#predictiveAccuracy>`?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+PREFIX ns3: <http://purl.oclc.org/net/unis/ontology/sensordata.owl/>
+
+SELECT ?value WHERE {
+  :predictiveAccuracy a mls:EvaluationMeasure ;
+  ns3:hasValue ?value .
+}"}
+{"prompt": "What is the value of the Dataset Characteristic with the URI <http://amrita.sony.org/terms#numberOfInstances> ?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+SELECT ?value WHERE { :numberOfInstances mls:hasValue ?value }"}
+{"prompt": "What is the name of the feature  mean_b?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+SELECT ?name WHERE { :mean_b :hasName ?name }"}
 {"prompt": "", "completion": ""}

@@ -823,8 +823,40 @@ SELECT ?comment
 WHERE {
   :Activity_1_P1 rdfs:comment ?comment .
 }"}
-{"prompt": "", "completion": ""}
-{"prompt": "", "completion": ""}
-{"prompt": "", "completion": ""}
-{"prompt": "", "completion": ""}
+{"prompt": "What is the Value of LTE Bandwidth Observation 1 Polyhouse 2>?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX ns1: <http://purl.oclc.org/net/unis/ontology/sensordata.owl/>
+SELECT ?value WHERE { :LTE_Bandwidth_Observation_1_P2 ns1:hasValue ?value }"}
+{"prompt": " What is the result Time of Result 1 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+SELECT ?resultTime WHERE {
+  :Result_1_P1 sosa:resultTime ?resultTime .
+}"}
+{"prompt": "What is the label of the class Deep Neural Network?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?label WHERE { :DeepNeuralNetwork rdfs:label ?label }"}
+{"prompt": "What is the scientific name for Peanut (tunnel-dried)?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX ns2: <http://dbpedia.org/ontology/>
+SELECT ?scientificName WHERE { :Peanut\(tunnel-dried\) ns2:scientificName ?scientificName }"}
+{"prompt": " What is the Numerical Value of Result 6 P1 and what is its resultTime?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX ns3: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?numericalValue ?resultTime WHERE {
+  :Result_6_P1 ns3:hasNumericalValue ?numericalValue ;
+    sosa:resultTime ?resultTime .
+}"}
+{"prompt": "What is the label of the class `FOODON_03316171`?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX ns1: <http://purl.obolibrary.org/obo/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+
+SELECT ?label WHERE { ns1:FOODON_03316171 rdfs:label ?label }"}
+{"prompt": "What is the value of the Hyper Parameter d2L?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+SELECT ?value WHERE {
+  ?d2L a mls:HyperParameter ;
+    mls:hasValue ?value .
+  FILTER(?d2L = <http://amrita.sony.org/terms#d2L>)
+}"}
 {"prompt": "", "completion": ""}

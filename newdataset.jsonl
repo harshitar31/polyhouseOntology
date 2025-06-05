@@ -1,1100 +1,176 @@
-{"prompt": "What are the polyhouses present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-SELECT ?polyhouse WHERE { ?polyhouse rdf:type :Polyhouse . }
-"}
-{"prompt": "What are the grids present in the Polyhouse?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-
-SELECT ?grid WHERE {
-  ?polyhouse a :Polyhouse .
-  ?polyhouse bot:hasStorey ?storey .
-  ?storey bot:hasSpace ?grid .
-}
-"}
-{"prompt": "What are the grids present in the Polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-
-SELECT ?grid WHERE {
-  :Polyhouse_P1 bot:hasStorey ?storey .
-  ?storey bot:hasSpace ?grid .
-}
-"}
-{"prompt": "How many spaces are there in the polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-
-SELECT (COUNT(?space) AS ?count)
-WHERE {
-  :Polyhouse_P2 bot:hasStorey ?storey .
-  ?storey bot:hasSpace ?space .
-}
-"}
-{"prompt": "How many elements are there in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-
-SELECT (COUNT(?element) AS ?count)
-WHERE {
-  :Polyhouse_P1 bot:containsElement ?element .
-}
-"}
-{"prompt": "Are there cameras in the polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-SELECT ?camera WHERE {
-  :Polyhouse_P1 bot:containsElement ?camera .
-  ?camera rdf:type mep:AudioVisualAppliance-CAMERA .
-}
-"}
-{"prompt": "What is the hierarchical structure of polyhouse p2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-
-SELECT ?building ?storey ?space ?element WHERE {
-  :Polyhouse_P2 a bot:Building .
-  :Polyhouse_P2 bot:hasStorey ?storey .
-  ?storey bot:hasSpace ?space .
-  ?space bot:containsElement ?element .
-}
-"}
-{"prompt": "Are there any sensors in the polyhouse?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
-
-SELECT ?sensor WHERE {
-  ?polyhouse a :Polyhouse .
-  ?polyhouse bot:containsElement ?sensor .
-  ?sensor a mep:Sensor .
-}
-"}
-{"prompt": "Did the cameras make any observation?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-SELECT ?camera ?observation WHERE {
-  ?camera a mep:AudioVisualAppliance-CAMERA .
-  ?camera sosa:madeObservation ?observation .
-}
-"}
-{"prompt": "What type of observation does the sht25 sensor make?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-SELECT ?type WHERE {
-  ?sensor a :SHT25 .
-  ?sensor sosa:madeObservation ?observation .
-  ?observation a ?type .
-}
-"}
-{"prompt": "What are all connected to Grid 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-SELECT ?connectedTo WHERE {
-  { :Space_1_P1 bot:containsElement ?connectedTo }
-  UNION
-  { ?connectedTo bot:containsElement :Space_1_P1 }
-  UNION
-  { :Space_1_P1 sosa:hosts ?connectedTo }
-  UNION
-  { ?connectedTo sosa:hosts :Space_1_P1 }
-  UNION
-  { :Space_1_P1 bot:adjacentElement ?connectedTo }
-  UNION
-  { ?connectedTo bot:adjacentElement :Space_1_P1 }
-}
-"}
-{"prompt": "What are the times different observations were made?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-SELECT ?time WHERE {
-  ?observation a sosa:Observation .
-  ?observation sosa:hasResult ?result .
-  ?result sosa:resultTime ?time .
-}
-"}
-{"prompt": "What are the observations each sensor made?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-SELECT ?sensor ?observation WHERE {
-  ?sensor sosa:madeObservation ?observation .
-}
-"}
-{"prompt": "Did any camera not make any observation in Polyhouse P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-SELECT ?camera WHERE {
-  ?camera a mep:AudioVisualAppliance-CAMERA .
-  ?polyhouse bot:containsElement ?camera .
-  ?polyhouse a :Polyhouse .
-  FILTER NOT EXISTS { ?camera sosa:madeObservation ?observation . }
-}
-"}
-{"prompt": "What are the implementations and what are its characteristics?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-SELECT ?Implementation ?Characteristic ?Description ?Value WHERE {
-  ?Implementation a mls:Implementation .
-  ?Implementation mls:hasQuality ?Characteristic .
-  OPTIONAL { ?Characteristic dcterms:description ?Description } .
-  OPTIONAL { ?Characteristic mls:hasValue ?Value } .
-}
-"}
-{"prompt": "What ML task was performed?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
- 
-SELECT ?task WHERE {
-  ?task a mls:Task .
-  amrita:DNN_ES mls:defines ?task .
-}
-"}
-{"prompt": "What is the accuracy of the model?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX ns3: <http://purl.oclc.org/net/unis/ontology/sensordata.owl/>
- 
-SELECT ?accuracy WHERE {
-  amrita:predictiveAccuracy mls:hasValue ?accuracy .
-}
-"}
-{"prompt": "What are the hyperparameter configurations ?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-SELECT ?hyperparameter ?value ?activation WHERE {
-  ?hyperparameter a mls:HyperParameter .
-  ?hyperparameter mls:hasValue ?value .
-  OPTIONAL { ?hyperparameter amrita:hasActivation ?activation }
-}
-"}
-{"prompt": "How many polyhouses are there?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-SELECT (COUNT(?polyhouse) AS ?count)
-WHERE { ?polyhouse a :Polyhouse . }"}
-{"prompt": "What are the polyhouse names?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT ?polyhouseName WHERE {
-?polyhouse a :Polyhouse ;
-rdfs:label ?polyhouseName .
-}
-"}
-{"prompt": "How many sensors are there in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-
-SELECT (COUNT(DISTINCT ?sensor) as ?count)
-WHERE {
-  :Polyhouse_P1 bot:containsElement ?x .
-  ?x rdf:type/rdfs:subClassOf* sosa:Sensor .
-  BIND(?x AS ?sensor)
-}
-"}
-{"prompt": "How many sensors are there in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-
-SELECT (COUNT(DISTINCT ?sensor) as ?count)
-WHERE {
-  :Polyhouse_P2 bot:containsElement ?x .
-  ?x rdf:type/rdfs:subClassOf* sosa:Sensor .
-  BIND(?x AS ?sensor)
-}
-"}
-{"prompt": "Does polyhouse 1 have temperature sensors?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-SELECT ?sensor WHERE {
-  :Polyhouse_P1 bot:containsElement ?sensor .
-  ?sensor rdf:type mep:Sensor-TEMPERATURESENSOR .
-}
-"}
-{"prompt": "Does polyhouse 2 have temperature sensors?", "completion": "PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
-PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-SELECT ?sensor WHERE {
-  :Polyhouse_P1 bot:containsElement ?sensor .
-  ?sensor rdf:type mep:Sensor-TEMPERATURESENSOR .
-}"}
-{"prompt": "What observations did the sht25 sensors in polyhouse 1 make?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-
-SELECT ?sensor ?observation WHERE {
-  ?sensor a :SHT25 .
-  ?sensor sosa:madeObservation ?observation .
-  ?polyhouse a :Polyhouse ;
-    rdfs:label 'Polyhouse 1'@en .
-  ?space bot:containsElement ?sensor .
-  ?polyhouse bot:hasStorey ?storey .
-  ?storey bot:hasSpace ?space .
-}
-"}
-{"prompt": "What observations did the sht25 sensors in polyhouse 2 make?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-
-SELECT ?sensor ?observation WHERE {
-  ?sensor a :SHT25 .
-  ?sensor sosa:madeObservation ?observation .
-  ?polyhouse a :Polyhouse ;
-    rdfs:label 'Polyhouse 2'@en .
-  ?space bot:containsElement ?sensor .
-  ?polyhouse bot:hasStorey ?storey .
-  ?storey bot:hasSpace ?space .
-}
-"}
-{"prompt": "What are the buildings present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-SELECT ?building WHERE { ?building rdf:type bot:Building }"}
-{"prompt": "What are the algorithms present?", "completion": "PREFIX sosa: <http://www.w3.org/ns/sosa/>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-SELECT ?algorithm WHERE { ?algorithm a mls:Algorithm. }"}
-{"prompt": "What are the symmetricpropertys present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-SELECT ?p WHERE {
-  ?p rdf:type owl:SymmetricProperty .
-}"}
-{"prompt": "What are the observations present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-SELECT ?observation WHERE { ?observation a sosa:Observation . }"}
-{"prompt": "What are the interfaces present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns1: <http://purl.org/toco/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-SELECT ?interface WHERE { ?interface rdf:type ns1:Interface . }"}
-{"prompt": "What are the namedindividuals present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-SELECT ?namedIndividual WHERE {
-  ?namedIndividual rdf:type owl:NamedIndividual .
-}"}
-{"prompt": "What are the deployments present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ssn: <http://www.w3.org/ns/ssn/>
-
-SELECT ?deployment WHERE { ?deployment a ssn:Deployment }"}
-{"prompt": "What are the polyhouses present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-
-SELECT ?polyhouse WHERE { ?polyhouse a :Polyhouse . }"}
-<<<<<<< HEAD
-{"prompt": "How are zone connected to spaces in the polyhouses?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-SELECT ?zone ?space WHERE {
-  ?zone bot:hasSpace ?space .
-  ?zone a bot:Zone .
-  ?space a bot:Space .
-}"}
-{"prompt": "How many polyhouses are there in the dataset?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-SELECT (COUNT(?polyhouse) AS ?count)
-WHERE {
-  ?polyhouse a :Polyhouse .
-}"}
-{"prompt": "What are the algorithms and what do they implement?", "completion": "SELECT ?algorithm ?implementation WHERE {
-  ?algorithm a mls:Algorithm.
-  ?implementation mls:implements ?algorithm .
-}
-"}
-{"prompt": "What are the characteristics of implementations", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-SELECT ?Implementation ?Characteristic ?Description ?Value WHERE {
-  ?Implementation a mls:Implementation .
-  ?Implementation mls:hasQuality ?Characteristic .
-  OPTIONAL { ?Characteristic dcterms:description ?Description } .
-  OPTIONAL { ?Characteristic mls:hasValue ?Value } .
-}
-"}
-{"prompt": "What are the ML tasks present?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
- 
-SELECT ?task WHERE {
-  ?task a mls:Task .
-  amrita:DNN_ES mls:defines ?task .
-}
-"}
-{"prompt": "How accurate is the model?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX ns3: <http://purl.oclc.org/net/unis/ontology/sensordata.owl/>
- 
-SELECT ?accuracy WHERE {
-  amrita:predictiveAccuracy mls:hasValue ?accuracy .
-}
-"}
-{"prompt": "What are the hyperparameters of the model?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-SELECT ?hyperparameter ?value ?activation WHERE {
-  ?hyperparameter a mls:HyperParameter .
-  ?hyperparameter mls:hasValue ?value .
-  OPTIONAL { ?hyperparameter amrita:hasActivation ?activation }
-}
-"}
-{"prompt": "How is sensor connected to Server?", "completion": "How the sensor data reaches the server?
-	PREFIX : <http://amrita.sony.org/terms#>
-PREFIX beo: <https://pi.pauwel.be/voc/buildingelement#>
-PREFIX bot: <https://w3id.org/bot#>
-PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
-PREFIX ns1: <http://purl.org/toco/>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-PREFIX ssn: <http://www.w3.org/ns/ssn/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-SELECT ?s ?p ?o WHERE {
-  ?s ?p ?o .
-  FILTER(CONTAINS(STR(?s), "SHT25") || CONTAINS(STR(?o), "SIM7600"))
-}	Based on the provided data, the SHT25 sensors (SHT25_1_P1, SHT25_1_P2, SHT25_2_P1, SHT25_2_P2, SHT25_3_P1, SHT25_3_P2) have interfaces (e.g., SHT25_1_Interface_1_P1) that use I2CBus (e.g., I2CBus_N1_P1).  The SIM7600 devices (SIM7600_P1, SIM7600_P2) have interfaces (e.g., SIM7600_Interface_1_P1) with WiFi/WLAN capabilities.  However, the exact path the sensor data takes to reach the server is not specified in this data.
-"}
-{"prompt": "How does data from sensor move", "completion": "Can you tell me how the data moves from the sensors?
-	PREFIX : <http://amrita.sony.org/terms#>
-PREFIX beo: <https://pi.pauwel.be/voc/buildingelement#>
-PREFIX bot: <https://w3id.org/bot#>
-PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
-PREFIX ns1: <http://purl.org/toco/>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-PREFIX ssn: <http://www.w3.org/ns/ssn/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-SELECT ?sensor ?interface ?link ?system WHERE {
-  ?sensor a mep:Sensor .
-  ?sensor ns1:hasInterface ?interface .
-  ?interface ns1:hasWiredLink ?link .
-  ?sensor ns1:hasInterface ?interface .
-  ?interface ns1:hasWiredLink ?link .
-  ?system ssn:hasSubSystem ?sensor .
-}	Based on the provided data, SHT25 sensors (SHT25_1_P1, SHT25_1_P2, SHT25_2_P1, SHT25_2_P2, SHT25_3_P1, SHT25_3_P2) utilize their respective interfaces (SHT25_1_Interface_1_P1, SHT25_1_Interface_1_P2, etc.) to communicate with I2C buses (I2CBus_N1_P1, I2CBus_N1_P2, I2CBus_N2_P1, I2CBus_N2_P2, I2CBus_N3_P1, I2CBus_N3_P2).  These buses then connect to Spresense devices (Spresense_1_P1, Spresense_1_P2, Spresense_2_P1, Spresense_2_P2, Spresense_3_P1, Spresense_3_P2).
-"}
-{"prompt": "What are the subcomponents of Spresense?", "completion": "SELECT ?component WHERE {
-  ?spresense a amrita:Spresense .
-  ?spresense ssn:hasSubSystem ?component .
-}
-"}
-{"prompt": "What are connections between Spresense, SHT25, ESP32, Camera?", "completion": "SELECT ?interface WHERE {
-  {?device a amrita:Spresense; toco:hasInterface ?interface .}
-  UNION
-  {?device a amrita:SHT25; toco:hasInterface ?interface .}
-  UNION
-  {?device a amrita:ESP32; toco:hasInterface ?interface .}
-  UNION
-  {?device a mep:AudioVisualAppliance-CAMERA; toco:hasInterface ?interface .}
-"}
-{"prompt": "What are the observations made by Camera?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>
-PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-SELECT ?observation WHERE { ?camera a mep:AudioVisualAppliance-CAMERA . ?camera sosa:madeObservation ?observation . }
-"}
-{"prompt": "When were each of these observations made?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-SELECT ?sensor ?observation WHERE {
-  ?sensor sosa:madeObservation ?observation .
-}"}
-{"prompt": "", "completion": ""}
-{"prompt": "", "completion": ""}
-=======
-{"prompt": "What are the functionalpropertys present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-SELECT ?p WHERE { ?p rdf:type owl:FunctionalProperty }"}
-{"prompt": "What are the polyhouses present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-SELECT ?polyhouse WHERE { ?polyhouse rdf:type :Polyhouse . }"}
-{"prompt": "What are the audiovisualappliance-cameras present?", "completion": ""}
-{"prompt": "What are the audiovisualappliance-cameras present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-SELECT ?camera WHERE {
-  ?camera rdf:type mep:AudioVisualAppliance-CAMERA .
-}
-"}
-{"prompt": "What are the cameras present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-SELECT ?camera WHERE {
-  ?camera rdf:type mep:AudioVisualAppliance-CAMERA .
-}
-"}
-{"prompt": "What are the I2C Buses present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-SELECT ?i2cbus WHERE { ?i2cbus a :I2CBus . }"}
-{"prompt": "What are the controllers present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
-SELECT ?controller WHERE { ?controller a mep:Controller . }"}
-{"prompt": "What are the storeys present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-
-SELECT ?storey WHERE { ?storey a bot:Storey }"}
-{"prompt": "What are the observablepropertys present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-SELECT DISTINCT ?observableproperty WHERE { ?observableproperty rdf:type sosa:ObservableProperty }"}
-{"prompt": "What are the ramps present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX beo: <https://pi.pauwel.be/voc/buildingelement#>
-SELECT ?ramp WHERE { ?ramp a beo:Ramp . }"}
-{"prompt": "What are the tasks present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-SELECT ?task WHERE { ?task rdf:type sosa:Procedure . }"}
-{"prompt": "What are the exhausts present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-
-SELECT ?exhaust WHERE { ?exhaust a :Exhaust . }"}
-{"prompt": "What are the spaces present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-
-SELECT ?space WHERE { ?space a bot:Space }"}
-{"prompt": "What are the sites present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-
-SELECT ?site WHERE { ?site a bot:Site }"}
-{"prompt": "What are the objectpropertys present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-
-SELECT DISTINCT ?p WHERE { ?s ?p ?o }"}
-{"prompt": "What are the procedures present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-SELECT ?procedure WHERE { ?procedure a sosa:Procedure . }"}
-{"prompt": "What are the transitive properties present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-SELECT ?p WHERE {
-  ?p rdf:type owl:TransitiveProperty .
-}"}
-{"prompt": "What are the CSIs present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-
-SELECT ?csi WHERE { ?csi a :CSI . }"}
-{"prompt": "What are the columns present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX beo: <https://pi.pauwel.be/voc/buildingelement#>
-
-SELECT ?column WHERE { ?column a beo:Column . }"}
-{"prompt": "What are the LTE associations present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns1: <http://purl.org/toco/>
-
-SELECT ?lteassociation WHERE { ?lteassociation a ns1:LTEAssociation . }"}
-{"prompt": "What are the classes present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-
-SELECT DISTINCT ?class WHERE { ?class a owl:Class }"}
-{"prompt": "What are the doors present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX beo: <https://pi.pauwel.be/voc/buildingelement#>
-
-SELECT ?door WHERE { ?door a beo:Door . }"}
-{"prompt": "What are the humidity sensors present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-SELECT ?sensor WHERE {
-  ?sensor rdf:type mep:Sensor-HUMIDITYSENSOR .
-}"}
-{"prompt": "What are the temperature sensors present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-SELECT ?sensor WHERE {
-  ?sensor rdf:type mep:Sensor-TEMPERATURESENSOR .
-}"}
-{"prompt": "What are the endnodes present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-
-SELECT ?endnode WHERE { ?endnode a :EndNode . }"}
-{"prompt": "What are the sht25s present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-
-SELECT ?sht25 WHERE { ?sht25 a :SHT25 . }"}
-{"prompt": "What are the propertys present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-
-SELECT DISTINCT ?p WHERE { ?s ?p ?o }"}
-{"prompt": "What are the turbovents present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-
-SELECT ?turbovent WHERE { ?turbovent a :Turbovent . }"}
-{"prompt": "What are the actuations present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-SELECT ?actuation WHERE { ?actuation a sosa:Actuation }"}
-{"prompt": "What are the actuatablepropertys present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-SELECT ?actuatableproperty WHERE { ?actuatableproperty a sosa:ActuatableProperty }"}
-{"prompt": "What are the edgenodes present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-
-SELECT ?edgenode WHERE { ?edgenode a :EdgeNode . }"}
-{"prompt": "What are the WiFi WLANs present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns1: <http://purl.org/toco/>
-
-SELECT ?wifiwlan WHERE { ?wifiwlan a ns1:WiFiWLAN . }"}
-{"prompt": "What are the spresenses present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-
-SELECT ?spresense WHERE { ?spresense a :Spresense . }"}
-{"prompt": "What are the softserials present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-
-SELECT ?softSerial WHERE { ?softSerial a :SoftSerial . }"}
-{"prompt": "What are the UART2s present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-
-SELECT ?uart2 WHERE { ?uart2 a :UART2 . }"}
-{"prompt": "What are the inputs present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX ssn: <http://www.w3.org/ns/ssn/>
-
-SELECT ?input WHERE { ?input rdf:type ssn:Input }"}
-{"prompt": "What are the annotation properties present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-SELECT ?p WHERE { [] a owl:AnnotationProperty . ?p rdf:type owl:AnnotationProperty }"}
-{"prompt": "What are the walls present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX beo: <https://pi.pauwel.be/voc/buildingelement#>
-
-SELECT ?wall WHERE { ?wall a beo:Wall }"}
-{"prompt": "What are the wired links present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns1: <http://purl.org/toco/>
-
-SELECT ?wiredlink WHERE { ?wiredlink a ns1:WiredLink . }"}
-{"prompt": "What are the SIM7600s present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-
-SELECT ?sim7600 WHERE { ?sim7600 a :SIM7600 . }"}
-{"prompt": "What are the results present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-SELECT ?result WHERE { ?result a sosa:Result . }"}
-{"prompt": "What are the WiFi associations present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns1: <http://purl.org/toco/>
-
-SELECT ?wifiassociation WHERE { ?wifiassociation a ns1:WiFiAssociation . } "}
-{"prompt": "What are the esp32s present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-
-SELECT ?esp32 WHERE { ?esp32 a :ESP32 . }"}
-{"prompt": "What is the lycopene content of tunnel-dried tomatoes, according to amrita_food.org?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX amritafood: <http://amrita_food.org/terms#>
-PREFIX ns3: <http://dbpedia.org/ontology/>
-
-SELECT ?lycopeneContent WHERE {
-  amritafood:tomato\(tunnel-dried\) ns3:scientificName 'solanum lycopersicum' ;
-    amritafood:lycopene ?lycopeneContent .
-}"}
-{"prompt": "What type of communication module is the SIM7600, and what is its purpose?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns1: <http://purl.obolibrary.org/obo/>
-PREFIX toco: <http://purl.org/toco/>
-PREFIX ssn: <http://www.w3.org/ns/ssn/>
-PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-SELECT ?type ?purpose WHERE {
-  ?x a :SIM7600 .
-  ?x rdf:type ?type .
-  
-}"}
-{"prompt": "What is the numerical value of Result 4 in Polyhouse P1, and what is its unit?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns2: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-SELECT ?numericalValue ?unit WHERE {
-  ?observation sosa:hasResult ?result .
-  ?result ns2:hasNumericalValue ?numericalValue .
-  ?result ns2:hasUnit ?unit .
-  ?observation sosa:hasFeatureOfInterest/:bot:containsElement/:Polyhouse_P1 ?space .    
-  FILTER(CONTAINS(STR(?observation), 'Observation_4_P1'))
-}"}
-{"prompt": "What is the result time of Observation 5 in Polyhouse P2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns2: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-SELECT ?resultTime WHERE {
-  :Observation_5_P2 sosa:hasResult ?result .
-  ?result sosa:resultTime ?resultTime .
-}"}
-{"prompt": "What is the value of tensorFlow ", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-SELECT ?value WHERE { :tensorFlow mls:hasValue ?value }"}
-{"prompt": "What is the type of the Wireless Association 3 P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX : <http://amrita.sony.org/terms#>
-SELECT ?type WHERE {
-  :Wireless_Association_3_P1 a ?type .
-}"}
-{"prompt": "What is the result time of Result 1 P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns1: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-SELECT ?resultTime WHERE {
-  :Result_1_P1 sosa:resultTime ?resultTime .
-}"}
-{"prompt": "What is the observed property of Observation_1_P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-PREFIX ssn: <http://www.w3.org/ns/ssn/>
-PREFIX toco: <http://purl.org/toco/>
-
-SELECT ?observedProperty WHERE {
-  :Observation_1_P1 sosa:observedProperty ?observedProperty .
-}"}
-{"prompt": "What is the value of InputLayer?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-SELECT ?value WHERE { :InputLayer mls:hasValue ?value }"}
-
-{"prompt": "What type of entity is <http://amrita.sony.org/terms#Deployment_1_P1>", "completion": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-SELECT ?type
-WHERE {
-  <http://amrita.sony.org/terms#Deployment_1_P1> rdf:type ?type .
-}"}
-{"prompt": "What is the comment associated with <http://amrita.sony.org/terms#std_a>?", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX : <http://amrita.sony.org/terms#>
-
-SELECT ?comment
-WHERE {
-  :std_a rdfs:comment ?comment .
-}"}
-{"prompt": "What unit of measure is associated with Result 3 in Polyhouse 2", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns1: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
-SELECT ?unit
-WHERE {
-  :Result_3_P2 ns1:hasUnit ?unit .
-}"}
-{"prompt": "What is the result time for Result 3 in Polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-SELECT ?resultTime
-WHERE {
-  :Result_3_P1 sosa:resultTime ?resultTime .
-}"}
-{"prompt": "What interface does exhaust fan in polyhouse 2 have?", "completion": "PREFIX toco: <http://purl.org/toco/>
-PREFIX : <http://amrita.sony.org/terms#>
-
-SELECT ?interface
-WHERE {
-  :ExaustFan_P2 toco:hasInterface ?interface .
-}"}
-{"prompt": "What type of building element is Roof in Polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX beo: <https://pi.pauwel.be/voc/buildingelement#>
-
-SELECT ?type
-WHERE {
-  :Roof_P2 rdf:type ?type .
-  ?type rdfs:subClassOf beo:BuildingElement .
-  FILTER (?type != owl:NamedIndividual)
-}"}
-{"prompt": "What is the label for the class <http://purl.obolibrary.org/obo/CHEBI_33240>?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns1: <http://purl.obolibrary.org/obo/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT ?label WHERE {
-  ns1:CHEBI_33240 rdfs:label ?label .
-}"}
-{"prompt": "What is the label of the food preservation process?", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX ns2: <http://purl.obolibrary.org/obo/>
-SELECT ?label
-WHERE {
-  ?process rdfs:subClassOf ns2:FOODON_03470107 .
-  ?process rdfs:label ?label .
-}"}
-{"prompt": "What is the comment associated with the term 'User'?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT ?comment
-WHERE {
-  :User rdfs:comment ?comment .
-}"}
-{"prompt": "What is the name of the feature represented by the URI `http://amrita.sony.org/terms#std_a`", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-SELECT ?name
-WHERE {
-  :std_a :hasName ?name .
-}"}
-{"prompt": "Which actuator made the actuation represented by Actuation 1 in polyhpouse 2?", "completion": "PREFIX sosa: <http://www.w3.org/ns/sosa/>
-SELECT ?actuator
-WHERE {
-  <http://amrita.sony.org/terms#Actuation_1_P2> sosa:madeByActuator ?actuator .
-}"}
-{"prompt": "What is the label of the food product identified by the URI `http://purl.obolibrary.org/obo/FOODON_00003265`?", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT ?label
-WHERE {
-  <http://purl.obolibrary.org/obo/FOODON_00003265> rdfs:label ?label .
-}"}
-{"prompt": "What unit is associated with the Result 4 in polyhouse 2", "completion": "PREFIX ns1: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-SELECT ?unit
-WHERE {
-  <http://amrita.sony.org/terms#Result_4_P2> ns1:hasUnit ?unit .
-}"}
-{"prompt": " What is the result time associated with Result 6 in polyhouse 2", "completion": "
-PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>
-SELECT ?resultTime
-WHERE {
-  ?result sosa:resultTime ?resultTime .
-  FILTER(?result = :Result_6_P2)
-}"}
-{"prompt": "What is the comment associated with the feature min b1?", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX : <http://amrita.sony.org/terms#>
-SELECT ?comment
-WHERE {
-  :min_b1 rdfs:comment ?comment .
-}"}
+{"prompt": "What are the polyhouses present?", "completion":"PREFIX : <http://amrita.sony.org/terms#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?polyhouse WHERE { ?polyhouse rdf:type :Polyhouse . }"}
+{"prompt": "What are the grids present in the Polyhouse?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX bot: <https://w3id.org/bot#>SELECT ?grid WHERE {  ?polyhouse a :Polyhouse .  ?polyhouse bot:hasStorey ?storey .  ?storey bot:hasSpace ?grid .}"}
+{"prompt": "What are the grids present in the Polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>SELECT ?grid WHERE {  :Polyhouse_P1 bot:hasStorey ?storey .  ?storey bot:hasSpace ?grid .}"}
+{"prompt": "How many spaces are there in the polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>SELECT (COUNT(?space) AS ?count)WHERE {  :Polyhouse_P2 bot:hasStorey ?storey .  ?storey bot:hasSpace ?space .}"}
+{"prompt": "How many elements are there in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>SELECT (COUNT(?element) AS ?count)WHERE {  :Polyhouse_P1 bot:containsElement ?element .}"}
+{"prompt": "Are there cameras in the polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?camera WHERE { :Polyhouse_P1 bot:containsElement ?camera .  ?camera rdf:type mep:AudioVisualAppliance-CAMERA .}"}
+{"prompt": "What is the hierarchical structure of polyhouse p2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>SELECT ?building ?storey ?space ?element WHERE {  :Polyhouse_P2 a bot:Building .  :Polyhouse_P2 bot:hasStorey ?storey .  ?storey bot:hasSpace ?space .  ?space bot:containsElement ?element .}"}
+{"prompt": "Are there any sensors in the polyhouse?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>SELECT ?sensor WHERE {  ?polyhouse a :Polyhouse .  ?polyhouse bot:containsElement ?sensor .  ?sensor a mep:Sensor .}"}
+{"prompt": "Did the cameras make any observation?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?camera ?observation WHERE {  ?camera a mep:AudioVisualAppliance-CAMERA .  ?camera sosa:madeObservation ?observation .}"}
+{"prompt": "What type of observation does the sht25 sensor make?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?type WHERE {  ?sensor a :SHT25 .  ?sensor sosa:madeObservation ?observation .  ?observation a ?type .}"}
+{"prompt": "What are all connected to Grid 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#> PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?connectedTo WHERE {  { :Space_1_P1 bot:containsElement ?connectedTo }  UNION  { ?connectedTo bot:containsElement :Space_1_P1 }  UNION  { :Space_1_P1 sosa:hosts ?connectedTo }  UNION  { ?connectedTo sosa:hosts :Space_1_P1 }  UNION  { :Space_1_P1 bot:adjacentElement ?connectedTo }  UNION  { ?connectedTo bot:adjacentElement :Space_1_P1 }}"}
+{"prompt": "What are the times different observations were made?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?time WHERE {  ?observation a sosa:Observation .  ?observation sosa:hasResult ?result .  ?result sosa:resultTime ?time .}"}
+{"prompt": "What are the observations each sensor made?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?sensor ?observation WHERE {  ?sensor sosa:madeObservation ?observation .}"}
+{"prompt": "Did any camera not make any observation in Polyhouse P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?camera WHERE   ?camera a mep:AudioVisualAppliance-CAMERA .  ?polyhouse bot:containsElement ?camera .  ?polyhouse a :Polyhouse .  FILTER NOT EXISTS { ?camera sosa:madeObservation ?observation . }}"}
+{"prompt": "What are the implementations and what are its characteristics?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#>PREFIX dcterms: <http://purl.org/dc/terms/>SELECT ?Implementation ?Characteristic ?Description ?Value WHERE {  ?Implementation a mls:Implementation .  ?Implementation mls:hasQuality ?Characteristic .  OPTIONAL { ?Characteristic dcterms:description ?Description }   OPTIONAL { ?Characteristic mls:hasValue ?Value } .}"}
+{"prompt": "What ML task was performed?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#> SELECT ?task WHERE {  ?task a mls:Task .  amrita:DNN_ES mls:defines ?task .}"}
+{"prompt": "What is the accuracy of the model?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#>PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>PREFIX ns3: <http://purl.oclc.org/net/unis/ontology/sensordata.owl/> SELECT ?accuracy WHERE {  amrita:predictiveAccuracy mls:hasValue ?accuracy .}"}
+{"prompt": "What are the hyperparameter configurations ?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>PREFIX mls:<http://www.w3.org/ns/mls#>PREFIX dcterms: <http://purl.org/dc/terms/>SELECT ?hyperparameter ?value ?activation WHERE {  ?hyperparameter a mls:HyperParameter .  ?hyperparameter mls:hasValue ?value .  OPTIONAL { ?hyperparameter amrita:hasActivation ?activation }}"}
+{"prompt": "How many polyhouses are there?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>SELECT (COUNT(?polyhouse) AS ?count)WHERE { ?polyhouse a :Polyhouse . }"}
+{"prompt": "What are the polyhouse names?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?polyhouseName WHERE {?polyhouse a :Polyhouse ;rdfs:label ?polyhouseName .}"}
+{"prompt": "How many sensors are there in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT (COUNT(DISTINCT ?sensor) as ?count)WHERE {:Polyhouse_P1 bot:containsElement ?x .  ?x rdf:type/rdfs:subClassOf* sosa:Sensor .BIND(?x AS ?sensor)}"}
+{"prompt": "How many sensors are there in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT (COUNT(DISTINCT ?sensor) as ?count)WHERE {  :Polyhouse_P2 bot:containsElement ?x .  ?x rdf:type/rdfs:subClassOf* sosa:Sensor .  BIND(?x AS ?sensor)}"}
+{"prompt": "Does polyhouse 1 have temperature sensors?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?sensor WHERE {  :Polyhouse_P1 bot:containsElement ?sensor .  ?sensor rdf:type mep:Sensor-TEMPERATURESENSOR .}"}
+{"prompt": "Does polyhouse 2 have temperature sensors?", "completion": "PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?sensor WHERE { :Polyhouse_P1 bot:containsElement ?sensor .  ?sensor rdf:type mep:Sensor-TEMPERATURESENSOR .}"}
+{"prompt": "What observations did the sht25 sensors in polyhouse 1 make?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?sensor ?observation WHERE {  ?sensor a :SHT25 .  ?sensor sosa:madeObservation ?observation .  ?polyhouse a :Polyhouse ;    rdfs:label 'Polyhouse 1'@en .  ?space bot:containsElement ?sensor .  ?polyhouse bot:hasStorey ?storey .  ?storey bot:hasSpace ?space .}"}
+{"prompt": "What observations did the sht25 sensors in polyhouse 2 make?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?sensor ?observation WHERE {  ?sensor a :SHT25 .  ?sensor sosa:madeObservation ?observation .  ?polyhouse a :Polyhouse ;    rdfs:label 'Polyhouse 2'@en .  ?space bot:containsElement ?sensor .  ?polyhouse bot:hasStorey ?storey .  ?storey bot:hasSpace ?space .}"}
+{"prompt": "What are the buildings present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?building WHERE { ?building rdf:type bot:Building }"}
+{"prompt": "What are the algorithms present?", "completion": "PREFIX sosa: <http://www.w3.org/ns/sosa/>PREFIX mls: <http://www.w3.org/ns/mls#>SELECT ?algorithm WHERE { ?algorithm a mls:Algorithm. }"}
+{"prompt": "What are the symmetricpropertys present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX owl: <http://www.w3.org/2002/07/owl#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?p WHERE {  ?p rdf:type owl:SymmetricProperty .}"}
+{"prompt": "What are the observations present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?observation WHERE { ?observation a sosa:Observation . }"}
+{"prompt": "What are the interfaces present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns1: <http://purl.org/toco/>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?interface WHERE { ?interface rdf:type ns1:Interface . }"}
+{"prompt": "What are the namedindividuals present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX owl: <http://www.w3.org/2002/07/owl#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?namedIndividual WHERE {  ?namedIndividual rdf:type owl:NamedIndividual .}"}
+{"prompt": "What are the deployments present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ssn: <http://www.w3.org/ns/ssn/>SELECT ?deployment WHERE { ?deployment a ssn:Deployment }"}
+{"prompt": "What are the polyhouses present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT ?polyhouse WHERE { ?polyhouse a :Polyhouse . }"}
+{"prompt": "How are zone connected to spaces in the polyhouses?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>SELECT ?zone ?space WHERE {  ?zone bot:hasSpace ?space .  ?zone a bot:Zone .  ?space a bot:Space .}"}
+{"prompt": "How many polyhouses are there in the dataset?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>SELECT (COUNT(?polyhouse) AS ?count)WHERE {  ?polyhouse a :Polyhouse .}"}
+{"prompt": "What are the algorithms and what do they implement?", "completion": "SELECT ?algorithm ?implementation WHERE { ?algorithm a mls:Algorithm. ?implementation mls:implements ?algorithm .}"}
+{"prompt": "What are the characteristics of implementations", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#>PREFIX dcterms: <http://purl.org/dc/terms/>SELECT ?Implementation ?Characteristic ?Description ?Value WHERE {  ?Implementation a mls:Implementation .  ?Implementation mls:hasQuality ?Characteristic .  OPTIONAL { ?Characteristic dcterms:description ?Description }   OPTIONAL { ?Characteristic mls:hasValue ?Value } .}"}
+{"prompt": "What are the ML tasks present?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#> SELECT ?task WHERE {  ?task a mls:Task .  amrita:DNN_ES mls:defines ?task .}"}
+{"prompt": "How accurate is the model?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#>PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>PREFIX ns3: <http://purl.oclc.org/net/unis/ontology/sensordata.owl/> SELECT ?accuracy WHERE {  amrita:predictiveAccuracy mls:hasValue ?accuracy .}"}
+{"prompt": "What are the hyperparameters of the model?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#>PREFIX dcterms: <http://purl.org/dc/terms/>SELECT ?hyperparameter ?value ?activation WHERE {  ?hyperparameter a mls:HyperParameter .  ?hyperparameter mls:hasValue ?value .  OPTIONAL { ?hyperparameter amrita:hasActivation ?activation }}"}
+{"prompt": "How is sensor connected to Server?", "completion": "How the sensor data reaches the server?	PREFIX : <http://amrita.sony.org/terms#>PREFIX beo: <https://pi.pauwel.be/voc/buildingelement#>PREFIX bot: <https://w3id.org/bot#>PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>PREFIX ns1: <http://purl.org/toco/>PREFIX owl: <http://www.w3.org/2002/07/owl#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX sosa: <http://www.w3.org/ns/sosa/>PREFIX ssn: <http://www.w3.org/ns/ssn/>PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>SELECT ?s ?p ?o WHERE {  ?s ?p ?o .  FILTER(CONTAINS(STR(?s), 'SHT25') || CONTAINS(STR(?o), 'SIM7600'))}"}
+{"prompt": "How does data from sensor move", "completion": "Can you tell me how the data moves from the sensors?	PREFIX : <http://amrita.sony.org/terms#>PREFIX beo: <https://pi.pauwel.be/voc/buildingelement#>PREFIX bot: <https://w3id.org/bot#>PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>PREFIX ns1: <http://purl.org/toco/>PREFIX owl: <http://www.w3.org/2002/07/owl#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX sosa: <http://www.w3.org/ns/sosa/>PREFIX ssn: <http://www.w3.org/ns/ssn/>PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>SELECT ?sensor ?interface ?link ?system WHERE {  ?sensor a mep:Sensor .  ?sensor ns1:hasInterface ?interface .  ?interface ns1:hasWiredLink ?link .  ?sensor ns1:hasInterface ?interface .  ?interface ns1:hasWiredLink ?link .  ?system ssn:hasSubSystem ?sensor .}"}
+{"prompt": "What are the subcomponents of Spresense?", "completion": "SELECT ?component WHERE {  ?spresense a amrita:Spresense .  ?spresense ssn:hasSubSystem ?component .}"}
+{"prompt": "What are connections between Spresense, SHT25, ESP32, Camera?", "completion": "SELECT ?interface WHERE {  {?device a amrita:Spresense; toco:hasInterface ?interface .}  UNION  {?device a amrita:SHT25; toco:hasInterface ?interface .}  UNION  {?device a amrita:ESP32; toco:hasInterface ?interface .}  UNION  {?device a mep:AudioVisualAppliance-CAMERA; toco:hasInterface ?interface .}"}
+{"prompt": "What are the observations made by Camera?", "completion": "PREFIX amrita: <http://amrita.sony.org/terms#>PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?observation WHERE { ?camera a mep:AudioVisualAppliance-CAMERA . ?camera sosa:madeObservation ?observation . }"}
+{"prompt": "When were each of these observations made?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?sensor ?observation WHERE {  ?sensor sosa:madeObservation ?observation .}"}
+{"prompt": "What are the functionalpropertys present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX owl: <http://www.w3.org/2002/07/owl#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?p WHERE { ?p rdf:type owl:FunctionalProperty }"}
+{"prompt": "What are the polyhouses present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?polyhouse WHERE { ?polyhouse rdf:type :Polyhouse . }"}
+{"prompt": "What are the audiovisualappliance-cameras present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?camera WHERE {  ?camera rdf:type mep:AudioVisualAppliance-CAMERA .}"}
+{"prompt": "What are the cameras present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?camera WHERE {  ?camera rdf:type mep:AudioVisualAppliance-CAMERA .}"}
+{"prompt": "What are the I2C Buses present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT ?i2cbus WHERE { ?i2cbus a :I2CBus . }"}
+{"prompt": "What are the controllers present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>SELECT ?controller WHERE { ?controller a mep:Controller . }"}
+{"prompt": "What are the storeys present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#> SELECT ?storey WHERE { ?storey a bot:Storey }"}
+{"prompt": "What are the observablepropertys present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT DISTINCT ?observableproperty WHERE { ?observableproperty rdf:type sosa:ObservableProperty }"}
+{"prompt": "What are the ramps present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX beo: <https://pi.pauwel.be/voc/buildingelement#>SELECT ?ramp WHERE { ?ramp a beo:Ramp . }"}
+{"prompt": "What are the tasks present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?task WHERE { ?task rdf:type sosa:Procedure . }"}
+{"prompt": "What are the exhausts present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT ?exhaust WHERE { ?exhaust a :Exhaust . }"}
+{"prompt": "What are the spaces present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>SELECT ?space WHERE { ?space a bot:Space }"}
+{"prompt": "What are the sites present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>SELECT ?site WHERE { ?site a bot:Site }"}
+{"prompt": "What are the objectpropertys present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT DISTINCT ?p WHERE { ?s ?p ?o }"}
+{"prompt": "What are the procedures present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?procedure WHERE { ?procedure a sosa:Procedure . }"}
+{"prompt": "What are the transitive properties present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX owl: <http://www.w3.org/2002/07/owl#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?p WHERE {  ?p rdf:type owl:TransitiveProperty .}"}
+{"prompt": "What are the CSIs present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT ?csi WHERE { ?csi a :CSI . }"}
+{"prompt": "What are the columns present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX beo: <https://pi.pauwel.be/voc/buildingelement#>SELECT ?column WHERE { ?column a beo:Column . }"}
+{"prompt": "What are the LTE associations present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns1: <http://purl.org/toco/>SELECT ?lteassociation WHERE { ?lteassociation a ns1:LTEAssociation . }"}
+{"prompt": "What are the classes present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX owl: <http://www.w3.org/2002/07/owl#>SELECT DISTINCT ?class WHERE { ?class a owl:Class }"}
+{"prompt": "What are the doors present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX beo: <https://pi.pauwel.be/voc/buildingelement#>SELECT ?door WHERE { ?door a beo:Door . }"}
+{"prompt": "What are the humidity sensors present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?sensor WHERE {  ?sensor rdf:type }"}
+{"prompt": "What are the temperature sensors present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?sensor WHERE {  ?sensor rdf:type mep:Sensor-TEMPERATURESENSOR .}"}
+{"prompt": "What are the endnodes present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT ?endnode WHERE { ?endnode a :EndNode . }"}
+{"prompt": "What are the sht25s present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT ?sht25 WHERE { ?sht25 a :SHT25 . }"}
+{"prompt": "What are the propertys present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT DISTINCT ?p WHERE { ?s ?p ?o }"}
+{"prompt": "What are the turbovents present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT ?turbovent WHERE { ?turbovent a :Turbovent . }"}
+{"prompt": "What are the actuations present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?actuation WHERE { ?actuation a sosa:Actuation }"}
+{"prompt": "What are the actuatablepropertys present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?actuatableproperty WHERE { ?actuatableproperty a sosa:ActuatableProperty }"}
+{"prompt": "What are the edgenodes present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT ?edgenode WHERE { ?edgenode a :EdgeNode . }"}
+{"prompt": "What are the WiFi WLANs present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns1: <http://purl.org/toco/> SELECT ?wifiwlan WHERE { ?wifiwlan a ns1:WiFiWLAN . }"}
+{"prompt": "What are the spresenses present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT ?spresense WHERE { ?spresense a :Spresense . }"}
+{"prompt": "What are the softserials present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT ?softSerial WHERE { ?softSerial a :SoftSerial . }"}
+{"prompt": "What are the UART2s present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT ?uart2 WHERE { ?uart2 a :UART2 . }"}
+{"prompt": "What are the inputs present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>PREFIX ssn: <http://www.w3.org/ns/ssn/>SELECT ?input WHERE { ?input rdf:type ssn:Input }"}
+{"prompt": "What are the annotation properties present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX owl: <http://www.w3.org/2002/07/owl#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?p WHERE { [] a owl:AnnotationProperty . ?p rdf:type owl:AnnotationProperty }"}
+{"prompt": "What are the walls present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX beo: <https://pi.pauwel.be/voc/buildingelement#>SELECT ?wall WHERE { ?wall a beo:Wall }"}
+{"prompt": "What are the wired links present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns1: <http://purl.org/toco/>SELECT ?wiredlink WHERE { ?wiredlink a ns1:WiredLink . }"}
+{"prompt": "What are the SIM7600s present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT ?sim7600 WHERE { ?sim7600 a :SIM7600 . }"}
+{"prompt": "What are the results present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?result WHERE { ?result a sosa:Result . }"}
+{"prompt": "What are the WiFi associations present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns1: <http://purl.org/toco/>SELECT ?wifiassociation WHERE { ?wifiassociation a ns1:WiFiAssociation . } "}
+{"prompt": "What are the esp32s present?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT ?esp32 WHERE { ?esp32 a :ESP32 . }"}
+{"prompt": "What is the lycopene content of tunnel-dried tomatoes, according to amrita_food.org?", "completion": "PREFIX : <http://amritasony.org/terms#> PREFIX amritafood: <http://amrita_food.org/terms#> PREFIX ns3: <http://dbpedia.org/ontology/>SELECT ?lycopeneContent WHERE { amritafood:tomato\(tunnel-dried\) ns3:scientificName 'solanum lycopersicum' ;   amritafood:lycopene ?lycopeneContent .}"}
+{"prompt": "What type of communication module is the SIM7600, and what is its purpose?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns1: <http://purl.obolibrary.org/obo/>PREFIX toco: <http://purl.org/toco/>PREFIX ssn: <http://www.w3.org/ns/ssn/>PREFIX mep: <https://pi.pauwel.be/voc/distributionelement#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?type ?purpose WHERE {  ?x a :SIM7600 .  ?x rdf:type ?type .  }"}
+{"prompt": "What is the numerical value of Result 4 in Polyhouse P1, and what is its unit?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns2: <http://www.ontology-of-units-of-measure.org/resource/om-2/>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?numericalValue ?unit WHERE {  ?observation sosa:hasResult ?result .  ?result ns2:hasNumericalValue ?numericalValue .  ?result ns2:hasUnit ?unit .  ?observation sosa:hasFeatureOfInterest/:bot:containsElement/:Polyhouse_P1 ?space .      FILTER(CONTAINS(STR(?observation), 'Observation_4_P1'))}"}
+{"prompt": "What is the result time of Observation 5 in Polyhouse P2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns2: <http://www.ontology-of-units-of-measure.org/resource/om-2/>PREFIX sosa: <http://www.w3.org/ns/sosa/>PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>SELECT ?resultTime WHERE {  :Observation_5_P2 sosa:hasResult ?result .  ?result sosa:resultTime ?resultTime .}"}
+{"prompt": "What is the value of tensorFlow ", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#>SELECT ?value WHERE { :tensorFlow mls:hasValue ?value }"}
+{"prompt": "What is the type of the Wireless Association 3 P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX : <http://amrita.sony.org/terms#>SELECT ?type WHERE {  :Wireless_Association_3_P1 a ?type .}"}
+{"prompt": "What is the result time of Result 1 P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns1: <http://www.ontology-of-units-of-measure.org/resource/om-2/>PREFIX sosa: <http://www.w3.org/ns/sosa/>PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>SELECT ?resultTime WHERE {  :Result_1_P1 sosa:resultTime ?resultTime .}"}
+{"prompt": "What is the observed property of Observation_1_P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX owl: <http://www.w3.org/2002/07/owl#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX sosa: <http://www.w3.org/ns/sosa/>PREFIX ssn: <http://www.w3.org/ns/ssn/>PREFIX toco: <http://purl.org/toco/>SELECT ?observedProperty WHERE {  :Observation_1_P1 sosa:observedProperty ?observedProperty .}"}
+{"prompt": "What is the value of InputLayer?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#>SELECT ?value WHERE { :InputLayer mls:hasValue ?value }"}
+{"prompt": "What type of entity is <http://amrita.sony.org/terms#Deployment_1_P1>", "completion": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>SELECT ?typeWHERE {  <http://amrita.sony.org/terms#Deployment_1_P1> rdf:type ?type .}"}
+{"prompt": "What is the comment associated with <http://amrita.sony.org/terms#std_a>?", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX : <http://amrita.sony.org/terms#>SELECT ?commentWHERE {  :std_a rdfs:comment ?comment .}"}
+{"prompt": "What unit of measure is associated with Result 3 in Polyhouse 2", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns1: <http://www.ontology-of-units-of-measure.org/resource/om-2/>SELECT ?unitWHERE {  :Result_3_P2 ns1:hasUnit ?unit .}"}
+{"prompt": "What is the result time for Result 3 in Polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>SELECT ?resultTimeWHERE {  :Result_3_P1 sosa:resultTime ?resultTime .}"}
+{"prompt": "What interface does exhaust fan in polyhouse 2 have?", "completion": "PREFIX toco: <http://purl.org/toco/>PREFIX : <http://amrita.sony.org/terms#>SELECT ?interfaceWHERE {  :ExaustFan_P2 toco:hasInterface ?interface .}"}
+{"prompt": "What type of building element is Roof in Polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX owl: <http://www.w3.org/2002/07/owl#>PREFIX beo: <https://pi.pauwel.be/voc/buildingelement#>SELECT ?typeWHERE {  :Roof_P2 rdf:type ?type .  ?type rdfs:subClassOf beo:BuildingElement .  FILTER (?type != owl:NamedIndividual)}"}
+{"prompt": "What is the label for the class <http://purl.obolibrary.org/obo/CHEBI_33240>?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns1: <http://purl.obolibrary.org/obo/>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?label WHERE {  ns1:CHEBI_33240 rdfs:label ?label .}"}
+{"prompt": "What is the label of the food preservation process?", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX ns2: <http://purl.obolibrary.org/obo/>SELECT ?labelWHERE {  ?process rdfs:subClassOf ns2:FOODON_03470107 .  ?process rdfs:label ?label .}"}
+{"prompt": "What is the comment associated with the term 'User'?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX owl: <http://www.w3.org/2002/07/owl#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?commentWHERE {  :User rdfs:comment ?comment .}"}
+{"prompt": "What is the name of the feature represented by the URI `http://amrita.sony.org/terms#std_a`", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#>SELECT ?nameWHERE {  :std_a :hasName ?name .}"}
+{"prompt": "Which actuator made the actuation represented by Actuation 1 in polyhpouse 2?", "completion": "PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?actuatorWHERE {  <http://amrita.sony.org/terms#Actuation_1_P2> sosa:madeByActuator ?actuator .}"}
+{"prompt": "What is the label of the food product identified by the URI `http://purl.obolibrary.org/obo/FOODON_00003265`?", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?labelWHERE {  <http://purl.obolibrary.org/obo/FOODON_00003265> rdfs:label ?label .}"}
+{"prompt": "What unit is associated with the Result 4 in polyhouse 2", "completion": "PREFIX ns1: <http://www.ontology-of-units-of-measure.org/resource/om-2/>PREFIX sosa: <http://www.w3.org/ns/sosa/>PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT ?unitWHERE { <http://amrita.sony.org/terms#Result_4_P2> ns1:hasUnit ?unit .}"}
+{"prompt": " What is the result time associated with Result 6 in polyhouse 2", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?resultTimeWHERE {  ?result sosa:resultTime ?resultTime .  FILTER(?result = :Result_6_P2)}"}
+{"prompt": "What is the comment associated with the feature min b1?", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX : <http://amrita.sony.org/terms#>SELECT ?commentWHERE {  :min_b1 rdfs:comment ?comment .}"}
 {"prompt": "What is the hasName value for the feature var_r?", "completion": ""}
-{"prompt": "What is the label of the 'Plant Food Product'?", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX ns2: <http://purl.obolibrary.org/obo/>
-SELECT ?label
-WHERE {
-  ns2:FOODON_00001015 rdfs:label ?label .
-}"}
-{"prompt": "What is the deployment of 'EndNode_1_P1'?", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX ssn: <http://www.w3.org/ns/ssn/>
-PREFIX : <http://amrita.sony.org/terms#>
-SELECT ?comment
-WHERE {
-  :Deployment_1_P1 ssn:deployedSystem :End_Node_1_P1 .
-  :Deployment_1_P1 rdfs:comment ?comment .
-}"}
-{"prompt": " What is the result time associated with Result 4 in Polyhouse 1?", "completion": "
-PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-SELECT ?resultTime
-WHERE {
-  ?result sosa:resultTime ?resultTime .
-  FILTER(?result = :Result_4_P1)
-}"}
-{"prompt": "What is the value of OutputLayer?", "completion": "
-PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-SELECT ?value
-WHERE {
-  :OutputLayer mls:hasValue ?value .
-}"}
-{"prompt": " What is the description of 'Gradient Descent'?", "completion": "
-PREFIX : <http://amrita.sony.org/terms#>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-SELECT ?description
-WHERE {
-  ?algorithm a mls:Algorithm ;
-             dcterms:description ?description .
-  FILTER(?algorithm = :gd)
-}"}
-{"prompt": "What is the label of the lipid?", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX ns1: <http://purl.obolibrary.org/obo/>
-SELECT ?label
-WHERE {
-  ?lipid rdfs:subClassOf ns1:CHEBI_18059 .
-  ?lipid rdfs:label ?label .
-}"}
-{"prompt": "What is the scientific name of tomato(tunnel-dried)?", "completion": "PREFIX amritafood: <http://amrita_food.org/terms#>
-PREFIX ns3: <http://dbpedia.org/ontology/>
-SELECT ?scientificName
-WHERE {
-  amritafood:tomato\(tunnel-dried\) ns3:scientificName ?scientificName .
-}"}
-{"prompt": "What is the result time of Result 2 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-SELECT ?resultTime
-WHERE {
-  :Result_2_P1 sosa:resultTime ?resultTime .
-}"}
-{"prompt": "What is the comment of Activity 1 in polyhouse 1", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX : <http://amrita.sony.org/terms#>
-SELECT ?comment
-WHERE {
-  :Activity_1_P1 rdfs:comment ?comment .
-}"}
-{"prompt": "What is the Value of LTE Bandwidth Observation 1 Polyhouse 2>?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns1: <http://purl.oclc.org/net/unis/ontology/sensordata.owl/>
-SELECT ?value WHERE { :LTE_Bandwidth_Observation_1_P2 ns1:hasValue ?value }"}
-{"prompt": " What is the result Time of Result 1 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-SELECT ?resultTime WHERE {
-  :Result_1_P1 sosa:resultTime ?resultTime .
-}"}
-{"prompt": "What is the label of the class Deep Neural Network?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT ?label WHERE { :DeepNeuralNetwork rdfs:label ?label }"}
-{"prompt": "What is the scientific name for Peanut (tunnel-dried)?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns2: <http://dbpedia.org/ontology/>
-SELECT ?scientificName WHERE { :Peanut\(tunnel-dried\) ns2:scientificName ?scientificName }"}
-{"prompt": " What is the Numerical Value of Result 6 P1 and what is its resultTime?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns3: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-SELECT ?numericalValue ?resultTime WHERE {
-  :Result_6_P1 ns3:hasNumericalValue ?numericalValue ;
-    sosa:resultTime ?resultTime .
-}"}
-{"prompt": "What is the label of the class `FOODON_03316171`?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns1: <http://purl.obolibrary.org/obo/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-
-SELECT ?label WHERE { ns1:FOODON_03316171 rdfs:label ?label }"}
-{"prompt": "What is the value of the Hyper Parameter d2L?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-SELECT ?value WHERE {
-  ?d2L a mls:HyperParameter ;
-    mls:hasValue ?value .
-  FILTER(?d2L = <http://amrita.sony.org/terms#d2L>)
-}"}
-{"prompt": "What is the name of the feature with the URI `<http://amrita.sony.org/terms#max_r>`?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-
-SELECT ?hasName WHERE {
-  :max_r :hasName ?hasName .
-}"}
-{"prompt": "What is the Evaluation Measure value with the URI `<http://amrita.sony.org/terms#predictiveAccuracy>`?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-PREFIX ns3: <http://purl.oclc.org/net/unis/ontology/sensordata.owl/>
-
-SELECT ?value WHERE {
-  :predictiveAccuracy a mls:EvaluationMeasure ;
-  ns3:hasValue ?value .
-}"}
-{"prompt": "What is the value of the Dataset Characteristic with the URI <http://amrita.sony.org/terms#numberOfInstances> ?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-SELECT ?value WHERE { :numberOfInstances mls:hasValue ?value }"}
-{"prompt": "What is the name of the feature  mean_b?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-SELECT ?name WHERE { :mean_b :hasName ?name }"}
-{"prompt": "What is the value of observation 1 by sht25 sensor in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns3: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-PREFIX ssn: <http://www.w3.org/ns/ssn/>
-
-SELECT ?numericalValue WHERE {
-  ?observation sosa:madeBySensor :SHT25_1_P1 .
-  ?observation a sosa:Observation .
-  ?observation ns3:hasNumericalValue ?numericalValue .
-  FILTER(?observation = :Observation_1_P1)
-}"}
-{"prompt": " What is the label of polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT ?label WHERE {
-  :Polyhouse_P2 rdfs:label ?label .
-}"}
-{"prompt": "What is the value of the dr(dropout layer) hyperparameter?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-
-SELECT ?value WHERE {
-  :dr mls:hasValue ?value .
-}
-"}
-{"prompt": "What is the value of the predictive accuracy of the DNN_ES deep neural network?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-
-SELECT ?value WHERE {
-  :DNN_ES mls:hasPart :predictiveAccuracy .
-  :predictiveAccuracy mls:hasValue ?value .
-}"}
-{"prompt": "What is the `scientificName` of copra(tunnel-dried)?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX FOODON_00001002: <http://purl.obolibrary.org/obo/FOODON_00001002#>
-PREFIX amritafood: <http://amrita_food.org/terms#>
-PREFIX ns2: <http://dbpedia.org/ontology/>
-SELECT ?scientificName WHERE { amritafood:copra\(tunnel-dried\) ns2:scientificName ?scientificName }"}
-{"prompt": "What is the result time of Observation 3 in Polyhouse P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-SELECT ?resultTime WHERE {
-  :Observation_3_P1 sosa:resultTime ?resultTime .
-}"}
-{"prompt": "What is the numerical value of Result 5 from the SHT25 sensor in Space 3 of Polyhouse P1?", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns1: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-PREFIX bot: <https://w3id.org/bot#>
-SELECT ?numericalValue WHERE {
-  ?observation sosa:hasResult ?result .
-  ?result ns1:hasNumericalValue ?numericalValue .
-  ?observation sosa:madeBySensor ?sensor .
-  ?space bot:containsElement ?sensor .
-  ?polyhouse bot:hasSpace ?space .
-  ?space rdfs:label 'Grid 3'@en .
-  ?polyhouse rdf:type :Polyhouse_P1 .
-  ?observation rdf:type sosa:Observation .
-  ?observation sosa:hasFeatureOfInterest ?space .
-  FILTER(CONTAINS(STR(?observation), 'Observation_5'))
-}"}
-{"prompt": "What is the label of the Storey in Polyhouse P2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT ?label WHERE {
-  ?storey rdfs:label ?label .
-  ?polyhouse bot:hasStorey ?storey .
-  ?polyhouse rdfs:label 'Polyhouse 2'@en .
-}"}
-{"prompt": "What type of building element is Ramp Polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-
-SELECT ?type WHERE {
-  :Ramp_P1 a ?type .
-}"}
-{"prompt": "What is the `label` of `FOODON_03470117`?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX ns1: <http://purl.obolibrary.org/obo/>
-
-SELECT ?label WHERE { ns1:FOODON_03470117 rdfs:label ?label }"}
-{"prompt": "What is the result time of Result 3 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns2: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-SELECT ?resultTime WHERE {
-  :Result_3_P2 sosa:resultTime ?resultTime .
-}
-"}
-{"prompt": "What is the label of the `Polyhouse` with ID `<http://amrita.sony.org/terms#Polyhouse_P1>`?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT ?label WHERE { :Polyhouse_P1 rdfs:label ?label }
-"}
-{"prompt": "What is the value of result 2 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns3: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
-SELECT ?numericalValue WHERE { :Result_2_P1 ns3:hasNumericalValue ?numericalValue }"}
-{"prompt": "What is the observed property of the observation 5 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-SELECT ?observedProperty WHERE { :Observation_5_P1 sosa:observedProperty ?observedProperty }"}
-{"prompt": "What is the result time of observation 1 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns1: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-SELECT ?resultTime WHERE {
-  :Observation_1_P1 sosa:hasResult ?result .
-  ?result sosa:resultTime ?resultTime .
-}"}
-{"prompt": "What is the name of the feature of var_r?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns4: <http://dbpedia.org/ontology/>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-SELECT ?hasName WHERE { :var_r :hasName ?hasName }"}
-{"prompt": "What type of sensor is SHT25 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-SELECT ?type WHERE {
-  :SHT25_1_P1 a ?type .
-}"}
-{"prompt": "What is the numerical value of result 5 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns1: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
-SELECT ?hasNumericalValue WHERE { :Result_5_P1 ns1:hasNumericalValue ?hasNumericalValue }"}
-{"prompt": "What is the label of the class FOODON_00003453?", "completion": "PREFIX ns2: <http://purl.obolibrary.org/obo/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT ?label WHERE { ns2:FOODON_00003453 rdfs:label ?label }"}
-{"prompt": "What is the label of the CHEBI class with ID `CHEBI_176783`?", "completion": "PREFIX ns2: <http://purl.obolibrary.org/obo/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT ?label WHERE { ns2:CHEBI_176783 rdfs:label ?label }"}
-{"prompt": "What is the label of Storey in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT ?label WHERE {
-  <http://amrita.sony.org/terms#Storey_P2> rdfs:label ?label .
-}"}
-{"prompt": " What is the type of <http://amrita.sony.org/terms#Spresense_2_Interface_3_P2>?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX toco: <http://purl.org/toco/>
-SELECT ?type WHERE { <http://amrita.sony.org/terms#Spresense_2_Interface_3_P2> a ?type . }"}
-{"prompt": "What property was observed in Observation 1 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-SELECT ?observedProperty WHERE { :Observation_1_P1 sosa:observedProperty ?observedProperty }"}
-{"prompt": "What is the unit of result 4 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns1: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
-SELECT ?unit WHERE { :Result_4_P1 ns1:hasUnit ?unit }"}
-{"prompt": "What does Run_AutoML_tom_class_001 execute?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-SELECT ?x WHERE { :Run_AutoML_tom_class_001 mls:executes ?x }"}
-{"prompt": "What is the result time of result 6 in polyhouse 1?", "completion": "PREFIX sosa: <http://www.w3.org/ns/sosa/>
-PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns1: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-SELECT ?resultTime WHERE { :Result_6_P1 ns1:hasNumericalValue ?value . :Result_6_P1 sosa:resultTime ?resultTime }"}
-{"prompt": "What is the comment for the min_b1 feature?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX mls: <http://www.w3.org/ns/mls#>
-
-SELECT ?comment WHERE {
-  :min_b1 rdfs:comment ?comment .
-}
-"}
-{"prompt": "What is the latitude of Polyhouse P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX geo1: <http://www.w3.org/2003/01/geo/wgs84_pos#>
-SELECT ?lat WHERE { :Polyhouse_P1 geo1:lat ?lat }"}
-{"prompt": "What is the label of hte tomato(tunnel-dried) class?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX amritafood: <http://amrita_food.org/terms#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT ?label WHERE { amritafood:tomato\(tunnel-dried\) rdfs:label ?label }"}
-{"prompt": "What is the result time of Observation 6 in Polyhouse P2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-SELECT ?resultTime WHERE {
-  :Observation_6_P2 sosa:resultTime ?resultTime .
-}"}
-{"prompt": "What type of interface is Spresense 2 Interface 3 in Polyhouse P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX bot: <https://w3id.org/bot#>
-PREFIX toco: <http://purl.org/toco/>
-SELECT ?type WHERE {
-  :Spresense_2_Interface_3_P1 a ?type .
-}"}
-{"prompt": "What is the name of the feature of max_l?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-SELECT ?hasName WHERE { :max_l :hasName ?hasName }
-"}
-{"prompt": "What is the label of the class FOODON_03316171?", "completion": "PREFIX ns2: <http://purl.obolibrary.org/obo/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT ?label WHERE { ns2:FOODON_03316171 rdfs:label ?label }
-"}
-{"prompt": "What is the comment of the feature std_a?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT ?comment WHERE { :std_a rdfs:comment ?comment }
-"}
-{"prompt": "What is the numerical value and unit of the result 3 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns2: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
-SELECT ?numericalValue ?unit WHERE { :Result_3_P1 ns2:hasNumericalValue ?numericalValue . :Result_3_P1 ns2:hasUnit ?unit }"}
-{"prompt": "What is the value of LTE bandwidth observation 1 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns3: <http://purl.oclc.org/net/unis/ontology/sensordata.owl/>
-SELECT ?value WHERE { :LTE_Bandwidth_Observation_1_P2 ns3:hasValue ?value }
-"}
-{"prompt": "What is property observed by observation 4 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-SELECT ?observedProperty WHERE { :Observation_4_P2 sosa:observedProperty ?observedProperty }"}
-{"prompt": "What is the longitude of Polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX geo1: <http://www.w3.org/2003/01/geo/wgs84_pos#>
-SELECT ?longitude WHERE { :Polyhouse_P2 geo1:long ?longitude }"}
-{"prompt": "What is the chlorophyll content of moringa_leaf(tunnel-dried)?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX FOODON_00001002: <http://purl.obolibrary.org/obo/FOODON_00001002#>
-PREFIX amritafood: <http://amrita_food.org/terms#>
-SELECT ?chlorophyll WHERE { amritafood:moringa_leaf\(tunnel-dried\) amritafood:chlorophyll ?chlorophyll . }"}
-{"prompt": " What is the result time of Observation 3 in Polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-SELECT ?resultTime WHERE {
-  :Observation_3_P2 sosa:hasResult ?result .
-  ?result sosa:resultTime ?resultTime .
-}"}
-{"prompt": "What type of interface is Spresense_1_Interface_1 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX toco: <http://purl.org/toco/>
-SELECT ?type WHERE { :Spresense_1_Interface_1_P2 a ?type . }"}
-{"prompt": "WHat is the result time of result 5 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>
-PREFIX ns2: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
-SELECT ?value WHERE { :Result_5_P1 ns2:hasNumericalValue ?value }"}
-{"prompt": "", "completion": ""}
+{"prompt": "What is the label of the 'Plant Food Product'?", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX ns2: <http://purl.obolibrary.org/obo/>SELECT ?labelWHERE {  ns2:FOODON_00001015 rdfs:label ?label .}"}
+{"prompt": "What is the deployment of 'EndNode_1_P1'?", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX ssn: <http://www.w3.org/ns/ssn/>PREFIX : <http://amrita.sony.org/terms#>SELECT ?commentWHERE {  :Deployment_1_P1 ssn:deployedSystem :End_Node_1_P1 .  :Deployment_1_P1 rdfs:comment ?comment .}"}
+{"prompt": " What is the result time associated with Result 4 in Polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?resultTimeWHERE {  ?result sosa:resultTime ?resultTime .  FILTER(?result = :Result_4_P1)}"}
+{"prompt": "What is the value of OutputLayer?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#>SELECT ?valueWHERE {  :OutputLayer mls:hasValue ?value .}"}
+{"prompt": " What is the description of 'Gradient Descent'?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX dcterms: <http://purl.org/dc/terms/>PREFIX mls: <http://www.w3.org/ns/mls#>SELECT ?descriptionWHERE {  ?algorithm a mls:Algorithm ;             dcterms:description ?description .  FILTER(?algorithm = :gd)}"}
+{"prompt": "What is the label of the lipid?", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX ns1: <http://purl.obolibrary.org/obo/>SELECT ?labelWHERE {  ?lipid rdfs:subClassOf ns1:CHEBI_18059 .  ?lipid rdfs:label ?label .}"}
+{"prompt": "What is the scientific name of tomato(tunnel-dried)?", "completion": "PREFIX amritafood: <http://amrita_food.org/terms#>PREFIX ns3: <http://dbpedia.org/ontology/>SELECT ?scientificNameWHERE {  amritafood:tomato\(tunnel-dried\) ns3:scientificName ?scientificName .}"}
+{"prompt": "What is the result time of Result 2 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?resultTimeWHERE {  :Result_2_P1 sosa:resultTime ?resultTime .}"}
+{"prompt": "What is the comment of Activity 1 in polyhouse 1", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX : <http://amrita.sony.org/terms#>SELECT ?commentWHERE {  :Activity_1_P1 rdfs:comment ?comment .}"}
+{"prompt": "What is the Value of LTE Bandwidth Observation 1 Polyhouse 2>?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns1: <http://purl.oclc.org/net/unis/ontology/sensordata.owl/>SELECT ?value WHERE { :LTE_Bandwidth_Observation_1_P2 ns1:hasValue ?value }"}
+{"prompt": " What is the result Time of Result 1 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?resultTime WHERE {  :Result_1_P1 sosa:resultTime ?resultTime .}"}
+{"prompt": "What is the label of the class Deep Neural Network?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?label WHERE { :DeepNeuralNetwork rdfs:label ?label }"}
+{"prompt": "What is the scientific name for Peanut (tunnel-dried)?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns2: <http://dbpedia.org/ontology/>SELECT ?scientificName WHERE { :Peanut\(tunnel-dried\) ns2:scientificName ?scientificName }"}
+{"prompt": " What is the Numerical Value of Result 6 P1 and what is its resultTime?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns3: <http://www.ontology-of-units-of-measure.org/resource/om-2/>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?numericalValue ?resultTime WHERE { :Result_6_P1 ns3:hasNumericalValue ?numericalValue ;   sosa:resultTime ?resultTime .}"}
+{"prompt": "What is the label of the class `FOODON_03316171`?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns1: <http://purl.obolibrary.org/obo/>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?label WHERE { ns1:FOODON_03316171 rdfs:label ?label }"}
+{"prompt": "What is the value of the Hyper Parameter d2L?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#>SELECT ?value WHERE {  ?d2L a mls:HyperParameter ;    mls:hasValue ?value .  FILTER(?d2L = <http://amrita.sony.org/terms#d2L>)}"}
+{"prompt": "What is the name of the feature with the URI `<http://amrita.sony.org/terms#max_r>`?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#>SELECT ?hasName WHERE {  :max_r :hasName ?hasName .}"}
+{"prompt": "What is the Evaluation Measure value with the URI `<http://amrita.sony.org/terms#predictiveAccuracy>`?", "completion":"PREFIX : <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#>PREFIX ns3: <http://purl.oclc.org/net/unis/ontology/sensordata.owl/>SELECT ?value WHERE {  :predictiveAccuracy a mls:EvaluationMeasure ;  ns3:hasValue ?value .}"}
+{"prompt": "What is the value of the Dataset Characteristic with the URI <http://amrita.sony.org/terms#numberOfInstances> ?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX mls: <http://www.w3.org/ns/mls#>SELECT ?value WHERE { :numberOfInstances mls:hasValue ?value }"}
+{"prompt": "What is the name of the feature  mean_b?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#> SELECT ?name WHERE { :mean_b :hasName ?name }"}
+{"prompt": "What is the value of observation 1 by sht25 sensor in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns3: <http://www.ontology-of-units-of-measure.org/resource/om-2/>PREFIX sosa: <http://www.w3.org/ns/sosa/>PREFIX ssn: <http://www.w3.org/ns/ssn/>SELECT ?numericalValue WHERE {  ?observation sosa:madeBySensor :SHT25_1_P1 .  ?observation a sosa:Observation .  ?observation ns3:hasNumericalValue ?numericalValue .  FILTER(?observation = :Observation_1_P1)}"}
+{"prompt": " What is the label of polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?label WHERE {  :Polyhouse_P2 rdfs:label ?label .}"}
+{"prompt": "What is the value of the dr(dropout layer) hyperparameter?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#>SELECT ?value WHERE {  :dr mls:hasValue ?value .}"}
+{"prompt": "What is the value of the predictive accuracy of the DNN_ES deep neural network?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#>SELECT ?value WHERE { :DNN_ES mls:hasPart :predictiveAccuracy .  :predictiveAccuracy mls:hasValue ?value .}"}
+{"prompt": "What is the `scientificName` of copra(tunnel-dried)?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX FOODON_00001002: <http://purl.obolibrary.org/obo/FOODON_00001002#>PREFIX amritafood: <http://amrita_food.org/terms#>PREFIX ns2: <http://dbpedia.org/ontology/> SELECT ?scientificName WHERE { amritafood:copra\(tunnel-dried\) ns2:scientificName ?scientificName }"}
+{"prompt": "What is the result time of Observation 3 in Polyhouse P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?resultTime WHERE {  :Observation_3_P1 sosa:resultTime ?resultTime .}"}
+{"prompt": "What is the numerical value of Result 5 from the SHT25 sensor in Space 3 of Polyhouse P1?", "completion": "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>PREFIX : <http://amrita.sony.org/terms#>PREFIX ns1: <http://www.ontology-of-units-of-measure.org/resource/om-2/>PREFIX sosa: <http://www.w3.org/ns/sosa/> PREFIX bot: <https://w3id.org/bot#>SELECT ?numericalValue WHERE {  ?observation sosa:hasResult ?result .  ?result ns1:hasNumericalValue ?numericalValue .  ?observation sosa:madeBySensor ?sensor .  ?space bot:containsElement ?sensor .  ?polyhouse bot:hasSpace ?space .  ?space rdfs:label 'Grid 3'@en .  ?polyhouse rdf:type :Polyhouse_P1 .  ?observation rdf:type sosa:Observation .  ?observation sosa:hasFeatureOfInterest ?space .  FILTER(CONTAINS(STR(?observation), 'Observation_5'))}"}
+{"prompt": "What is the label of the Storey in Polyhouse P2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?label WHERE {  ?storey rdfs:label ?label .  ?polyhouse bot:hasStorey ?storey .  ?polyhouse rdfs:label 'Polyhouse 2'@en .}"}
+{"prompt": "What type of building element is Ramp Polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT ?type WHERE { :Ramp_P1 a ?type .}"}
+{"prompt": "What is the `label` of `FOODON_03470117`?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX ns1: <http://purl.obolibrary.org/obo/>SELECT ?label WHERE { ns1:FOODON_03470117 rdfs:label ?label }"}
+{"prompt": "What is the result time of Result 3 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns2: <http://www.ontology-of-units-of-measure.org/resource/om-2/>PREFIX sosa: <http://www.w3.org/ns/sosa/>PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>SELECT ?resultTime WHERE {  :Result_3_P2 sosa:resultTime ?resultTime .}"}
+{"prompt": "What is the label of the `Polyhouse` with ID `<http://amrita.sony.org/terms#Polyhouse_P1>`?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?label WHERE { :Polyhouse_P1 rdfs:label ?label }"}
+{"prompt": "What is the value of result 2 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns3: <http://www.ontology-of-units-of-measure.org/resource/om-2/> SELECT ?numericalValue WHERE { :Result_2_P1 ns3:hasNumericalValue ?numericalValue }"}
+{"prompt": "What is the observed property of the observation 5 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?observedProperty WHERE { :Observation_5_P1 sosa:observedProperty ?observedProperty }"}
+{"prompt": "What is the result time of observation 1 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns1: <http://www.ontology-of-units-of-measure.org/resource/om-2/>PREFIX sosa: <http://www.w3.org/ns/sosa/> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>SELECT ?resultTime WHERE {  :Observation_1_P1 sosa:hasResult ?result .  ?result sosa:resultTime ?resultTime .}"}
+{"prompt": "What is the name of the feature of var_r?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns4: <http://dbpedia.org/ontology/>PREFIX mls: <http://www.w3.org/ns/mls#>SELECT ?hasName WHERE { :var_r :hasName ?hasName }"}
+{"prompt": "What type of sensor is SHT25 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT ?type WHERE {  :SHT25_1_P1 a ?type .}"}
+{"prompt": "What is the numerical value of result 5 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns1: <http://www.ontology-of-units-of-measure.org/resource/om-2/>SELECT ?hasNumericalValue WHERE { :Result_5_P1 ns1:hasNumericalValue ?hasNumericalValue }"}
+{"prompt": "What is the label of the class FOODON_00003453?", "completion": "PREFIX ns2: <http://purl.obolibrary.org/obo/>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?label WHERE { ns2:FOODON_00003453 rdfs:label ?label }"}
+{"prompt": "What is the label of the CHEBI class with ID `CHEBI_176783`?", "completion": "PREFIX ns2: <http://purl.obolibrary.org/obo/>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?label WHERE { ns2:CHEBI_176783 rdfs:label ?label }"}
+{"prompt": "What is the label of Storey in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?label WHERE {  <http://amrita.sony.org/terms#Storey_P2> rdfs:label ?label .}"}
+{"prompt": " What is the type of <http://amrita.sony.org/terms#Spresense_2_Interface_3_P2>?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX toco: <http://purl.org/toco/>SELECT ?type WHERE { <http://amrita.sony.org/terms#Spresense_2_Interface_3_P2> a ?type . }"}
+{"prompt": "What property was observed in Observation 1 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?observedProperty WHERE { :Observation_1_P1 sosa:observedProperty ?observedProperty }"}
+{"prompt": "What is the unit of result 4 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns1: <http://www.ontology-of-units-of-measure.org/resource/om-2/>SELECT ?unit WHERE { :Result_4_P1 ns1:hasUnit ?unit }"}
+{"prompt": "What does Run_AutoML_tom_class_001 execute?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX mls: <http://www.w3.org/ns/mls#>SELECT ?x WHERE { :Run_AutoML_tom_class_001 mls:executes ?x }"}
+{"prompt": "What is the result time of result 6 in polyhouse 1?", "completion": "PREFIX sosa: <http://www.w3.org/ns/sosa/>PREFIX : <http://amrita.sony.org/terms#> PREFIX ns1: <http://www.ontology-of-units-of-measure.org/resource/om-2/>PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>SELECT ?resultTime WHERE { :Result_6_P1 ns1:hasNumericalValue ?value . :Result_6_P1 sosa:resultTime ?resultTime }"}
+{"prompt": "What is the comment for the min_b1 feature?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>PREFIX mls: <http://www.w3.org/ns/mls#>SELECT ?comment WHERE {  :min_b1 rdfs:comment ?comment .}"}
+{"prompt": "What is the latitude of Polyhouse P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX geo1: <http://www.w3.org/2003/01/geo/wgs84_pos#>SELECT ?lat WHERE { :Polyhouse_P1 geo1:lat ?lat }"}
+{"prompt": "What is the label of hte tomato(tunnel-dried) class?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX amritafood: <http://amrita_food.org/terms#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?label WHERE { amritafood:tomato\(tunnel-dried\) rdfs:label ?label }"}
+{"prompt": "What is the result time of Observation 6 in Polyhouse P2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?resultTime WHERE {  :Observation_6_P2 sosa:resultTime ?resultTime .}"}
+{"prompt": "What type of interface is Spresense 2 Interface 3 in Polyhouse P1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX bot: <https://w3id.org/bot#>PREFIX toco: <http://purl.org/toco/>SELECT ?type WHERE {  :Spresense_2_Interface_3_P1 a ?type .}"}
+{"prompt": "What is the name of the feature of max_l?", "completion": "PREFIX : <http://amrita.sony.org/terms#>SELECT ?hasName WHERE { :max_l :hasName ?hasName }"}
+{"prompt": "What is the label of the class FOODON_03316171?", "completion": "PREFIX ns2: <http://purl.obolibrary.org/obo/>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?label WHERE { ns2:FOODON_03316171 rdfs:label ?label }"}
+{"prompt": "What is the comment of the feature std_a?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?comment WHERE { :std_a rdfs:comment ?comment }"}
+{"prompt": "What is the numerical value and unit of the result 3 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns2: <http://www.ontology-of-units-of-measure.org/resource/om-2/>SELECT ?numericalValue ?unit WHERE { :Result_3_P1 ns2:hasNumericalValue ?numericalValue . :Result_3_P1 ns2:hasUnit ?unit }"}
+{"prompt": "What is the value of LTE bandwidth observation 1 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns3: <http://purl.oclc.org/net/unis/ontology/sensordata.owl/>SELECT ?value WHERE { :LTE_Bandwidth_Observation_1_P2 ns3:hasValue ?value }"}
+{"prompt": "What is property observed by observation 4 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?observedProperty WHERE { :Observation_4_P2 sosa:observedProperty ?observedProperty }"}
+{"prompt": "What is the longitude of Polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX geo1: <http://www.w3.org/2003/01/geo/wgs84_pos#>SELECT ?longitude WHERE { :Polyhouse_P2 geo1:long ?longitude }"}
+{"prompt": "What is the chlorophyll content of moringa_leaf(tunnel-dried)?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX FOODON_00001002: <http://purl.obolibrary.org/obo/FOODON_00001002#>PREFIX amritafood: <http://amrita_food.org/terms#>SELECT ?chlorophyll WHERE { amritafood:moringa_leaf\(tunnel-dried\) amritafood:chlorophyll ?chlorophyll . }"}
+{"prompt": " What is the result time of Observation 3 in Polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX sosa: <http://www.w3.org/ns/sosa/>SELECT ?resultTime WHERE {  :Observation_3_P2 sosa:hasResult ?result .  ?result sosa:resultTime ?resultTime .}"}
+{"prompt": "What type of interface is Spresense_1_Interface_1 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX toco: <http://purl.org/toco/>SELECT ?type WHERE { :Spresense_1_Interface_1_P2 a ?type . }"}
+{"prompt": "WHat is the result time of result 5 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX ns2: <http://www.ontology-of-units-of-measure.org/resource/om-2/> SELECT ?value WHERE { :Result_5_P1 ns2:hasNumericalValue ?value }"}

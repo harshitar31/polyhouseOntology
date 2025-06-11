@@ -3,22 +3,49 @@ from langchain.chains import OntotextGraphDBQAChain
 from langchain_community.graphs import OntotextGraphDBGraph
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-os.environ["GRAPHDB_USERNAME"] = "admin"
-os.environ["GRAPHDB_PASSWORD"] = "admin"
-
+# Step 1: Connect to your graph
 graph = OntotextGraphDBGraph(
     query_endpoint="http://localhost:7200/repositories/sample1",
     local_file="D:/VolumeEStuff/sony/Untitled.ttl"
 )
 
+# Step 2: Initialize your LLM
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0)
 
-qa_chain = OntotextGraphDBQAChain.from_llm(
-    llm=llm,
-    graph=graph,
-    verbose=True,
-    allow_dangerous_requests=True
-)
+# Step 3: Simulate the question
+question = "What are the polyhouses present?"
+
+# Step 4: Manually write the SPARQL query (simulate what LangChain would generate)
+sparql_query = """
+PREFIX : <http://amrita.sony.org/terms#>
+SELECT ?polyhouse WHERE {
+  ?polyhouse a :Polyhouse .
+}
+"""
+
+# Step 5: Run the SPARQL query and fetch the result directly
+raw_result = graph.query(sparql_query)
+print(raw_resultresult)
+
+# Step 6: Parse the bindings to extract meaningful values
+polyhouses = [
+    binding["polyhouse"]["value"].split("#")[-1]  # Extracts "Polyhouse_P1" from URI
+    for binding in raw_result["results"]["bindings"]
+]
+
+# Step 7: Create a human-readable intermediate prompt
+intermediate_prompt = f"""
+User Question: {question}
+SPARQL Result: {', '.join(polyhouses)}
+Please generate a natural language answer based on this result.
+"""
+
+print("Intermediate Prompt Sent to LLM:\n", intermediate_prompt)
+
+# Step 8: Send to LLM manually
+response = llm.invoke(intermediate_prompt)
+
+print("\nAnswer:", response)
 
 
 
@@ -27,7 +54,7 @@ qa_chain = OntotextGraphDBQAChain.from_llm(
 """
 BOT ONTOLOGY
 """
-# question="What are the polyhouses present?"
+question="What are the polyhouses present?"
 # question = "What are the grids present in the Polyhouse?"
 # question = "What are the grids present in the Polyhouse 1?"
 # question = "How many spaces are there in the polyhouse 2?"
@@ -63,12 +90,13 @@ TOCO ONTOLOGY
 # question="How the sensor data reaches the server?"
 # question="what are the connections to centralised server?"
 # question="can you verify if the sensor data from the end node goes to the edge node and then through the sim7600 goes to the server?"
-question="How is server connected to other devices?"
+# question="How is server connected to other devices?"
 
 
 
 
-
+# question="In which node(edge or end) is SHT25 2 located in polyhouse 1?"
+# question="Where is sht25 2 present in polyhouse 1?"
 
 
 response = qa_chain.invoke({qa_chain.input_key: question})

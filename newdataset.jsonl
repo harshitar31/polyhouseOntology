@@ -278,3 +278,45 @@
 {"prompt": "What is the label of the `http://amrita.sony.org/terms#ESP32_WiFiWLAN_N3_N2_P1` resource?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?label WHERE { :ESP32_WiFiWLAN_N3_N2_P1 rdfs:label ?label }"}
 {"prompt": "What happens in Activity 1 of Polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?comment WHERE {:Activity_1_P1 rdfs:comment ?comment .}"}
 {"prompt": "What happens in Activity 2 of Polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>SELECT ?comment WHERE {:Activity_2_P2 rdfs:comment ?comment .}"}
+{"prompt": "What is max_b1 feature?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> SELECT ?comment WHERE { :max_b1 rdfs:comment ?comment . }"}
+{"prompt": "Which type of sensor made the observation Img_Obs_1", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?type WHERE {   :Img_Obs_1 sosa:madeBySensor ?sensor .  ?sensor a ?type . }"}
+{"prompt": "What type of sensor made the observation 1 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?type WHERE {   :Observation_1_P1 sosa:madeBySensor ?sensor .  ?sensor a ?type . }"}
+{"prompt": "What type of sensor made the observation 2 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?type WHERE {   :Observation_2_P1 sosa:madeBySensor ?sensor .  ?sensor a ?type . }"}
+{"prompt": "What type of sensor made the observation 3 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?type WHERE {   :Observation_3_P1 sosa:madeBySensor ?sensor .  ?sensor a ?type . }"}
+{"prompt": "What type of sensor made the observation 4 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?type WHERE {   :Observation_4_P1 sosa:madeBySensor ?sensor .  ?sensor a ?type . }"}
+{"prompt": "What type of sensor made the observation 5 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?type WHERE {   :Observation_5_P1 sosa:madeBySensor ?sensor .  ?sensor a ?type . }"}
+{"prompt": "What type of sensor made the observation 6 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?type WHERE {   :Observation_6_P1 sosa:madeBySensor ?sensor .  ?sensor a ?type . }"}
+{"prompt": "What type of sensor made the observation 1 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?type WHERE {   :Observation_1_P2 sosa:madeBySensor ?sensor .  ?sensor a ?type . }"}
+{"prompt": "What type of sensor made the observation 2 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?type WHERE {   :Observation_2_P2 sosa:madeBySensor ?sensor .  ?sensor a ?type . }"}
+{"prompt": "What type of sensor made the observation 3 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?type WHERE {   :Observation_3_P2 sosa:madeBySensor ?sensor .  ?sensor a ?type . }"}
+{"prompt": "What type of sensor made the observation 4 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?type WHERE {   :Observation_4_P2 sosa:madeBySensor ?sensor .  ?sensor a ?type . }"}
+{"prompt": "What type of sensor made the observation 5 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?type WHERE {   :Observation_5_P2 sosa:madeBySensor ?sensor .  ?sensor a ?type . }"}
+{"prompt": "What type of sensor made the observation 6 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?type WHERE {   :Observation_6_P2 sosa:madeBySensor ?sensor .  ?sensor a ?type . }"}
+{"prompt": "Which sensor made the observation 1 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?sensor WHERE {   :Observation_1_P1 sosa:madeBySensor ?sensor . }"}
+{"prompt": "Which sensor made the observation 2 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?sensor WHERE {   :Observation_2_P1 sosa:madeBySensor ?sensor . }"}
+{"prompt": "Which sensor made the observation 3 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?sensor WHERE {   :Observation_3_P1 sosa:madeBySensor ?sensor . }"}
+{"prompt": "Which sensor made the observation 4 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?sensor WHERE {   :Observation_4_P1 sosa:madeBySensor ?sensor . }"}
+{"prompt": "Which sensor made the observation 5 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?sensor WHERE {   :Observation_5_P1 sosa:madeBySensor ?sensor . }"}
+{"prompt": "Which sensor made the observation 6 in polyhouse 1?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?sensor WHERE {   :Observation_6_P1 sosa:madeBySensor ?sensor . }"}
+{"prompt": "Which sensor made the observation 1 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?sensor WHERE {   :Observation_1_P2 sosa:madeBySensor ?sensor . }"}
+{"prompt": "Which sensor made the observation 2 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?sensor WHERE {   :Observation_2_P2 sosa:madeBySensor ?sensor . }"}
+{"prompt": "Which sensor made the observation 3 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?sensor WHERE {   :Observation_3_P2 sosa:madeBySensor ?sensor . }"}
+{"prompt": "Which sensor made the observation 4 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?sensor WHERE {   :Observation_4_P2 sosa:madeBySensor ?sensor . }"}
+{"prompt": "Which sensor made the observation 5 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?sensor WHERE {   :Observation_5_P2 sosa:madeBySensor ?sensor . }"}
+{"prompt": "Which sensor made the observation 6 in polyhouse 2?", "completion": "PREFIX : <http://amrita.sony.org/terms#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sosa: <http://www.w3.org/ns/sosa/> SELECT ?sensor WHERE {   :Observation_6_P2 sosa:madeBySensor ?sensor . }"}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}
+{"prompt": "", "completion": ""}

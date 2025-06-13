@@ -445,14 +445,7 @@
 {"prompt": "What is the role of user 1?","completion":"PREFIX : <http://amrita.sony.org/terms#> PREFIX owl: <http://www.w3.org/2002/07/owl#> SELECT ?role WHERE { :User_1 :hasRole ?role . }"}
 {"prompt": "What is the function of the Actuation 1 in Polyhouse 1?","completion":"PREFIX : <http://amrita.sony.org/terms#> PREFIX sosa: <http://www.w3.org/ns/sosa/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> SELECT ?function WHERE {  :Actuation_1_P2 rdfs:comment ?function .}"}
 {"prompt": "What is the value of the LTE Bandwidth Observation 1 in Polyhouse 1?","completion":"PREFIX : <http://amrita.sony.org/terms#> PREFIX toco: <http://purl.org/toco/> PREFIX ns4: <http://purl.oclc.org/net/unis/ontology/sensordata.owl/> SELECT ?value WHERE {  ?lteAssociation toco:hasBandwidth ?bandwidthObservation .  ?bandwidthObservation ns4:hasValue ?value .  ?lteAssociation toco:from :SIM7600_Interface_1_P1 .}"}
-{"prompt": "","completion":""}
-{"prompt": "","completion":""}
-{"prompt": "","completion":""}
-{"prompt": "","completion":""}
-{"prompt": "","completion":""}
-{"prompt": "","completion":""}
-{"prompt": "","completion":""}
-{"prompt": "","completion":""}
-{"prompt": "","completion":""}
-{"prompt": "","completion":""}
+{"prompt": "What is the purpose of the Edge Node in the polyhouse system?","completion":"PREFIX : <http://amrita.sony.org/terms#> PREFIX ns1: <http://purl.obolibrary.org/obo/> PREFIX ssn: <http://www.w3.org/ns/ssn/> SELECT ?purpose WHERE { :EdgeNode ns1:IAO_0000115 ?purpose }"}
+{"prompt": "What is the scientific name for copra that has undergone tunnel drying?","completion":"PREFIX amritafood: <http://amrita_food.org/terms#> PREFIX ns5: <http://dbpedia.org/ontology/> SELECT ?scientificName WHERE { amritafood:copra\(tunnel-dried\) ns5:scientificName ?scientificName . }"}
+{"prompt": "What is the start time of Activity 2 in Polyhouse 2?","completion":"PREFIX : <http://amrita.sony.org/terms#> PREFIX prov: <http://www.w3.org/ns/prov#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT ?startTime WHERE {   :Activity_2_P2 a prov:Activity ;     prov:startedAtTime ?startTime . }"}
 {"prompt": "","completion":""}
